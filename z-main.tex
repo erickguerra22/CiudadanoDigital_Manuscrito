@@ -48,11 +48,12 @@
 \usepackage{emptypage}
 \usepackage{hyphenat}
 \usepackage{fancyhdr}
-\usepackage[backend=biber, style=ieee]{biblatex}
-\ifdefined\usarAPA 
-    \usepackage[backend=biber, style=apa]{biblatex}
+\ifdefined\usarAPA
+  \usepackage[backend=biber, style=apa]{biblatex}
+\else
+  \usepackage[backend=biber, style=ieee, sorting=none, citestyle=numeric-comp]{biblatex}
 \fi
-\addbibresource{m-bibliografia.bib}
+\addbibresource{q-bibliografia.bib}
 
 \usepackage[percent]{overpic}
 
@@ -62,7 +63,7 @@
 	%\usepackage[toc]{glossaries}
 	\usepackage[numberedsection]{glossaries}
 	\makeglossaries
-    \input{o-glosario}
+    \input{e-glosario}
 \fi
 
 % ==============================================================================
@@ -246,6 +247,19 @@
 % ==============================================================================
 % CONTENIDO DEL TRABAJO
 % ==============================================================================
+% DEDICATORIA
+% ------------------------------------------------------------------------------
+\ifdefined\CAPdedicatoria
+	\newpage
+	\cleardoublepage\phantomsection
+    \chapter*{Dedicatoria}
+    \ifdefined\parpordefecto
+    	\defaultparformat{a-dedicatoria}
+    \else
+    	\input{a-dedicatoria}
+    \fi
+    \addcontentsline{toc}{chapter}{Dedicatoria}
+\fi
 % PREFACIO
 % ------------------------------------------------------------------------------
 \ifdefined\CAPprefacio
@@ -253,11 +267,39 @@
 	\cleardoublepage\phantomsection
     \chapter*{Prefacio}
     \ifdefined\parpordefecto
-    	\defaultparformat{a-prefacio}
+    	\defaultparformat{b-prefacio}
     \else
-    	\input{a-prefacio}
+    	\input{b-prefacio}
     \fi
     \addcontentsline{toc}{chapter}{Prefacio}
+\fi
+
+% RESUMEN
+% ------------------------------------------------------------------------------
+\ifdefined\CAPresumen
+	\newpage
+    \cleardoublepage\phantomsection
+	\chapter*{Resumen}
+	\ifdefined\parpordefecto
+		\defaultparformat{c-resumen}
+	\else
+		\input{c-resumen}
+	\fi
+	\addcontentsline{toc}{chapter}{Resumen}
+\fi
+
+% ABSTRACT
+% ------------------------------------------------------------------------------
+\ifdefined\CAPabstract
+	\newpage
+    \cleardoublepage\phantomsection
+	\chapter*{Abstract}
+	\ifdefined\parpordefecto
+		\defaultparformat{d-abstract}
+	\else
+		\input{d-abstract}
+	\fi
+	\addcontentsline{toc}{chapter}{Abstract}
 \fi
 
 % ÍNDICE GENERAL
@@ -272,6 +314,16 @@
 	\tableofcontents
 \fi
 
+% LISTADO DE CUADROS
+% ------------------------------------------------------------------------------
+\ifdefined\CAPcuadros
+\newpage
+\cleardoublepage\phantomsection
+\renewcommand{\listtablename}{Lista de cuadros}
+\listoftables
+\addcontentsline{toc}{chapter}{Lista de cuadros}
+\fi
+
 % LISTADO DE FIGURAS
 % ------------------------------------------------------------------------------
 \ifdefined\CAPfiguras
@@ -282,42 +334,11 @@
 	\addcontentsline{toc}{chapter}{Lista de figuras}
 \fi
 
-% LISTADO DE CUADROS
+% GLOSARIO
 % ------------------------------------------------------------------------------
-\ifdefined\CAPcuadros
+\ifdefined\CAPglosario
 	\newpage
-    \cleardoublepage\phantomsection
-	\renewcommand{\listtablename}{Lista de cuadros}
-	\listoftables
-	\addcontentsline{toc}{chapter}{Lista de cuadros}
-\fi
-
-% RESUMEN
-% ------------------------------------------------------------------------------
-\ifdefined\CAPresumen
-	\newpage
-    \cleardoublepage\phantomsection
-	\chapter*{Resumen}
-	\ifdefined\parpordefecto
-		\defaultparformat{b-resumen}
-	\else
-		\input{b-resumen}
-	\fi
-	\addcontentsline{toc}{chapter}{Resumen}
-\fi
-
-% ABSTRACT
-% ------------------------------------------------------------------------------
-\ifdefined\CAPabstract
-	\newpage
-    \cleardoublepage\phantomsection
-	\chapter*{Abstract}
-	\ifdefined\parpordefecto
-		\defaultparformat{c-abstract}
-	\else
-		\input{c-abstract}
-	\fi
-	\addcontentsline{toc}{chapter}{Abstract}
+	\printglossary
 \fi
 
 % INTRODUCCIÓN
@@ -329,9 +350,21 @@
 	\setcounter{page}{1}
 	\chapter{Introducción}
 	\ifdefined\parpordefecto
-		\defaultparformat{d-introduccion}
+		\defaultparformat{f-introduccion}
 	\else
-		\input{d-introduccion}
+		\input{f-introduccion}
+	\fi
+\fi
+
+% JUSTIFICACIÓN
+% ------------------------------------------------------------------------------
+\ifdefined\CAPjustificacion
+	\newpage
+	\chapter{Justificación}
+	\ifdefined\parpordefecto
+		\defaultparformat{g-justificacion}
+	\else
+		\input{g-justificacion}
 	\fi
 \fi
 
@@ -341,22 +374,10 @@
 	\newpage
 	\chapter{Antecedentes}
 	\ifdefined\parpordefecto
-    	\defaultparformat{e-antecedentes}
+    	\defaultparformat{h-antecedentes}
     \else
-    	\input{e-antecedentes}
+    	\input{h-antecedentes}
     \fi  
-\fi
-
-% JUSTIFICACIÓN
-% ------------------------------------------------------------------------------
-\ifdefined\CAPjustificacion
-	\newpage
-	\chapter{Justificación}
-	\ifdefined\parpordefecto
-		\defaultparformat{f-justificacion}
-	\else
-		\input{f-justificacion}
-	\fi
 \fi
 
 % OBJETIVOS
@@ -365,9 +386,9 @@
 	\newpage
 	\chapter{Objetivos}
 	\ifdefined\parpordefecto
-		\defaultparformat{g-objetivos}
+		\defaultparformat{i-objetivos}
 	\else
-		\input{g-objetivos}
+		\input{i-objetivos}
 	\fi
 \fi
 
@@ -375,11 +396,11 @@
 % ------------------------------------------------------------------------------
 \ifdefined\CAPalcance
 	\newpage
-	\chapter{Alcance}
+	\chapter{Alcances}
 	\ifdefined\parpordefecto
-    	\defaultparformat{h-alcance}
+    	\defaultparformat{j-alcance}
     \else
-    	\input{h-alcance}
+    	\input{j-alcance}
     \fi 
 \fi
 
@@ -389,19 +410,55 @@
 	\newpage
 	\chapter{Marco teórico}
 	\ifdefined\parpordefecto
-		\defaultparformat{i-marco_teorico}
+		\defaultparformat{k-marco_teorico}
 	\else
-		\input{i-marco_teorico}
+		\input{k-marco_teorico}
+	\fi
+\fi
+
+% METODOLOGÍA
+% ------------------------------------------------------------------------------
+\ifdefined\CAPmetodologia
+	\newpage
+	\chapter{Metodología}
+	\ifdefined\parpordefecto
+		\defaultparformat{l-metodologia}
+	\else
+		\input{l-metodologia}
 	\fi
 \fi
 
 % CAPÍTULOS
 % ------------------------------------------------------------------------------
-\newpage
-\ifdefined\parpordefecto
-	\defaultparformat{j-capitulos}
-\else
-	\input{j-capitulos}
+% \newpage
+% \ifdefined\parpordefecto
+% 	\defaultparformat{j-capitulos}
+% \else
+% 	\input{j-capitulos}
+% \fi
+
+% RESULTADOS
+% ------------------------------------------------------------------------------
+\ifdefined\CAPresultados
+	\newpage
+	\chapter{Resultados}
+	\ifdefined\parpordefecto
+		\defaultparformat{m-resultados}
+	\else
+		\input{m-resultados}
+	\fi
+\fi
+
+% DISCUSIÓN
+% ------------------------------------------------------------------------------
+\ifdefined\CAPdiscusion
+	\newpage
+	\chapter{Discusión}
+	\ifdefined\parpordefecto
+		\defaultparformat{n-discusion}
+	\else
+		\input{n-discusion}
+	\fi
 \fi
 
 % CONCLUSIONES
@@ -410,9 +467,9 @@
 	\newpage
 	\chapter{Conclusiones}
 	\ifdefined\parpordefecto
-		\defaultparformat{k-conclusiones}
+		\defaultparformat{o-conclusiones}
 	\else
-		\input{k-conclusiones}
+		\input{o-conclusiones}
 	\fi
 \fi
 
@@ -422,9 +479,9 @@
 	\newpage
 	\chapter{Recomendaciones}
 	\ifdefined\parpordefecto
-		\defaultparformat{l-recomendaciones}
+		\defaultparformat{p-recomendaciones}
 	\else
-		\input{l-recomendaciones}
+		\input{p-recomendaciones}
 	\fi
 \fi
 
@@ -443,17 +500,22 @@
 	\newpage
 	\chapter{Anexos}
 	\ifdefined\parpordefecto
-		\defaultparformat{n-anexos}
+		\defaultparformat{r-anexos}
 	\else
-		\input{n-anexos}
+		\input{r-anexos}
 	\fi
 \fi
 
-% GLOSARIO
+% APÉNDICE
 % ------------------------------------------------------------------------------
-\ifdefined\CAPglosario
+\ifdefined\CAPapendice
 	\newpage
-	\printglossary
+	\chapter{Apéndice}
+	\ifdefined\parpordefecto
+		\defaultparformat{s-apendices}
+	\else
+		\input{s-apendices}
+	\fi
 \fi
 
 \end{document}
