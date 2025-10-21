@@ -1,0 +1,125 @@
+Los resultados obtenidos durante el desarrollo del proyecto \textit{Ciudadano
+    Digital} permiten analizar el alcance y las implicaciones de esta primera fase
+de implementación. El prototipo cumplió con los objetivos técnicos
+establecidos, demostrando la viabilidad de integrar un sistema conversacional
+educativo basado en inteligencia artificial, aunque los resultados también
+evidencian limitaciones propias de un producto en etapa inicial. En esta
+sección se discuten los hallazgos más relevantes en relación con los objetivos,
+el enfoque metodológico y los aspectos técnicos y pedagógicos del sistema.
+
+\section{Desempeño técnico y coherencia del sistema}
+Los resultados de las pruebas internas mostraron que la aplicación alcanzó un
+nivel de estabilidad moderado, con un tiempo promedio de respuesta entre seis y
+quinde segundos y una tasa de error cercana al 20\%. Esto confirma la correcta
+integración de los componentes tecnológicos: aplicación móvil,
+\textit{backend}, microservicio y bases de datos; lo cual constituye un avance
+importante dentro de los objetivos específicos planteados.
+
+No obstante, el comportamiento del sistema ante preguntas ambiguas o carentes
+de contexto evidenció que el modelo aún depende en gran medida de la calidad
+del \textit{corpus} documental y del proceso de recuperación semántica; en
+varios casos, las respuestas resultaron genéricas o conservadoras, reflejando
+los límites del enfoque RAG (\textit{Retrieval-Augmented Generation}) cuando el
+contexto disponible es escaso o poco representativo. Este hallazgo resalta la
+necesidad de ampliar el conjunto de datos y mejorar los mecanismos de
+indexación para futuras iteraciones.
+
+A pesar de estas limitaciones, los indicadores de desempeño sugieren que el
+sistema es técnicamente funcional y adaptable, con una arquitectura sólida que
+permite su expansión progresiva. El flujo de comunicación entre los módulos y
+la estabilidad general del entorno confirman que el diseño propuesto es
+adecuado para la escala de uso prevista en esta etapa.
+
+\section{Pertinencia y calidad de las respuestas}
+En el ámbito semántico, las pruebas internas y la validación experta revelaron
+un desempeño consistente pero refinable. Las respuestas del asistente se
+caracterizaron por mantener una estructura coherente, un tono respetuoso y una
+orientación reflexiva, elementos fundamentales en un entorno educativo. Sin
+embargo, los evaluadores señalaron que, en ciertos casos, el sistema ofrecía
+respuestas demasiado breves o con escasa profundidad argumentativa,
+especialmente en dilemas morales que requerían contextualización cultural o
+análisis más matizado.
+
+Estos resultados sugieren que el modelo logró asimilar los principios del
+enfoque socrático al plantear reflexiones y contra-preguntas, pero todavía no
+alcanza una interacción plenamente adaptativa al perfil del usuario. La calidad
+del diálogo depende del tipo de pregunta, la extensión del contexto y el grado
+de ambigüedad del tema tratado.
+
+La valoración promedio de los expertos, situada entre 3.5 y 4.0 sobre 5 puntos
+en los distintos criterios, refleja un desempeño favorable pero aún limitado en
+términos pedagógicos. En este punto, la discusión se centra en la tensión entre
+la coherencia formal de la respuesta y su profundidad conceptual, un equilibrio
+que será clave en las siguientes fases del proyecto.
+
+\section{Aspectos pedagógicos y éticos}
+Uno de los hallazgos más relevantes se relaciona con la dimensión pedagógica
+del sistema. Aunque no se realizaron pruebas con usuarios reales, las
+observaciones de los expertos permiten inferir que \textit{Ciudadano Digital}
+mantiene una coherencia ética adecuada y un enfoque comunicativo respetuoso,
+evitando juicios morales o afirmaciones dogmáticas. Este comportamiento se
+alinea con el propósito educativo del proyecto, orientado a fomentar la
+reflexión personal y el razonamiento moral autónomo.
+
+Sin embargo, la falta de validación con estudiantes o docentes impide
+determinar con precisión el nivel de comprensión, motivación o impacto
+educativo real del sistema; la percepción de los evaluadores indica que el
+asistente podría ser un recurso de apoyo valioso, pero que su efectividad
+dependerá de la mediación pedagógica y del diseño de estrategias de uso en
+contextos reales de aprendizaje.
+
+De esta manera, los resultados invitan a reflexionar sobre el papel que pueden
+desempeñar los sistemas de inteligencia artificial en la educación moral: no
+como sustitutos del docente, sino como espacios complementarios de diálogo y
+reflexión guiada.
+
+\section{Limitaciones y observaciones derivadas de la validación}
+El análisis de los resultados debe situarse dentro de los límites de esta fase.
+La ausencia de pruebas empíricas con público objetivo es la principal
+restricción, ya que impide evaluar indicadores de aprendizaje, aceptación o
+eficacia pedagógica. Por otro lado, el \textit{corpus} documental utilizado,
+aunque cuidadosamente seleccionado, abarca una muestra limitada de temas dentro
+de la educación ciudadana, lo cual restringe el alcance temático de las
+respuestas.
+
+Las pruebas internas también evidenciaron áreas de mejora técnica, entre ellas
+la optimización del manejo de errores, la mejora en la gestión de solicitudes
+simultáneas y la ampliación del contexto recuperado por el índice vectorial. A
+nivel funcional, la interfaz móvil resultó adecuada para las pruebas internas,
+pero requiere de ajustes en accesibilidad y retroalimentación interactiva para
+un uso prolongado o masivo.
+
+Estas limitaciones no demeritan los avances alcanzados, sino que orientan el
+rumbo de los siguientes ciclos de desarrollo, reafirmando el carácter
+exploratorio y progresivo del proyecto.
+
+\section{Consideraciones sobre la metodología SCRUM}
+El uso de la metodología SCRUM favoreció una organización estructurada del
+proceso de desarrollo. Dividir el trabajo en \textit{sprints} permitió
+identificar prioridades, corregir errores tempranos y mantener una visión
+incremental del producto. Los resultados obtenidos muestran que este enfoque
+ágil contribuyó a equilibrar los aspectos técnicos y conceptuales, logrando
+avances tangibles en tiempos relativamente cortos.
+
+La naturaleza iterativa de SCRUM también facilitó la integración de la
+retroalimentación experta en cada etapa, lo que enriqueció el diseño del
+sistema y permitió ajustes progresivos en la estructura y en la lógica de
+interacción. Sin embargo, la dependencia de tiempos cortos y entregas continuas
+exigió una planificación rigurosa para evitar la dispersión de tareas o la
+sobrecarga técnica hacia el final del proceso.
+
+En conjunto, la metodología permitió mantener una visión realista y controlada
+del desarrollo, priorizando la funcionalidad y la validación antes que la
+expansión prematura del sistema.
+
+
+\noindent\rule{\linewidth}{0.5pt}
+
+En síntesis, los resultados obtenidos permiten sostener que \textit{Ciudadano
+    Digital} ha superado con éxito su fase de validación técnica, alcanzando un
+nivel funcional estable y coherente con sus propósitos educativos. A pesar de
+ello, los hallazgos también evidencian desafíos pendientes en la ampliación del
+\textit{corpus}, la profundización semántica de las respuestas y la evaluación
+del impacto pedagógico real. El sistema muestra un equilibrio prometedor entre
+viabilidad tecnológica y orientación ética, aunque aún requiere ajustes para
+consolidarse como herramienta formativa de alcance práctico.

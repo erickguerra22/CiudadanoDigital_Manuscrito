@@ -17,6 +17,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+% Utilizar pseudocódigo
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algoritmo}
+
 \title{Plantilla para Trabajos de Graduación IE-MT 2019v3}
 \author{MSc. Miguel Zea}
 \date{\today}
@@ -113,12 +118,12 @@
 % PORTADA
 % ==============================================================================
 \ifdefined\printver
-    \let\CAPportada\undefined
-\fi 
+	\let\CAPportada\undefined
+\fi
 
 \ifdefined\CAPportada
-    \cleardoublepage\phantomsection
-    % \pdfbookmark{Portada}{toc}
+	\cleardoublepage\phantomsection
+	% \pdfbookmark{Portada}{toc}
 	\newgeometry{left=3cm, bottom=0in, top=1in, right=3cm}
 	\pagecolor{uvg-green}
 	\thispagestyle{empty}
@@ -132,14 +137,14 @@
 	\LARGE \nombreestudiante
 
 	\begin{figure}[b!]
-    	%\makebox[\textwidth]{\includegraphics[height=13.25cm]{plantilla/portadacit.jpg}}
-    	\makebox[\textwidth]{
-    		\begin{overpic}[height=13.25cm]{\imagenportada}
-     		\put(63,0){\includegraphics[height=1.15in]{plantilla/fondologo_grande.png}}  
-  			\put(64.5,2){\includegraphics[height=0.55in]{plantilla/logoUVGblanco.eps}} 
-        	\end{overpic}
-    	}
-    	%\includegraphics[height=13.25cm]{plantilla/portadacit.jpg}
+		%\makebox[\textwidth]{\includegraphics[height=13.25cm]{plantilla/portadacit.jpg}}
+		\makebox[\textwidth]{
+			\begin{overpic}[height=13.25cm]{\imagenportada}
+				\put(63,0){\includegraphics[height=1.15in]{plantilla/fondologo_grande.png}}
+				\put(64.5,2){\includegraphics[height=0.55in]{plantilla/logoUVGblanco.eps}}
+			\end{overpic}
+		}
+		%\includegraphics[height=13.25cm]{plantilla/portadacit.jpg}
 	\end{figure}
 	\restoregeometry
 \fi
@@ -149,8 +154,8 @@
 % ==============================================================================
 \ifdefined\CAPcaratula
 	\newpage
-    \cleardoublepage\phantomsection
-    % \pdfbookmark{Carátula}{toc}
+	\cleardoublepage\phantomsection
+	% \pdfbookmark{Carátula}{toc}
 	\pagecolor{white}
 	\color{black}
 	\setcounter{page}{1}
@@ -162,8 +167,8 @@
 	\end{center}
 	\begin{figure}[h]
 		\begin{center}
-		\includegraphics[height=5.5 cm]{plantilla/escudoUVGnegro.eps}
-		\vspace{0.5in}
+			\includegraphics[height=5.5 cm]{plantilla/escudoUVGnegro.eps}
+			\vspace{0.5in}
 		\end{center}
 	\end{figure}
 	\begin{center}
@@ -176,39 +181,39 @@
 		\vspace{1em}
 		\anoentrega
 	\end{center}
-    
-    \ifdefined\printver	
-	    \blankpage
-	    \blankpage
-	    
-	    \newpage
-	    \cleardoublepage\phantomsection
-	    \pagecolor{white}
-    	\color{black}
-    	\setcounter{page}{1}
-    	\pagenumbering{roman}
-    	\thispagestyle{empty}
-    	\begin{center}
-    		\LARGE UNIVERSIDAD DEL VALLE DE GUATEMALA\\
-    		\LARGE Facultad de \uvgfacultad \\[0.75cm]
-    	\end{center}
-    	\begin{figure}[h]
-    		\begin{center}
-    		\includegraphics[height=5.5 cm]{plantilla/escudoUVGnegro.eps}
-    		\vspace{0.5in}
-    		\end{center}
-    	\end{figure}
-    	\begin{center}
-    		\Large \textbf{\nohyphens{\titulotesis}} \\
-    		%\LARGE \textbf{\titulotesis} \\
-    		\vfill
-    		\Large \nohyphens{Trabajo de graduación presentado por \nombreestudiante \ para optar al grado académico de Licenciado en \uvgcarrera} \\
-    		\vfill
-    		\large Guatemala, \\
-    		\vspace{1em}
-    		\anoentrega
-    	\end{center}
-    \fi
+
+	\ifdefined\printver
+		\blankpage
+		\blankpage
+
+		\newpage
+		\cleardoublepage\phantomsection
+		\pagecolor{white}
+		\color{black}
+		\setcounter{page}{1}
+		\pagenumbering{roman}
+		\thispagestyle{empty}
+		\begin{center}
+			\LARGE UNIVERSIDAD DEL VALLE DE GUATEMALA\\
+			\LARGE Facultad de \uvgfacultad \\[0.75cm]
+		\end{center}
+		\begin{figure}[h]
+			\begin{center}
+				\includegraphics[height=5.5 cm]{plantilla/escudoUVGnegro.eps}
+				\vspace{0.5in}
+			\end{center}
+		\end{figure}
+		\begin{center}
+			\Large \textbf{\nohyphens{\titulotesis}} \\
+			%\LARGE \textbf{\titulotesis} \\
+			\vfill
+			\Large \nohyphens{Trabajo de graduación presentado por \nombreestudiante \ para optar al grado académico de Licenciado en \uvgcarrera} \\
+			\vfill
+			\large Guatemala, \\
+			\vspace{1em}
+			\anoentrega
+		\end{center}
+	\fi
 \fi
 
 % ==============================================================================
@@ -237,9 +242,8 @@
 	\end{center}
 	\vspace{1in}
 
-	Fecha de aprobación: Guatemala, \rule[1pt]{0.5 in}{1pt} de \rule[1pt]{1 in}{1pt} de \anoaprobacion.
-	\normalsize
-\fi
+	Fecha de aprobación: Guatemala, \rule[1pt]{0.5 in}{1pt} de \rule[1pt]{1
+		in}{1pt} de \anoaprobacion. \normalsize \fi
 
 % Comentar para formato estilo libro en la numeración de páginas (NO 
 % compatible con la guía UVG 2019)
@@ -252,33 +256,33 @@
 \ifdefined\CAPdedicatoria
 	\newpage
 	\cleardoublepage\phantomsection
-    \chapter*{Dedicatoria}
-    \ifdefined\parpordefecto
-    	\defaultparformat{a-dedicatoria}
-    \else
-    	\input{a-dedicatoria}
-    \fi
-    \addcontentsline{toc}{chapter}{Dedicatoria}
+	\chapter*{Dedicatoria}
+	\ifdefined\parpordefecto
+		\defaultparformat{a-dedicatoria}
+	\else
+		\input{a-dedicatoria}
+	\fi
+	\addcontentsline{toc}{chapter}{Dedicatoria}
 \fi
 % PREFACIO
 % ------------------------------------------------------------------------------
 \ifdefined\CAPprefacio
 	\newpage
 	\cleardoublepage\phantomsection
-    \chapter*{Prefacio}
-    \ifdefined\parpordefecto
-    	\defaultparformat{b-prefacio}
-    \else
-    	\input{b-prefacio}
-    \fi
-    \addcontentsline{toc}{chapter}{Prefacio}
+	\chapter*{Prefacio}
+	\ifdefined\parpordefecto
+		\defaultparformat{b-prefacio}
+	\else
+		\input{b-prefacio}
+	\fi
+	\addcontentsline{toc}{chapter}{Prefacio}
 \fi
 
 % RESUMEN
 % ------------------------------------------------------------------------------
 \ifdefined\CAPresumen
 	\newpage
-    \cleardoublepage\phantomsection
+	\cleardoublepage\phantomsection
 	\chapter*{Resumen}
 	\ifdefined\parpordefecto
 		\defaultparformat{c-resumen}
@@ -292,7 +296,7 @@
 % ------------------------------------------------------------------------------
 \ifdefined\CAPabstract
 	\newpage
-    \cleardoublepage\phantomsection
+	\cleardoublepage\phantomsection
 	\chapter*{Abstract}
 	\ifdefined\parpordefecto
 		\defaultparformat{d-abstract}
@@ -306,29 +310,39 @@
 % ------------------------------------------------------------------------------
 \ifdefined\CAPindice
 	\newpage
-    \cleardoublepage\phantomsection
+	\cleardoublepage\phantomsection
 	\renewcommand{\contentsname}{Índice}
-    %\phantomsection
-    \pdfbookmark{\contentsname}{toc}
-    %\pdfbookmark{Índice}{toc}
+	%\phantomsection
+	\pdfbookmark{\contentsname}{toc}
+	%\pdfbookmark{Índice}{toc}
 	\tableofcontents
 \fi
 
 % LISTADO DE CUADROS
 % ------------------------------------------------------------------------------
 \ifdefined\CAPcuadros
-\newpage
-\cleardoublepage\phantomsection
-\renewcommand{\listtablename}{Lista de cuadros}
-\listoftables
-\addcontentsline{toc}{chapter}{Lista de cuadros}
+	\newpage
+	\cleardoublepage\phantomsection
+	\renewcommand{\listtablename}{Lista de cuadros}
+	\listoftables
+	\addcontentsline{toc}{chapter}{Lista de cuadros}
+\fi
+
+% LISTADO DE ALGORITMOS
+% ------------------------------------------------------------------------------
+\ifdefined\CAPalgoritmos
+	\newpage
+	\cleardoublepage\phantomsection
+	\renewcommand{\listalgorithmname}{Lista de algoritmos} % nombre que aparece en el índice
+	\listofalgorithms
+	\addcontentsline{toc}{chapter}{Lista de algoritmos}
 \fi
 
 % LISTADO DE FIGURAS
 % ------------------------------------------------------------------------------
 \ifdefined\CAPfiguras
 	\newpage
-    \cleardoublepage\phantomsection
+	\cleardoublepage\phantomsection
 	\renewcommand{\listfigurename}{Lista de figuras}
 	\listoffigures
 	\addcontentsline{toc}{chapter}{Lista de figuras}
@@ -374,10 +388,10 @@
 	\newpage
 	\chapter{Antecedentes}
 	\ifdefined\parpordefecto
-    	\defaultparformat{h-antecedentes}
-    \else
-    	\input{h-antecedentes}
-    \fi  
+		\defaultparformat{h-antecedentes}
+	\else
+		\input{h-antecedentes}
+	\fi
 \fi
 
 % OBJETIVOS
@@ -398,10 +412,10 @@
 	\newpage
 	\chapter{Alcances}
 	\ifdefined\parpordefecto
-    	\defaultparformat{j-alcance}
-    \else
-    	\input{j-alcance}
-    \fi 
+		\defaultparformat{j-alcance}
+	\else
+		\input{j-alcance}
+	\fi
 \fi
 
 % MARCO TEÓRICO
@@ -489,9 +503,9 @@
 % ------------------------------------------------------------------------------
 \ifdefined\CAPbibliografia
 	\newpage
-    \cleardoublepage\phantomsection
+	\cleardoublepage\phantomsection
 	\chapter{\bibname}
-    \printbibliography[heading=none]
+	\printbibliography[heading=none]
 \fi
 
 % ANEXOS

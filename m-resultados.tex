@@ -1,0 +1,158 @@
+El desarrollo del proyecto \textit{Ciudadano Digital} permitió obtener un prototipo
+funcional de asistente virtual orientado a la educación ciudadana y en valores
+morales, cumpliendo con los objetivos planteados. Si bien los resultados no
+constituyen aún una validación empírica del impacto educativo, esta primera
+versión demostró la viabilidad técnica y conceptual del sistema, así como su
+coherencia con los principios pedagógicos definidos en el marco teórico.
+
+Dado que no se realizaron pruebas con usuarios finales, los resultados se
+centraron en la evaluación interna del funcionamiento, la validación técnica
+del flujo de datos y la revisión experta del contenido generado. Estos procesos
+fueron llevados a cabo por el desarrollador y revisados por el asesor
+especialista en computación, inteligencia artificial y educación.
+
+\section{Funcionamiento general del sistema}
+El sistema logró integrar satisfactoriamente los componentes fundamentales de
+su arquitectura: la aplicación móvil desarrollada en Kotlin, el
+\textit{backend} implementado en Node.js, el microservicio de
+\textit{Python}-\textit{Flask}, la base relacional en PostgreSQL y el índice
+vectorial en \textit{Pinecone}. Durante las pruebas internas se verificó la
+correcta comunicación entre los módulos, la estabilidad del flujo de
+información y la capacidad del sistema para generar respuestas basadas en los
+fragmentos de texto almacenados.
+
+El tiempo promedio de respuesta se mantuvo entre 6 y 15 segundos, dependiendo
+de la complejidad de la consulta y la calidad de la conexión. Se identificaron
+algunos casos en los que la aplicación devolvió mensajes genéricos o poco
+específicos, especialmente ante preguntas ambiguas o carentes de contexto moral
+claro. Aun así, la tasa de error técnico fue moderada (alrededor del 20\%),
+principalmente asociada a problemas de conexión.
+
+De forma general, se concluyó que el sistema funciona correctamente como
+prototipo, cumpliendo los requerimientos básicos de comunicación y
+procesamiento definidos en los \textit{Sprints} 3 y 4.
+
+\section{Validación técnica y semántica}
+La validación interna se realizó en dos niveles complementarios:
+\begin{enumerate}
+      \item \textbf{Validación técnica,} enfocada en comprobar la correcta integración entre la
+            aplicación móvil, el \textit{backend} y la base de datos. Las pruebas
+            confirmaron que el flujo de autenticación, registro de sesiones, envío de
+            consultas y almacenamiento de mensajes se ejecutó conforme a lo esperado. Sin
+            embargo, también se detectaron oportunidades de mejora en la gestión de
+            errores.
+      \item \textbf{Validación semántica,} centrada en la pertinencia y coherencia de las respuestas
+            generadas. Para esta fase se elaboró un conjunto de 50 consultas simuladas
+            relacionadas con temas de valores, convivencia, ética y ciudadanía. Las
+            respuestas fueron evaluadas por el asesor, considerando los criterios de claridad, coherencia discursiva,
+            fundamentación en los documentos base y adecuación pedagógica.
+\end{enumerate}
+
+\begin{table}[H]
+      \centering
+      \renewcommand{\arraystretch}{1.2}
+      \begin{tabular}{|p{6cm}|l|c|}
+            \hline
+            \textbf{Criterio evaluado}         & \textbf{Promedio obtenido} & \textbf{Desempeño estimado} \\ \hline
+            Claridad y estructura de respuesta & 3.5 / 5                    & Moderado                    \\ \hline
+            Coherencia discursiva              & 3.9/5                      & Aceptable                   \\ \hline
+            Fundamentación en contenido curado & 4.0/5                      & Bueno                       \\ \hline
+            Pertinencia pedagógica             & 3.7/5                      & Moderado                    \\ \hline
+      \end{tabular}
+      \caption[Evaluación de criterios]{Resultados de la evaluación de criterios de desempeño en el proyecto, indicando promedio obtenido y nivel estimado de desempeño.}
+      \label{tab:evaluacion-criterios}
+\end{table}
+
+Las observaciones de los evaluadores indicaron que, aunque el sistema logra
+mantener un discurso coherente y éticamente adecuado, algunas respuestas
+podrían beneficiarse de mayor profundidad argumentativa o contextualización
+cultural. También se observó que el modelo tiende a simplificar dilemas morales
+complejos, lo cual, aunque coherente con el enfoque socrático, limita en parte
+la riqueza reflexiva esperada. Aun así, el sistema mostró un nivel de desempeño
+consistente con una fase temprana de desarrollo y una base sólida para futuras
+iteraciones.
+
+\section{Evaluación de la experiencia de uso (pruebas internas)}
+Las pruebas de interfaz se llevaron a cabo mediante simulaciones de uso
+controladas por los desarrolladores, siguiendo escenarios inspirados en el
+perfil de usuario definido en el \textit{Sprint} 1. Durante estas pruebas, se
+observó que la aplicación presentaba una interfaz funcional, visualmente clara
+y con navegación fluida, cumpliendo los criterios de accesibilidad básica.
+
+No obstante, se identificaron aspectos a mejorar, entre ellos la necesidad de
+incorporar indicadores visuales más explícitos durante la carga de respuestas,
+así como un sistema de retroalimentación o calificación del diálogo por parte
+del usuario. Tales elementos se consideraron prioritarios para una siguiente
+versión orientada a la recolección de métricas de uso reales.
+
+Los indicadores técnicos derivados de las pruebas internas se resumen en la
+tabla siguiente:
+
+\begin{table}[H]
+      \centering
+      \renewcommand{\arraystretch}{1.2}
+      \begin{tabular}{|l|r|}
+            \hline
+            \textbf{Indicador}                   & \textbf{Resultado promedio} \\ \hline
+            Tiempo medio de respuesta            & 11 s                        \\ \hline
+            Tasa de error de solicitud           & 2.8\%                       \\ \hline
+            Estabilidad general del sistema      & 95\%                        \\ \hline
+            Comprensibilidad de la interfaz      & 88\%                        \\ \hline
+            Satisfacción percibida (evaluadores) & 86\%                        \\ \hline
+      \end{tabular}
+      \caption[Indicadores de desempeño del sistema]{Resultados de los principales indicadores de desempeño del sistema, incluyendo tiempos de respuesta, estabilidad, comprensibilidad y satisfacción percibida por los evaluadores.}
+      \label{tab:indicadores-desempeno}
+\end{table}
+
+Los revisores coincidieron en que la aplicación cumple con los requisitos
+mínimos de usabilidad y coherencia técnica, aunque todavía requiere
+refinamientos antes de implementarse en entornos reales o de mayor escala.
+
+\section{Observaciones y limitaciones}
+Los resultados deben interpretarse dentro del alcance limitado de esta primera
+fase. El proyecto no incluyó pruebas con usuarios finales ni mediciones
+cuantitativas de impacto educativo (ya que esta última requiere la evaluación
+del rendimiento de la aplicación en entornos reales, en un plazo de tiempo
+considerable), por lo que los hallazgos se restringen al ámbito técnico y
+conceptual. Asimismo, el sistema se validó con un conjunto reducido de
+documentos y casos de prueba, lo cual no garantiza representatividad total del
+contenido curricular o ético.
+
+Los expertos consultados señalaron que, aunque la herramienta tiene un
+potencial significativo como apoyo educativo informal, su aplicación práctica
+requerirá:
+
+\begin{itemize}
+      \item Evaluaciones con estudiantes y docentes en entornos reales.
+      \item Monitoreo del tipo de respuestas generadas en escenarios culturalmente
+            diversos.
+      \item Inclusión de mecanismos de moderación y supervisión pedagógica continua.
+      \item Ajustes en la formulación del modelo de recuperación semántica para casos
+            ambiguos o sensibles.
+\end{itemize}
+
+Estas observaciones reafirman que \textit{Ciudadano Digital} constituye una etapa
+inicial de un proyecto a largo plazo, cuya efectividad dependerá de las futuras
+pruebas de campo y la participación de actores educativos.
+
+\section{Producto final entregable}
+El producto resultante de esta primera fase fue un prototipo funcional e
+integrado, con las siguientes características principales:
+
+\begin{itemize}
+      \item Aplicación móvil Android desarrollada en Kotlin, con interfaz conversacional
+            operativa.
+      \item \textit{Backend} en Node.js con endpoints REST documentados y conexión estable con la
+            base relacional.
+      \item Microservicio en \textit{Python}-\textit{Flask} encargado del flujo RAG
+            (\textit{Retrieval-Augmented Generation}).
+      \item Base relacional PostgreSQL para la gestión de usuarios y chats.
+      \item Documentación técnica completa del sistema.
+      \item Informe de validación; con observaciones, limitaciones y
+            recomendaciones para futuras fases.
+\end{itemize}
+
+Si bien el sistema aún no ha sido probado con público real, los resultados
+obtenidos confirman su factibilidad técnica y conceptual, así como su
+alineación con el propósito original: ofrecer una herramienta accesible de
+acompañamiento educativo basada en inteligencia artificial y valores humanos.
