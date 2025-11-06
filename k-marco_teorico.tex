@@ -21,15 +21,16 @@ por otro, exige garantizar la responsabilidad, transparencia y confiabilidad de
 los modelos utilizados \cite{betterinternet2024,carter2024ethics}.
 
 Desde esta convergencia entre tecnología y formación ética, la literatura
-reciente destaca el potencial de los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés)
-para generar entornos conversacionales que promuevan la reflexión moral y la
-toma de decisiones fundamentadas \cite{seibt2024llm,frontiers2025psychology}.
-Estos sistemas, diseñados bajo principios éticos y pedagógicos, pueden
-convertirse en agentes de acompañamiento educativo informal, capaces de
-sostener diálogos significativos y culturalmente pertinentes. De esta manera,
-la IA no solo actúa como herramienta tecnológica, sino como mediadora cognitiva
-y moral, ampliando las posibilidades de aprendizaje y fortaleciendo el
-desarrollo ciudadano en la era digital.
+reciente destaca el potencial de los modelos de lenguaje de gran escala (LLMs,
+por sus siglas en inglés) para generar entornos conversacionales que promuevan
+la reflexión moral y la toma de decisiones fundamentadas
+\cite{seibt2024llm,frontiers2025psychology}. Estos sistemas, diseñados bajo
+principios éticos y pedagógicos, pueden convertirse en agentes de
+acompañamiento educativo informal, capaces de sostener diálogos significativos
+y culturalmente pertinentes. De esta manera, la IA no solo actúa como
+herramienta tecnológica, sino como mediadora cognitiva y moral, lo que amplia
+las posibilidades de aprendizaje y fortalece el desarrollo ciudadano en la era
+digital.
 
 \section{Educación ciudadana y valores}
 La educación ciudadana constituye un proceso educativo integral orientado a
@@ -235,7 +236,7 @@ aprendizaje asistidas por inteligencia artificial permiten superar barreras
 geográficas, socioeconómicas y culturales, contribuyendo a mejorar la equidad
 en la educación \cite{teras2022education, unesco2023monitoring}.
 
-\section{Inteligencia Artificial y método socrático digital}
+\section{Fundamentos de Inteligencia Artificial en Educación}
 La inteligencia artificial (IA), aplicada a la educación, ofrece oportunidades
 para diseñar entornos de aprendizaje interactivos y personalizados. Una de las
 estrategias más prometedoras es la implementación de métodos socráticos
@@ -243,7 +244,7 @@ digitales, donde los sistemas de IA guían a los estudiantes mediante preguntas
 y diálogos reflexivos, estimulando el pensamiento crítico y la autonomía en la
 construcción del conocimiento \cite{holmes2019ai, woolf2010building}.
 
-\subsection{Inteligencia Artificial en la educación}
+\subsection{Inteligencia Artificial aplicada a la educación}
 La IA en la educación permite automatizar tareas administrativas, ofrecer
 tutorías personalizadas, monitorear el progreso de los estudiantes y adaptar
 los contenidos a sus necesidades individuales. Estas aplicaciones han
@@ -252,29 +253,126 @@ la enseñanza, siempre que se acompañen de supervisión pedagógica y criterios
 éticos claros \cite{elstad2024ai, frontiers2025education, carter2024ethics}.
 
 \subsection{Modelos de Lenguaje de Gran Escala}
-Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) son sistemas de inteligencia
-artificial entrenados con enormes volúmenes de texto para comprender y generar
-lenguaje natural. Estos modelos permiten ofrecer respuestas contextualizadas,
-realizar tutorías personalizadas y asistir en la construcción de conocimiento
-mediante diálogo interactivo. Su potencial educativo radica en la capacidad de
-proporcionar retroalimentación inmediata, adaptada al nivel del estudiante,
-fomentando la reflexión crítica y la autoformación \cite{brown2020language,
-    raffel2020exploring}.
+Los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés) son
+sistemas de inteligencia artificial entrenados con enormes volúmenes de texto
+para comprender y generar lenguaje natural. Estos modelos permiten ofrecer
+respuestas contextualizadas, realizar tutorías personalizadas y asistir en la
+construcción de conocimiento mediante diálogo interactivo. Su potencial
+educativo radica en la capacidad de proporcionar retroalimentación inmediata,
+adaptada al nivel del estudiante, fomentando la reflexión crítica y la
+autoformación \cite{brown2020language, raffel2020exploring}.
 
-\subsection{Recuperación aumentada por búsqueda}
-La Recuperación Aumentada por Búsqueda (RAG, por sus siglas en inglés) combina modelos de lenguaje con
-motores de búsqueda para proporcionar información precisa y contextualizada. En
-educación en valores, esta técnica permite que los estudiantes reciban
-respuestas fundamentadas en fuentes confiables, promoviendo la reflexión ética
-y la resolución de dilemas morales basados en evidencia. RAG amplía las
-capacidades de tutoría digital al integrar conocimiento externo con generación
-de lenguaje natural \cite{lewis2020retrieval, khandelwal2020generalization}.
+\subsection{Arquitectura y funcionamiento de sistemas RAG}
+La Recuperación Aumentada por Búsqueda (RAG, por sus siglas en inglés) combina
+modelos de lenguaje (LLM, por sus siglas en inglés) con motores de recuperación
+de información (IR, por sus siglas en inglés), con el fin de proporcionar
+respuestas fundamentadas en el contenido específico deseado. Esta técnica,
+introducida por primera vez en 2020 en el artículo \textit{"Retrieval-Augmented
+    Generation for Knowledge-Intensive NLP Tasks"}, permite la obtención de
+respuestas fundamentadas en fuentes confiables, que bajo el contexto del
+sistema promueve la reflexión ética y la resolución de dilemas morales basados
+en evidencia. RAG amplía las capacidades de tutoría digital al integrar
+conocimiento externo con generación de lenguaje natural
+\cite{lewis2020retrieval, khandelwal2020generalization}.
 
-\subsection{\textit{Embeddings} y representación vectorial del texto} Los \textit{embeddings} son
+\subsubsection{Arquitectura de RAG}
+
+Un sistema RAG opera en dos fases principales:
+
+\begin{enumerate}
+    \item \textbf{Fase de indexación:} Los documentos fuente se procesan mediante:
+          \begin{itemize}
+              \item Segmentación (chunking) en fragmentos semánticamente coherentes.
+              \item Generación de embeddings vectoriales para cada fragmento.
+              \item Almacenamiento en bases de datos vectoriales con metadatos.
+          \end{itemize}
+
+          Esta fase corresponde con la obtención de conocimiento externo a la
+          implementación del sistema. En el artículo original, la figura
+          \ref{fig:flujo-rag-teoria} muestra cómo este proceso se implementa mediante la
+          combinación de \textit{"memoria paramétrica"} (el LLM utilizado para recibir
+          preguntas y generar respuestas) y la \textit{"memoria no paramétrica"} (índice
+          vectorial del cual se obtiene el contexto para fundamentar la respuesta), con
+          lo cual la generación final obtiene la información requerida para brindar al
+          usuario un resultado fundamentado.
+
+          \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.8\textwidth]{assets/rag\_original.png}
+              \caption{Vista general del enfoque aplicado en el artículo de \texttt{Lewis et al}. \cite{lewis2020retrieval}}
+              \label{fig:flujo-rag-teoria}
+          \end{figure}
+
+    \item \textbf{Fase de inferencia:} Al recibir una consulta:
+          \begin{itemize}
+              \item Se genera un embedding de la pregunta del usuario.
+              \item Se recuperan los K fragmentos más relevantes (típicamente un valor K de entre 3
+                    y 10 elementos), conformando el contexto de la consulta.
+              \item Se construye un prompt contextualizado que combina la pregunta original con los
+                    fragmentos recuperados.
+              \item El LLM genera una respuesta basándose exclusivamente en el contexto dado o
+                    tomándolo como guía (el enfoque depende de la estructura utilizada para
+                    construir el \textit{prompt}) de manera que todo resultado se ve anclado a las
+                    fuentes verificadas previamente seleccionadas para alimentar el sistema.
+
+                    Según la implementación, se pueden utilizar distintas estrategias para la
+                    combinación de los fragmentos con la generación final. En el documento original
+                    se menciona la diferencia de utilizar \textit{RAG sequence} (el modelo
+                    selecciona un único documento sobre el cual basará su respuesta) frente a
+                    \textit{RAG token} (el modelo genera la respuesta por pasos, seleccionando la
+                    fuente a utilizar para cada token independiente, lo que permite combinar más de
+                    una fuente).
+          \end{itemize}
+\end{enumerate}
+
+\subsubsection{Estrategias de segmentación}
+El método de segmentación (\textit{chunking}) seleccionado puede llegar a
+afectar directamente la calidad de las respuestas obtenidas por el sistema. Las
+estrategias más comunes incluyen:
+\begin{itemize}
+    \item \textbf{Segmentación por tamaño fijo:} se divide el texto en fragmentos de longitud uniforme, independiente de su semántica. Presenta la ventaja de que es el tipo de segmentación más fácil de implementar, ya que basta solamente con establecer un límite de palabras y separar todo el texto en dicho límite. Sin embargo, al no evaluar el sentido semántico en cada fragmento, podría dar lugar a rupturas de contexto o pérdida de sentido. \cite{wang-etal-2025-document}
+    \item \textbf{Segmentación semántica:} esta segmentación divide el texto respetando unidades de sentido, identificadas mediante signos de puntuación, saltos de línea, identificación de encabezados, secciones, listas, etc. El propósito de esta estrategia es preservar la continuidad de contexto entre cada fragmento. \cite{wang-etal-2025-document}
+    \item \textbf{Segmentación recursiva con solapamiento:} esta técnica divide el texto utilizando alguna técnica anterior, con la peculiaridad de incluir al inicio o al final una parte del fragmento contiguo. Es decir, se define un porcentaje de solapamiento que se refiere a qué tanto del fragmento siguiente (o anterior) se incluirá como parte del nuevo fragmento, de manera que se controle de forma explícita la continuidad. \cite{wang-etal-2025-document}
+\end{itemize}
+
+La estrategia de segmentación dependerá de la implementación del sistema RAG
+que se desea realizar. Se debe tomar en cuenta que la estrategia utilizada
+afectará directamente la calidad de las respuestas, ya que esto define cómo el
+LLM obtendrá el contexto del cual se basará para brindar la respuesta a la
+consulta dada. \cite{wang-etal-2025-document}
+
+\subsubsection{Ventajas de RAG en educación}
+La implementación de sistemas RAG en enfoques educativos, brinda varias
+ventajas orientadas al uso de modelos de inteligencia artificial:
+\begin{itemize}
+    \item \textbf{Reduce alucinaciones} al obligar al sistema a utilizar respuestas fundamentadas en el \textit{corpus} definido para el proyecto. \cite{gupta2024comprehensivesurveyretrievalaugmentedgeneration}
+    \item \textbf{Permite actualización del conocimiento} sin reentrenar el modelo; basta solamente con modificar, añadir o eliminar el corpus del proyecto para que el sistema utilice esta nueva información. \cite{gupta2024comprehensivesurveyretrievalaugmentedgeneration}
+    \item \textbf{Facilita trazabilidad} y citación de fuentes, lo cual es particularmente importante en contextos educativos en los que es necesario fundamentar de dónde se obtiene toda la información proporcionada. \cite{gupta2024comprehensivesurveyretrievalaugmentedgeneration}
+    \item Es apropiado para \textbf{dominios especializados} o corpus limitados, como
+          asignaturas o materiales didácticos que no están bien cubiertos en los datos de
+          entrenamiento general del LLM.
+          \cite{gupta2024comprehensivesurveyretrievalaugmentedgeneration}
+\end{itemize}
+
+\subsubsection{Desafíos conocidos}
+A pesar de sus beneficios, la implementación de RAG también presenta ciertos
+retos a cubrir en proyectos educativos de alto impacto:
+\begin{itemize}
+    \item \textbf{Dependencia crítica} de la calidad del corpus. La calidad de las respuestas depende estrictamente de la calidad del contenido educativo utilizado para alimentar el modelo, por lo que si los documentos están mal organizados, contienen errores o están desactualizados; la recuperación de contexto será débil. \cite{zheng2025knowshiftqarobustragsystems}
+    \item \textbf{Riesgo de fragmentación} que rompa la coherencia contextual. Utilizar una estrategia o combinación de estrategias de segmentación inapropiada, puede llevar a que el contexto obtenido por el modelo pierda de sentido, o bien, que una consulta que sí está relacionada con el contenido del corpus no pueda ser respondida. \cite{zheng2025knowshiftqarobustragsystems}
+    \item \textbf{Limitaciones de la ventana de contexto del LLM} a pesar de que el sistema de recuperación diseñado obtenga una base contextual amplia, según el modelo LLM utilizado, generalmente se tiene un límite de tokens permitido para cada consulta, por lo que el \text{prompt} construido también cuenta con limitaciones de longitud y, por lo tanto, del nivel de especificación y claridad exigido al modelo. \cite{zheng2025knowshiftqarobustragsystems}
+    \item Es apropiado para \textbf{Dificultad para sintetizar información de múltiples
+              fragmentos dispersos} Al combinar varios fragmentos en un solo \textit{prompt},
+          si no se ha seleccionado el \textit{corpus} cuidadosamente, se puede incurrir
+          en contradicciones o redundancia en las consultas.
+          \cite{zheng2025knowshiftqarobustragsystems}
+\end{itemize}
+
+\subsection{\textit{Embeddings} y representación semántica del texto} Los \textit{embeddings} son
 representaciones vectoriales de palabras, frases o documentos que capturan sus
 significados semánticos. Esta técnica permite que los sistemas de IA comparen y
-recuperen información de manera eficiente, midiendo la similitud entre
-conceptos y facilitando búsquedas semánticas. En educación, los
+recuperen información de manera eficiente, lo que permite medir la similitud
+entre conceptos y facilita búsquedas semánticas. En educación, los
 \textit{embeddings} permiten vincular preguntas de los estudiantes con
 contenidos relevantes, apoyando la personalización del aprendizaje
 \cite{mikolov2013efficient, le2014distributed}.
@@ -283,10 +381,48 @@ contenidos relevantes, apoyando la personalización del aprendizaje
 Las bases de datos vectoriales permiten almacenar y consultar
 \textit{embeddings} de manera eficiente, habilitando la búsqueda semántica en
 grandes volúmenes de información. Este enfoque supera las limitaciones de las
-búsquedas basadas en palabras clave, permitiendo que los estudiantes y sistemas
+búsquedas basadas en palabras clave, lo que permite que los estudiantes y sistemas
 educativos accedan a contenidos relevantes de manera más precisa y
 contextualizada, facilitando la recuperación de conocimiento en entornos
 digitales \cite{johnson2019billion, han2023comprehensive}.
+
+\subsection{\textit{Prompt Engineering} y diseño de instrucciones} La disciplina de \textit{Prompt Engineering}
+consiste en el diseño de instrucciones efectivas para guiar el comportamiento
+de modelos de lenguaje hacia objetivos específicos.
+\cite{white2023promptpatterncatalogenhance} El enfoque principal es brindar al
+modelo directivas claras con el fin de obtener el resultado final esperado,
+enfocados en ser tan específicos y directos como el modelo permita.
+
+\subsubsection{Componentes de un \textit{prompt} efectivo}
+\begin{itemize}
+    \item \textbf{System prompt:} Define el rol que el asistente debe adoptar ante cada consulta que se le solicite, así como el tono de las respuestas generadas y los límites que debe cumplir (por ejemplo, indicar que debe responder basado solamente en el \textit{corpus} del proyecto e ignorar todo lo externo). \cite{zhou2023largelanguagemodelshumanlevel}
+    \item \textbf{Contexto:} Aquí se especifica la base que debe fundamentar todas las respuestas del modelo. En el caso de un sistema RAG, es aquí donde se incluyen todos los fragmentos recuperados de la fuente de datos creada previamente. \cite{zhou2023largelanguagemodelshumanlevel}
+    \item \textbf{Instrucción:} Define la tarea específica que se espera que deba cumplir el asistente. Aquí puede ir la pregunta, solicitud de información o generación de contenido multimedia (si aplica). \cite{zhou2023largelanguagemodelshumanlevel}
+    \item \textbf{Formato de salida:} Se debe definir también cómo se espera que el modelo responda, ya sea porque se busca obtener una respuesta segmentada en separadores identificables, o bien, para especificar un formato específico. \cite{zhou2023largelanguagemodelshumanlevel}
+    \item \textbf{Ejemplos (opcional):} Si se quiere ser aún más explícito sobre cómo se espera que el modelo se comporte, se pueden indicar ejemplos claros del comportamiento que debe tener el modelo a partir de las consultas recibidas. \cite{zhou2023largelanguagemodelshumanlevel}
+\end{itemize}
+
+\subsubsection{Estrategias en contextos educativos}
+Con el objetivo de enfocar el diseño de \textit{prompts} al campo de la
+educación, se enfatizan prácticas específicas que permiten obtener el flujo de
+pensamiento del asistente, establecer un tipo de interacción específica con el
+estudiante (por ejemplo, el uso del método socrático) o solicitar las fuentes
+utilizadas.
+\begin{itemize}
+    \item \textbf{\textit{Chain-of-thoutht prompting}:} Solicita al modelo el razonamiento que utilizó para responder la pregunta, se exige el paso a paso de cómo llegó hasta la respuesta brindada. \cite{NEURIPS2022_9d560961}
+    \item \textbf{\textit{Socratic prompting}:} Indica al modelo que se debe guiar por el método socrático, el cual consiste en incentivar al usuario a obtener una respuesta final por sí mismo, en lugar de brindar una respuesta directa a la consulta dada.\cite{NEURIPS2022_9d560961}
+    \item \textbf{\textit{Constitutional AI}:} Incorpora principios éticos en las instrucciones, por ejemplo, la omisión de palabras o temas sensibles.\cite{NEURIPS2022_9d560961}
+    \item \textbf{\textit{Retrieval-aware prompting}:} Exige al modelo citar fuentes en todas sus respuestas. Puede ser útil, aunque también vale la pena analizar si conviene más esta estrategia o simplemente almacenar en los metadatos de los fragmentos los documentos originales.\cite{NEURIPS2022_9d560961}
+\end{itemize}
+
+\subsection{Tutoría personalizada con IA}
+La tutoría personalizada con IA permite adaptar los contenidos y las
+estrategias de enseñanza al nivel, intereses y ritmo de cada estudiante. Los
+sistemas inteligentes analizan patrones de aprendizaje y ofrecen
+retroalimentación inmediata, identificando áreas de dificultad y recomendando
+recursos específicos. Esta personalización mejora la motivación, la retención
+de conocimiento y promueve la autonomía del aprendiz \cite{woolf2010building,
+    zawacki-richter2019systematic}.
 
 \subsection{Método socrático aplicado a entornos digitales}
 Los entornos digitales permiten implementar el método socrático mediante
@@ -298,25 +434,143 @@ inteligentes basados en este método facilita un aprendizaje personalizado y
 continuo, replicando la interacción dialógica propia del enfoque socrático
 tradicional \cite{favero2024socratic, woolf2010building}.
 
-\subsection{Tutoría personalizada con IA}
-La tutoría personalizada con IA permite adaptar los contenidos y las
-estrategias de enseñanza al nivel, intereses y ritmo de cada estudiante. Los
-sistemas inteligentes analizan patrones de aprendizaje y ofrecen
-retroalimentación inmediata, identificando áreas de dificultad y recomendando
-recursos específicos. Esta personalización mejora la motivación, la retención
-de conocimiento y promueve la autonomía del aprendiz \cite{woolf2010building,
-    zawacki-richter2019systematic}.
+\subsection{Métricas de evaluación de chatbots educativos}
+La evaluación de asistentes conversacionales educativos requiere métricas más
+allá de la precisión técnica, incorporando dimensiones pedagógicas incluso si
+no son herramientas planificadas para su utilización en entornos formales
+tradicionales de educación. \cite{10.3389/frai.2021.654924}
 
-\subsection{Supervisión pedagógica en sistemas automatizados}
-A pesar de la autonomía de los sistemas de IA, la supervisión pedagógica es
-esencial para garantizar la calidad del aprendizaje. Docentes y tutores deben
-monitorear el funcionamiento de los sistemas automatizados, evaluar la
-relevancia y exactitud de las respuestas generadas, y ajustar los parámetros de
-personalización según las necesidades de los estudiantes. Este enfoque mixto
-asegura que la tecnología complemente, y no reemplace, la guía educativa
-\cite{holmes2019ai, luckin2016intelligence}.
+\subsubsection{Métricas de calidad de respuesta}
+A nivel semántico, es importante identificar aspectos que pueden definir una
+respuesta dada como exitosa o no, enfocados en la pregunta inicial dada, el
+\textit{corpus} utilizado para la alimentación del modelo y las instrucciones
+de tono y comprensión indicadas al modelo. \cite{ADAMOPOULOU2020100006}
+\begin{itemize}
+    \item \textbf{Relevancia:} ¿La respuesta aborda la pregunta planteada?
+    \item \textbf{Precisión:} ¿La información es correcta?
+    \item \textbf{Completitud:} ¿Cubre todos los aspectos necesarios?
+    \item \textbf{Claridad:} ¿Es comprensible para el público objetivo?
+\end{itemize}
 
-\section{Ética en IA educativa}
+\subsubsection{Métricas de desempeño técnico}
+Por otro lado, a nivel técnico también es útil identificar el desempeño del
+sistema en cuanto a tiempos de respuesta, integridad de los componentes, coste
+de operaciones y recursos utilizados.
+\begin{itemize}
+    \item \textbf{Tasa de éxito} (\% de preguntas respondidas apropiadamente)
+    \item \textbf{Precisión y Recall} en detección de preguntas fuera de alcance
+    \item \textbf{Latencia} (tiempos de respuesta)
+    \item \textbf{Consumo de tokens}
+\end{itemize}
+
+\subsection{Evaluación de calidad de respuestas en sistemas RAG}
+Por su parte, los sistemas que implementan RAG presentan sus propios desafíos
+específicos de evaluación relacionados con la recuperación y síntesis de la
+información almacenada y recuperada. Es necesario identificar si la
+recuperación semántica fue exitosa, si el almacenamiento de los fragmentos y
+metadatos se está haciendo correctamente y si el modelo está tomando de
+referencia los documentos apropiados dentro del \textit{corpus}.
+
+\subsubsection{Métricas de recuperación (\textit{Retrieval})}
+Para poder obtener estas métricas, las pruebas deben consistir de un conjunto de preguntas previamente analizadas, así como la identificación de qué fragmentos son realmente relevantes para abordar cada pregunta.
+\begin{itemize}
+    \item \textbf{Precisión@K:} Se refiere al porcentaje de fragmentos obtenidos que corresponden a los fragmentos relevantes identificados para la consulta.
+    \item \textbf{Recall@K:} Se refiere al porcentaje de fragmentos relevantes recuperados por el sistema. Es decir, de todos los fragmentos relevantes identificados para la consulta, qué porcentaje fue seleccionado por el modelo.
+    \item \textbf{\textit{Mean Reciprocal Rank} (MRR):} Del top K obtenido por el modelo, en qué posición se sitúa el primer fragmento relevante identificado. Se guía bajo la siguiente ecuación:
+          \begin{equation}
+              \text{MRR} = \frac{1}{|N|} \sum_{i=1}^{|N|} \frac{1}{\text{K}_i}
+          \end{equation}
+
+          En donde \texttt{K} el número de fragmentos recuperados, \texttt{i} representa
+          cada fragmento relevante y \texttt{N} la posición del fragmento dentro del
+          top-K.
+\end{itemize}
+
+\subsubsection{Métricas de generación (\textit{Generation})}
+A diferencia de los sistemas puramente extractivos, los sistemas RAG deben ser
+evaluados tanto por la calidad de la información generada como por su fidelidad
+al contexto recuperado. Para ello, se emplean métricas que permiten analizar
+si la respuesta es coherente, pertinente y derivada correctamente del material
+de referencia.
+
+\begin{itemize}
+    \item \textbf{Faithfulness (Fidelidad):} Evalúa si la respuesta se limita a
+          la información contenida en los documentos recuperados, evitando
+          alucinaciones o afirmaciones no sustentadas.
+          \cite{shuster2021retrievalaugmentationreduceshallucination}
+
+    \item \textbf{Answer Relevance (Relevancia de la respuesta):} Determina el
+          grado en que la respuesta generada responde efectivamente a la pregunta
+          formulada, sin desviarse hacia información tangencial o irrelevante.
+          \cite{bang2023multitaskmultilingualmultimodalevaluation}
+
+    \item \textbf{Context Utilization (Utilización del contexto):} Mide la
+          dependencia efectiva del modelo respecto al contexto recuperado. Una
+          respuesta es de alta calidad cuando demuestra haber utilizado
+          fragmentos relevantes del corpus y no únicamente el conocimiento previo
+          del modelo.
+          \cite{lewis2020retrieval}
+
+    \item \textbf{Coherencia y fluidez:} Se relaciona con la estructura interna
+          de la respuesta, su legibilidad y consistencia discursiva. En el contexto
+          educativo, la claridad también constituye un indicador pedagógico de
+          calidad.
+          \cite{ADAMOPOULOU2020100006}
+\end{itemize}
+
+\subsection{Validación sin usuarios finales: enfoques y limitaciones}
+La validación técnica de sistemas educativos sin participación de usuarios
+finales presenta limitaciones inherentes, pero permite establecer la viabilidad
+funcional del sistema antes de su despliegue \cite{luckin2016intelligence}.
+Estos procedimientos son fundamentales en etapas tempranas del desarrollo.
+
+\subsubsection{Enfoques de validación técnica:}
+\begin{enumerate}
+    \item \textbf{Validación basada en corpus:} Verifica que las respuestas
+          provengan de los materiales fuente y que no contengan información ajena
+          al contenido educativo.
+    \item \textbf{Validación por expertos:} Permite asegurar la pertinencia
+          pedagógica y detectar errores conceptuales o éticos en las respuestas.
+    \item \textbf{Pruebas de estrés:} Incluyen preguntas fuera de alcance,
+          ambiguas o sensibles para evaluar la resiliencia del modelo.
+    \item \textbf{Simulación de usuarios:} Reproduce escenarios conversacionales
+          con perfiles variados, como estudiantes de diferentes edades o niveles
+          educativos.
+          \cite{luckin2016intelligence,holmes2019ai,zawacki-richter2019systematic}
+\end{enumerate}
+
+\subsubsection{Limitaciones reconocidas:}
+\begin{itemize}
+    \item No mide el impacto pedagógico real ni el aprendizaje logrado.
+    \item La validación manual puede estar sujeta a sesgos del evaluador.
+    \item Los escenarios simulados no reflejan completamente la complejidad del uso real.
+    \item No existe retroalimentación iterativa basada en la experiencia de usuarios
+          finales.
+          \cite{luckin2016intelligence,holmes2019ai,zawacki-richter2019systematic}
+\end{itemize}
+
+\subsubsection{Implicaciones:}
+Los resultados obtenidos de esta validación deben interpretarse como una
+demostración de factibilidad técnica y coherencia funcional, pero no como
+evidencia de efectividad educativa. Estudios posteriores con usuarios reales
+serán necesarios para medir impacto pedagógico y aceptación.
+\cite{holmes2019ai}
+
+\subsection{Congruencia y fundamentación en respuestas educativas}
+En contextos educativos, además de la precisión técnica, se espera que el
+sistema responda de forma congruente con las expectativas del rol asignado
+(alumno, tutor o asistente). La \textbf{congruencia conversacional} se define
+como el grado en que el sistema actúa según lo esperado ante cada tipo de
+pregunta: responder apropiadamente cuando debe hacerlo y abstenerse en
+situaciones fuera de alcance \cite{Li2021ConsistencyChatbot}.
+
+Este tipo de métrica puede calcularse empíricamente como el porcentaje de
+interacciones en las que el modelo actúa conforme al comportamiento esperado.
+En el presente proyecto, dicha métrica complementa las tradicionales de
+precisión y fidelidad, proporcionando una visión integral de la calidad del
+comportamiento conversacional \cite{Li2021ConsistencyChatbot}.
+
+\section{Ética y Responsabilidad en IA Educativa}
 La ética en IA educativa aborda la responsabilidad en el diseño, implementación
 y uso de sistemas inteligentes en contextos de aprendizaje. Incluye
 consideraciones sobre privacidad de los datos, equidad, transparencia,
@@ -334,7 +588,7 @@ rendición de cuentas por parte de desarrolladores y educadores. La aplicación
 de estos principios permite aprovechar el potencial de la IA sin comprometer la
 integridad pedagógica \cite{jobin2019global, floridi2018ai}.
 
-\subsection{Prevención de sesgos algorítmicos}
+\subsection{Sesgos algorítmicos y culturales en contextos latinoamericanos}
 La prevención de sesgos algorítmicos se centra en garantizar que los sistemas
 de IA no reproduzcan ni amplifiquen desigualdades existentes en la educación.
 Esto implica analizar los datos de entrenamiento, identificar posibles sesgos y
@@ -352,14 +606,98 @@ explicabilidad ayuda a confiar en las decisiones automatizadas, facilita la
 supervisión pedagógica y permite detectar errores o sesgos
 \cite{doshi2017towards, lipton2018mythos}.
 
-\section{Integridad académica y uso responsable de IA}
-El uso responsable de IA en educación implica enseñar a los estudiantes a
-utilizar herramientas inteligentes sin vulnerar normas éticas ni académicas.
-Esto incluye fomentar la autoría propia, la citación adecuada de fuentes y el
-desarrollo de habilidades de pensamiento crítico para interpretar la
-información generada por la IA. La integridad académica asegura que la
-tecnología complemente el aprendizaje sin reemplazar la reflexión y el esfuerzo
-personal \cite{bretag2019academic, eaton2023postplagiarism}.
+\subsection{Responsabilidad ante respuestas incorrectas o inadecuadas}
+La responsabilidad en sistemas de IA educativa implica definir con claridad los
+mecanismos para abordar errores, recomendaciones inadecuadas o información
+potencialmente nociva generada por los algoritmos. Cuando un sistema
+automatizado produce contenidos incorrectos, los efectos pueden ser
+especialmente sensibles en contextos educativos, ya que influyen directamente
+en el aprendizaje, la motivación y las decisiones académicas de los estudiantes
+\cite{jobin2019global, floridi2018ai}.
+
+Esta responsabilidad recae tanto en los desarrolladores, quienes deben
+implementar modelos seguros, mecanismos de verificación y pruebas continuas,
+como en los docentes y las instituciones que integran la tecnología. Esto
+incluye ofrecer rutas de corrección, permitir retroalimentación humana y
+asegurar canales claros para reportar fallos. De esta manera, la IA se integra
+como una herramienta asistiva bajo supervisión profesional, en lugar de delegar
+completamente la evaluación y orientación pedagógica \cite{jobin2019global,
+    floridi2018ai}.
+
+\subsection{Privacidad y seguridad en aplicaciones educativas para menores}
+El uso de aplicaciones educativas basadas en IA en contextos escolares requiere
+un enfoque riguroso de protección de datos, especialmente cuando se trata de
+menores de edad. La información académica, conductual y biométrica recopilada
+por estos sistemas constituye un activo sensible que debe ser gestionado bajo
+principios de minimización de datos, consentimiento informado y almacenamiento
+seguro \cite{selwyn2019should, williamson2023social}.
+
+Organismos internacionales han enfatizado la importancia de resguardar la
+identidad digital de los estudiantes, evitar usos secundarios no autorizados y
+garantizar que los datos no se utilicen para prácticas discriminatorias o
+comerciales. Las instituciones tienen la responsabilidad de establecer
+políticas claras de acceso, supervisar proveedores tecnológicos y aplicar
+estándares robustos de ciberseguridad. La protección de los datos de menores no
+solo es una obligación legal y ética, sino también una condición necesaria para
+preservar la confianza en entornos educativos mediados por IA
+\cite{selwyn2019should, williamson2023social}.
+
+\subsection{Supervisión pedagógica en sistemas automatizados}
+A pesar de la autonomía de los sistemas de IA, la supervisión pedagógica es
+esencial para garantizar la calidad del aprendizaje. Docentes y tutores deben
+monitorear el funcionamiento de los sistemas automatizados, evaluar la
+relevancia y exactitud de las respuestas generadas, y ajustar los parámetros de
+personalización según las necesidades de los estudiantes. Este enfoque mixto
+asegura que la tecnología complemente, y no reemplace, la guía educativa
+\cite{holmes2019ai, luckin2016intelligence}.
+
+\section{Aprendizaje Móvil en Contextos de Recursos Limitados}
+El aprendizaje móvil (\textit{mobile learning} o m-learning) se ha convertido
+en un medio clave para ampliar el acceso a experiencias educativas,
+especialmente en regiones donde las limitaciones tecnológicas, de
+infraestructura o económicas dificultan el aprendizaje tradicional. En
+contextos con recursos limitados, los dispositivos móviles permiten superar
+barreras geográficas y temporales, democratizando oportunidades de acceso a
+información, formación técnica y herramientas de apoyo educativo
+\cite{traxler2007defining, unesco2013policy}.
+
+Sin embargo, la implementación efectiva del aprendizaje móvil requiere
+considerar retos como la disponibilidad de dispositivos, la alfabetización
+digital de los usuarios, los costos de conectividad y las brechas de
+infraestructura. El diseño de soluciones educativas móviles sostenibles debe
+responder a estos factores para garantizar accesibilidad, pertinencia cultural
+y equidad tecnológica. \cite{unesco2013policy}
+
+\subsection{Panorama del aprendizaje móvil en Guatemala y Centroamérica}
+El crecimiento del aprendizaje móvil en Guatemala y Centroamérica ha sido
+gradual pero progresivo, impulsado por iniciativas de digitalización,
+comunidades tecnológicas emergentes y el interés institucional por modernizar
+procesos educativos y productivos. Según el BID, la región ha avanzado
+significativamente en adopción tecnológica, pero aún enfrenta brechas en cuanto
+a infraestructura digital, capacidad de investigación e inversión en innovación
+\cite{worldbank2022revolution}.
+
+\subsection{Diseño de experiencias móviles para usuarios con baja alfabetización digital}
+El diseño de experiencias educativas móviles para usuarios con baja
+alfabetización digital requiere estrategias centradas en usabilidad,
+simplicidad y acompañamiento formativo. UNESCO destaca que las interfaces
+visuales claras, los flujos guiados y los recursos multimedia accesibles pueden
+favorecer la participación de usuarios principiantes
+\cite{unesco2021reimagining}.
+
+\subsection{Consideraciones de conectividad intermitente y consumo de datos}
+En muchos contextos latinoamericanos, incluidos sectores rurales de Guatemala,
+el acceso a Internet es costoso e intermitente. Por ello, las aplicaciones
+educativas móviles deben optimizar el consumo de datos, ofrecer funcionalidad
+fuera de línea y emplear técnicas de sincronización diferida para resguardar el
+progreso del usuario cuando no haya conexión \cite{shrestha2010offline,
+    unesco2013policy, android_offline_first}.
+
+Prácticas recomendadas incluyen compresión de recursos multimedia,
+almacenamiento local temporal, caching inteligente y utilización de formatos
+eficientes. La capacidad de operar con conectividad limitada no solo reduce
+barreras de acceso, sino que también mejora la adopción sostenida de
+herramientas educativas en zonas marginadas \cite{col_offline_design_model}.
 
 \subsection{Aplicaciones móviles en la educación}
 Las aplicaciones móviles educativas permiten acceder a recursos y experiencias
@@ -368,6 +706,15 @@ pueden ofrecer tutorías personalizadas, seguimiento del progreso,
 retroalimentación inmediata y gamificación del aprendizaje. Su portabilidad y
 accesibilidad contribuyen a reducir la brecha educativa y facilitan la
 inclusión digital \cite{traxler2009learning, crompton2018use}.
+
+\section{Tecnologías de Implementación}
+El uso responsable de IA en educación implica enseñar a los estudiantes a
+utilizar herramientas inteligentes sin vulnerar normas éticas ni académicas.
+Esto incluye fomentar la autoría propia, la citación adecuada de fuentes y el
+desarrollo de habilidades de pensamiento crítico para interpretar la
+información generada por la IA. La integridad académica asegura que la
+tecnología complemente el aprendizaje sin reemplazar la reflexión y el esfuerzo
+personal \cite{bretag2019academic, eaton2023postplagiarism}.
 
 \subsection{Arquitectura cliente-servidor (\textit{frontend}/\textit{backend})}
 La arquitectura cliente-servidor es un modelo de diseño de software en el que
@@ -380,7 +727,26 @@ usuario, mientras que el \textit{backend} gestiona la lógica, la seguridad y la
 integración con IA y bases de datos \cite{tanenbaum2007distributed,
     hwang2011cloud}.
 
-\subsection{Kotlin como lenguaje para desarrollo Android}
+\subsubsection{Patrón de diseño MVC}
+El patrón de diseño \textit{Model-View-Controller} (MVC) es una arquitectura
+ampliamente utilizada para la construcción de interfaces de usuario. Su
+objetivo principal es separar la representación de la información de la lógica
+que la gestiona, promoviendo modularidad, reutilización y facilidad de
+mantenimiento. \cite{reenskaug1979mvc}
+
+En este patrón, el \textbf{Model} contiene los datos y la lógica de negocio; la
+\textbf{View} es responsable de mostrar la información al usuario; y el
+\textbf{Controller} actúa como intermediario, recibiendo entradas del usuario y
+coordinando las actualizaciones entre el modelo y la vista. Esta separación
+permite que cambios en la interfaz no afecten directamente a la lógica del
+sistema y viceversa. \cite{reenskaug1979mvc}
+
+El patrón MVC tuvo sus orígenes en el entorno \textit{Smalltalk-80} y ha sido
+ampliamente adoptado en múltiples \textit{frameworks} modernos de desarrollo
+tanto web como de escritorio debido a su capacidad de estructurar aplicaciones
+complejas de forma eficiente \cite{reenskaug1979mvc}.
+
+\subsection{Frameworks de desarrollo móvil: Kotlin y ecosistema Android}
 Kotlin es un lenguaje de programación moderno y seguro que se utiliza para el
 desarrollo de aplicaciones Android. Presenta características como tipado
 estático, interoperabilidad con Java, sintaxis concisa y soporte nativo en
@@ -388,15 +754,19 @@ Android Studio. Su uso permite crear aplicaciones robustas, escalables y
 fáciles de mantener, integrando librerías modernas y \textit{frameworks} de IA
 para educación digital \cite{leiva2018kotlin, fedirchuk2018kotlin}.
 
-\subsection{\textit{Python} y \textit{Flask} como herramientas para \textit{backend} educativo}
-\textit{Python} es un lenguaje de programación versátil y de alto nivel,
-ampliamente usado en educación y ciencia de datos. \textit{Flask} es un
-micro-\textit{framework} de \textit{Python} que permite construir aplicaciones
-web y APIs de manera rápida y sencilla. Combinados, \textit{Python} y
-\textit{Flask} son ideales para crear \textit{backends} educativos que integren
-IA, bases de datos vectoriales y servicios de tutoría digital, asegurando
-flexibilidad, escalabilidad y facilidad de mantenimiento
-\cite{grinberg2018flask, lutz2013learning}.
+\subsubsection{Patrón de diseño MVVM}
+El patrón \textit{Model-View-ViewModel} (MVVM) es una arquitectura de software
+que separa de forma clara la lógica de negocio de la interfaz de usuario,
+promoviendo el desacoplamiento y facilitando la mantenibilidad del código.
+\cite{fowler2015mvvm}
+
+En este patrón, el \textbf{Model} encapsula los datos y reglas de negocio; la
+\textbf{View} representa la interfaz de usuario; y el \textbf{ViewModel} actúa
+como un intermediario que gestiona el estado de la vista, expone datos al
+usuario y maneja la lógica de presentación. La comunicación suele realizarse
+mediante mecanismos de enlace de datos (\textit{data binding}), lo que permite
+que la interfaz se actualice automáticamente ante cambios en los datos.
+\cite{fowler2015mvvm}
 
 \subsection{Bases de datos vectoriales y su contraste con bases relacionales}
 Las bases de datos vectoriales almacenan representaciones numéricas
@@ -409,11 +779,12 @@ gestión de usuarios, cursos y registros administrativos. Integrar ambos tipos
 optimiza tanto la eficiencia semántica como la consistencia estructural de los
 datos \cite{johnson2019billion, chaudhuri1995self}.
 
-\subsection{APIs de IA (\textit{OpenAI} y \textit{Gemini}): integración de modelos conversacionales}
-Las APIs de IA, como \textit{OpenAI} y \textit{Gemini}, permiten integrar modelos de lenguaje
-conversacionales en aplicaciones educativas. Estos servicios ofrecen
-capacidades de generación de texto, comprensión de lenguaje natural y tutoría
-personalizada, facilitando la interacción del estudiante con sistemas de IA. La
-integración se realiza mediante solicitudes a la API, manejo de \textit{tokens} y
-adaptación de respuestas al contexto educativo, permitiendo desarrollar tutores
-digitales eficientes y éticos \cite{openai2023api, google2024gemini}.
+\subsection{APIs de IA: integración de modelos conversacionales}
+Las APIs de IA, como \textit{OpenAI} y \textit{Gemini}, permiten integrar
+modelos de lenguaje conversacionales en aplicaciones educativas. Estos
+servicios ofrecen capacidades de generación de texto, comprensión de lenguaje
+natural y tutoría personalizada, facilitando la interacción del estudiante con
+sistemas de IA. La integración se realiza mediante solicitudes a la API, manejo
+de \textit{tokens} y adaptación de respuestas al contexto educativo,
+permitiendo desarrollar tutores digitales eficientes y éticos
+\cite{openai2023api, google2024gemini}.
