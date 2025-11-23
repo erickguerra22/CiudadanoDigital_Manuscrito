@@ -1,190 +1,151 @@
-Esta fase del desarrollo del proyecto \textit{Sapien - Ciudadano Digital}
-concluyó con la implementación de un prototipo funcional de asistente virtual
-orientado a la educación informal en ciudadananía y valores morales, el cual
-integra de manera coherente los componentes de procesamiento de lenguaje
-natural, recuperación semántico de contexto y el diseño y desarrollo de una
-interfaz nativa móvil para dispositivos \textit{Android}. Aunque los resultados
-obtenidos no constituyen una validación empírica del impacto educativo del
-sistema, esta primera versión permitió demostrar la viabilidad técnica y
-conceptual del proyecto, así como su alineación con los principios establecidos
-en el marco teórico y los objetivos específicos planteados, enfatizando los
-logros técnicos y visuales alcanzados durante los \textit{sprints} definidos
-previamente.
+Esta fase del proyecto \textit{Ciudadano Digital} culminó con la implementación
+de un prototipo funcional de un asistente virtual para la educación informal en
+ciudadanía y valores morales. El sistema integra de manera coherente
+componentes de procesamiento de lenguaje natural (NLP, por sus siglas en
+inglés), recuperación semántica de contexto y una interfaz nativa móvil para
+Android. Si bien los resultados no constituyen una validación empírica del
+impacto educativo, al no contar con pruebas de campo reales con usuarios
+finales, esta primera versión demostró la viabilidad técnica y conceptual del
+proyecto. Asimismo, se verificó su alineación con el marco teórico y los
+objetivos específicos, destacando los logros técnicos y de diseño alcanzados
+durante los sprints definidos.
 
-\section{Implementación del modelo LLM y flujo RAG}
-Durante el tercer \textit{sprint} del desarrollo, se implementó un flujo RAG
-(\textit{Retrieval-Augmented Generation}), el cual permite al asistente virtual
-generar respuestas fundamentadas en los contenidos educativos previamente
-procesados y almacenados en la base de datos. Este flujo se compone de los
-siguientes pasos. Este flujo integra los siguientes componentes principales:
-\begin{enumerate}
-      \item \textbf{REST API en NodeJS} como \textit{backend} del sistema, encargado de orquestar la
-            comunicación entre la aplicación móvil y los servicios de procesamiento de
-            lenguaje natural.
-      \item \textbf{Microservicio en Python} para la interacción con el modelo LLM
-            (\textit{Large Language Model}) de OpenAI, responsable de generar las respuestas, así como del procesamiento de documentos.
-      \item \textbf{API de OpenAI} para la generación de embeddings y respuestas.
-      \item \textbf{Base de datos vectorial en Pinecone} para el almacenamiento y recuperación de embeddings
-            generados a partir de los contenidos educativos.
-      \item \textbf{Base de datos relacional en PostgreSQL}, la cual se encarga de gestionar usuarios, mensajes, sesiones y la información relacionada con los documentos procesados para asegurar trazabilidad desde los vectores hasta el documento original almacenado en el sistema.
-\end{enumerate}
-
-El flujo completo del procesamiento RAG, desde que se recibe una respuesta a
-través del cliente (aplicación móvil) hasta que se devuelve la respuesta
-generada, se ilustra en la Figura \ref{fig:flujo-rag}
+\section{Definición de usuario objetivo (Persona)}
+Durante el primer \textit{sprint} se elaboró una ficha técnica detallada del
+\textbf{perfil Persona}, ilustrada en la Figura \ref{fig:persona}.
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{assets/RAG.png}
-      \caption{Flujo de procesamiento de preguntas mediante RAG.}
-      \label{fig:flujo-rag}
+      \includegraphics[width=0.8\textwidth]{assets/persona.png}
+      \caption{Ficha de \textbf{Perfil Persona} con datos básicos del usuario objetivo.}
+      \label{fig:persona}
 \end{figure}
 
-\section{Integración de la base de datos vectorial y relacional}
-El almacenamiento de información a lo largo del sistema se describe en 3
-elementos principales:
+A partir de este perfil, mediante el cual se identificaron las motivaciones,
+objetivos, frustraciones, necesidades y comportamientos digitales de la
+población objetivo, se definieron los siguientes aspectos centrales de la
+aplicación:
+
 \begin{itemize}
-      \item \textbf{Base de datos relacional (PostgreSQL):} gestor principal de los datos del sistema; aquí se almacenan los datos de los usuarios, chats, mensajes, sesiones, códigos de recuperación de contraseñas y metadatos básicos de los documentos procesados.
-      \item \textbf{Base de datos vectorial (Pinecone):} encargada de almacenar los embeddings generados a partir de los documentos seleccionados. Esta es la base del funcionamiento RAG, ya que permite recuperar el contexto necesario, según la pregunta realizada, para que el modelo LLM pueda generar respuestas fundamentadas.
-      \item \textbf{Documentos originales (Contenedor AWS S3):} aquí se almacenan todos los documentos originales cargados al sistema, lo que permite su posterior consulta o descarga por parte de los usuarios con rol de \textbf{Administrador}. Cabe aclarar que se maneja un protocolo de trazabilidad basado en el identificador único generado para el contenedor, el cual se almacena como parte de los metadatos tanto en la base de datos vectorial como en la relacional; de esta forma, se mantiene la coherencia al momento de eliminar documentos o consultar su fuente original.
+      \item \textbf{Plataforma:} En esta fase, el desarrollo se concentró en el sistema operativo Android. Se obtuvo compatibilidad para dispositivos de este sistema operativo a partir de la versión \textbf{Android 7}.
+      \item \textbf{Enfoque:} La interacción pregunta-respuesta se diseñó bajo la filosofía del método socrático, lo que permitió que en cada interacción con el asistente se se obtenga también una lista de preguntas sugeridas.
+      \item \textbf{Diseño:} La interfaz sigue los principios de \textit{Material Design}, esto al priorizar un diseño minimalista y enfocado en la funcionalidad del sistema
 \end{itemize}
 
-permitieron verificar la correcta sincronización entre todas las fuentes de
-datos mediante los servicios expuestos por el \textit{backend}, lo que permitió que
-las consultas del usuario se asocien con el contenido adecuado. La Figura
-\ref{fig:preview-pinecone} muestra la vista desde el panel de pinecone, una vez
-se han cargado vectores correctamente.
+% \section{Implementación de flujo para procesamiento de archivos}
+% El sistema obtenido a través del segundo \textit{sprint}, permite procesar
+% diversos formatos de archivo:
+
+% \begin{itemize}
+%       \item Documentos PDF (.pdf)
+%       \item Documentos de Word (.doc, .docx)
+%       \item Presentaciones (.ppt, .pptx)
+%       \item Texto plano (.txt)
+%       \item Markdown (.md)
+%       \item Imágenes y documentos escaneados (mediante Tesseract OCR)
+% \end{itemize}
+
+% La Figura \ref{fig:procesamiento-docs} ilustra el flujo completo de
+% procesamiento:
+
+% \begin{figure}[H]
+%       \centering
+%       \includegraphics[width=0.9\textwidth]{assets/procesamiento-docs.png}
+%       \caption{Flujo de procesamiento de documentos para generación del corpus.}
+%       \label{fig:procesamiento-docs}
+% \end{figure}
+
+% El proceso se divide en dos etapas principales:
+
+% \begin{enumerate}
+%       \item \textbf{Extracción y normalización del contenido:} En esta etapa se realiza la lectura y extracción de texto desde los formatos soportados. El flujo incluye la limpieza del texto, la estandarización del formato (identificación de títulos, encabezados y listas para preservar la semántica), la validación de la integridad (omisión de duplicados, normalización de caracteres) y la fragmentación semántica. El producto final resultante está compuesto por fragmentos de texto plano autocontenidos.
+%       \item \textbf{Generación de representaciones numéricas e indexación vectorial:} Cada fragmento de texto se transforma en un vector mediante el modelo de OpenAI \texttt{text-embedding-3-small}. A cada representación numérica de texto, se le asocian metadatos relevantes (identificador del documento original, título, categoría temática, texto original, autor y año de publicación). Posteriormente, se realiza una operación de upsert en el índice vectorial de Pinecone. Simultáneamente, se registra en la base de datos relacional la trazabilidad entre el vector y el documento original almacenado en un contenedor Amazon S3.
+% \end{enumerate}
+
+% \section{Implementación del modelo LLM y flujo RAG}
+% En el tercer \textit{sprint}, se implementó un flujo RAG
+% (\textit{Retrieval-Augmented Generation}) que permite al asistente virtual
+% generar respuestas fundamentadas en los contenidos educativos previamente
+% indexados. Este flujo integra los siguientes componentes:
+% \begin{enumerate}
+%       \item \textbf{API en NodeJS:} Actúa como servidor principal, orquestando la comunicación entre la aplicación móvil y los servicios de procesamiento de lenguaje natural.
+%       \item \textbf{Microservicio en Python:} Gestiona la interacción con el modelo LLM (\textit{Large Language Model}) de OpenAI para generar respuestas y procesar documentos.
+%       \item \textbf{API de OpenAI:} Utilizada para la generación de representaciones numéricas (\textit{embeddings}) y respuestas.
+%       \item \textbf{Base de datos vectorial (Pinecone):} Almacena y permite la recuperación de las representaciones numéricas generadas a partir de los contenidos educativos.
+%       \item \textbf{Base de datos relacional (PostgreSQL):} Gestiona usuarios, mensajes, sesiones e información de los documentos procesados, asegurando la trazabilidad desde los vectores hasta el documento original.
+
+% \end{enumerate}
+% El flujo completo del proceso RAG, desde la recepción de una pregunta en la aplicación móvil hasta la devolución de la respuesta, se ilustra en la Figura \ref{fig:flujo-rag}.
+
+% \begin{figure}[H]
+%       \centering
+%       \includegraphics[width=0.8\textwidth]{assets/RAG.png}
+%       \caption{Flujo de procesamiento de preguntas mediante RAG.}
+%       \label{fig:flujo-rag}
+% \end{figure}
+
+% \subsection{Integración de la Base de Datos Vectorial y Relacional}
+% El almacenamiento de información a lo largo del sistema se describe en 3
+% elementos principales:
+% \begin{itemize}
+%       \item \textbf{Base de datos relacional (PostgreSQL):} gestor principal de los datos del sistema; aquí se almacenan los datos de los usuarios, chats, mensajes, sesiones, códigos de recuperación de contraseñas y metadatos básicos de los documentos procesados.
+%       \item \textbf{Base de datos vectorial (Pinecone):} encargada de almacenar las representaciones numéricas de texto generadas a partir de los documentos seleccionados. Esta es la base del funcionamiento RAG, ya que permite recuperar el contexto necesario, según la pregunta realizada, para que el modelo LLM pueda generar respuestas fundamentadas.
+%       \item \textbf{Documentos originales (Contenedor AWS S3):} aquí se almacenan todos los documentos originales cargados al sistema, lo que permite su posterior consulta o descarga por parte de los usuarios con rol de \textbf{Administrador}.
+% \end{itemize}
+
+\section{Corpus vectorizado}
+El sistema definido en los \textit{sprints} 2 y 3 permitió el procesamiento y
+gestión de los documentos con los que se alimenta el modelo. Con ello, se
+tomaron los documentos seleccionados al inicio del \textit{sprint} 2, se
+sometieron a procesamiento, limpieza e indexación, todo a través de solicitudes
+realizadas desde el cliente, validando la correcta integración de sistemas
+internos y cliente-servidor.
+
+Las pruebas realizadas verificaron la sincronización entre todas las fuentes de
+datos a través del servidor, asegurando que las consultas se asociaran con el
+contenido adecuado. La Figura \ref{fig:preview-pinecone} muestra el índice
+vectorial en Pinecone después de cargar las representaciones numéricas
+(\textit{embeddings}) de los fragmentos de texto.
 
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.8\textwidth]{assets/pinecone-preview.png}
-      \caption{Vista del índice vectorial en Pinecone con los embeddings cargados.}
+      \caption{Vista del índice vectorial en Pinecone con las representaciones numéricas (\textit{embeddings}) cargadas.}
       \label{fig:preview-pinecone}
 \end{figure}
 
-\section{Desarrollo del backend en NodeJS}
-El \textit{backend} implementado durante el \textit{sprint} 3 se comprobó
-mediante pruebas de endpoints \textit{REST}, a través de la herramienta
-\textit{Postman}, lo cual demostró la existencia de comunicación estable con
-los servicios de Python y la aplicación móvil. Los \textit{endpoints}
-principales cubren autenticación, recuperación de contraseña, envío de
-mensajes, historial de chats y administración de documentos.
-
-Las pruebas realizadas a través de \textit{Postman} permitieron verificar la
-correcta integración entre los módulos del sistema, la estabilidad del flujo de
-información y la capacidad del sistema para generar respuestas basadas en los
-fragmentos de texto almacenados. El Cuadro \ref{tab:consultas-resultados}
-presenta los resultados de las consultas y controles realizados durante la fase
-de validación técnica y semántica del sistema.
-
-\textbf{NOTA:} Durante las pruebas realizadas, se incluyen solicitudes de \textit{control}, pensadas para validar que el modelo no sea capaz de responder a preguntas fuera del contexto establecido mediante la base de datos vectorial. Se espera que estas preguntas no sean respondidas, para evitar \textit{alucinaciones} del modelo y mantener la congruencia del sistema. Por otro lado, las preguntas de \textit{consulta} están relacionadas directamente con los contenidos educativos procesados y almacenados en el sistema, por lo que su congruencia se refiere a que el modelo haya sido capaz no solo de responderla, sino que el contenido retornado tenga relación con los contenidos y sepa responder apropiadamente a la pregunta planteada.
-
-\renewcommand{\arraystretch}{1.15}
-
-\begin{longtable}{|p{4cm}|c|c|c|c|}
-      \caption[Resultados de consultas y controles]{Resultados de las consultas y controles con sus tiempos de respuesta, éxito y congruencia.}
-      \label{tab:consultas-resultados}                                                                                                                                                                     \\
-
-      \hline
-      \textbf{\textit{Consulta}}                                           & \textbf{\textit{Tiempo de respuesta (s)}} & \textbf{\textit{Exitosa}} & \textbf{\textit{Congruente}} & \textbf{\textit{Tipo}} \\
-      \hline
-      \endfirsthead
-
-      \hline
-      \textbf{\textit{Consulta}}                                           & \textbf{\textit{Tiempo de respuesta (s)}} & \textbf{\textit{Exitosa}} & \textbf{\textit{Congruente}} & \textbf{\textit{Tipo}} \\
-      \hline
-      \endhead
-
-      \hline
-      \multicolumn{5}{r}{\textit{Continúa en la siguiente página}}                                                                                                                                         \\
-      \endfoot
-
-      \hline
-      \endlastfoot
-
-      Dime en una frase qué es el civismo                                  & 9.643                                     & Sí                        & Sí                           & Consulta               \\ \hline ¿Qué
-      es la ciudadanía?                                                    & 12.285                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Cómo se pueden
-      abordar los dilemas morales en la educación cívica?                  & 16.715                                    & Sí                        & Sí                           &
-      Consulta                                                                                                                                                                                             \\ \hline ¿Qué es Formación Ciudadana? & 10.854 & Sí & Sí & Consulta
-      \\ \hline Dame el listado de todos los departamentos de Guatemala & 10.329 & No
-                                                                           & Sí                                        & Control                                                                           \\ \hline ¿Cuál es la relación entre Formación Ciudadana y
-      Democracia?                                                          & 17.456                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Qué importancia crees que
-      tiene la formación ciudadana en la educación actual?                 & 14.502                                    & Sí                        & Sí                           &
-      Consulta                                                                                                                                                                                             \\ \hline ¿Cuál es el rol de la escuela en la educación en valores? &
-      19.409                                                               & Sí                                        & Sí                        & Consulta                                              \\ \hline ¿Cómo puedo practicar el civismo en mi
-      familia?                                                             & 20.086                                    & Sí                        & Sí                           & Consulta               \\ \hline ¡Es una emergencia! ¿Cómo
-      aplico un torniquete?                                                & 8.12                                      & No                        & Sí                           & Control                \\ \hline Dame 5 tips
-      prácticos para ser mejor ciudadano                                   & 13.652                                    & Sí                        & Sí                           & Consulta               \\ \hline
-      ¿Cómo crees que la empatía puede influir en la convivencia escolar?  & 11.255                                    &
-      Sí                                                                   & Sí                                        & Consulta                                                                          \\ \hline ¿Qué importancia tiene la discusión sobre ética en
-      el aula para la formación ciudadana?                                 & 16.29                                     & Sí                        & Sí                           & Consulta               \\ \hline
-      ¿Qué es la democracia?                                               & 12.53                                     & Sí                        & Sí                           & Consulta               \\ \hline ¿Cuál es el
-      procedimiento de emergencia si se incendia un televisor?             & 11.418                                    & No                        & Sí                           &
-      Control                                                                                                                                                                                              \\ \hline ¿Cómo practico la democracia si soy estudiante? & 16.49 & Sí
-                                                                           & Sí                                        & Consulta                                                                          \\ \hline ¿Es posible ser corrupto sin ser político? & 7.252 &
-      No                                                                   & No                                        & Consulta                                                                          \\ \hline Si soy buen ciudadano, ¿qué puedo esperar? &
-      13.584                                                               & Sí                                        & Sí                        & Consulta                                              \\ \hline ¿Cómo se reconoce la formación ciudadana?
-                                                                           & 16.203                                    & Sí                        & Sí                           & Consulta               \\ \hline Le di chocolate a mi perro, ¿cómo puedo
-      salvarlo?                                                            & 8.183                                     & No                        & Sí                           & Control                \\ \hline ¿La democracia representativa
-      es perfecta?                                                         & 10.79                                     & No                        & No                           & Consulta               \\ \hline ¿Cómo es un ciudadano
-      ejemplar?                                                            & 21.064                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Una nación sin democracia
-      tiene ciudadanía?                                                    & 12.842                                    & No                        & No                           & Consulta               \\ \hline ¿Votar es importante?
-                                                                           & 10.135                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Cuáles son los componentes básicos de
-      un motor?                                                            & 9.246                                     & No                        & Sí                           & Control                \\ \hline Lista 5 ideas para que mi
-      círculo sea más democrático.                                         & 14.8                                      & Sí                        & Sí                           & Consulta               \\ \hline ¿Qué puedo
-      hacer para mostrar civismo además de votar?                          & 18.837                                    & Sí                        & Sí                           & Consulta               \\
-      \hline Si veo corrupción y no denuncio, ¿fallé como ciudadano?       & 12.974                                    & Sí                        &
-      Sí                                                                   & Consulta                                                                                                                      \\ \hline ¿Qué caracteriza un país democrático? & 17.86                        & Sí & Sí
-                                                                           & Consulta                                                                                                                      \\ \hline ¿Cuáles son los países más democráticos del mundo? &
-      10.319                                                               & No                                        & Sí                        & Control                                               \\ \hline ¿Qué valores son esenciales para vivir en
-      sociedad?                                                            & 13.914                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Qué acciones diarias me
-      hacen buena persona?                                                 & 10.533                                    & No                        & No                           & Consulta               \\ \hline ¿Qué implica la
-      democracia en el bienestar social?                                   & 14.528                                    & Sí                        & Sí                           & Consulta               \\ \hline
-      ¿Cómo demuestro valores en mi día a día?                             & 18.311                                    & Sí                        & Sí                           & Consulta               \\
-      \hline ¿Qué tan algo puede respirar un ser humano?                   & 10.846                                    & No                        & Sí                           & Control
-      \\ \hline Además de la escuela y la familia, ¿dónde más se obtienen los
-      valores?                                                             & 9.213                                     & No                        & No                           & Consulta               \\ \hline ¿Una persona en el tráfico casi
-      me choca, cómo puedo actuar de forma ética?                          & 8.178                                     & No                        & No                           & Consulta               \\
-      \hline ¿Qué papel representa la tecnología en la ciudadanía moderna? & 15.59                                     &
-      Sí                                                                   & Sí                                        & Consulta                                                                          \\ \hline ¿Por qué me debería preocupar por mis valores y
-      ciudadanía?                                                          & 13.73                                     & Sí                        & Sí                           & Consulta               \\ \hline ¿Cuántos vasos de agua al
-      día bebe un buen ciudadano?                                          & 8.943                                     & No                        & Sí                           & Control                \\ \hline ¿La
-      democracia es un modelo de gobierno ideal?                           & 10.591                                    & Sí                        & Sí                           & Consulta               \\
-      \hline ¿Cómo puedo ser fiel a mis valores en un mal día?             & 7.045                                     & No                        & No                           &
-      Consulta                                                                                                                                                                                             \\ \hline ¿Por qué es importante la ética? & 14.326 & Sí & Sí &
-      Consulta                                                                                                                                                                                             \\ \hline ¿Ser buen ciudadano es ser alguien ético? & 10.728                      & Sí & Sí
-                                                                           & Consulta                                                                                                                      \\ \hline ¿Cuáles son los componentes de un motor por combustión? &
-      9.004                                                                & No                                        & Sí                        & Control                                               \\ \hline ¿Cuál es la diferencia entre moral y ética?
-                                                                           & 8.176                                     & No                        & No                           & Consulta               \\ \hline ¿Qué acciones demuestran ética en mi
-      conducta?                                                            & 16.241                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Cuál es la forma ética de
-      actuar ante alguien que me ha hecho un mal?                          & 9.471                                     & No                        & No                           & Consulta               \\
-      \hline Una persona en el tráfico casi me choca, ¿cómo puedo actuar de forma
-      ética?                                                               & 16.114                                    & Sí                        & Sí                           & Consulta               \\ \hline ¿Qué animales guatemaltecos
-      están en peligro de extinción?                                       & 8.531                                     & No                        & Sí                           & Control                \\ \hline
-      \multicolumn{1}{|r|}{\textbf{Promedio / Totales}}                    & 12.783                                    & 77.5\%                    & 82\%                         &                        \\
-      \hline
-
-\end{longtable}
-
-Como se puede observar en el Cuadro \ref{tab:consultas-resultados}, el sistema
-logró responder correctamente el 77.5\% de las consultas realizadas, con un
-nivel de congruencia del 82\%. Estos resultados, aunque preliminares, indican
-un buen desempeño del sistema en la generación de respuestas fundamentadas en
-los contenidos educativos procesados.
-
-\section{Interfaz móvil en Kotlin (Frontend)}
+\section{Interfaz móvil en Kotlin (Cliente)}
 Durante el cuarto \textit{sprint}, se desarrolló la aplicación móvil nativa
-para dispositivos \textit{Android} utilizando el lenguaje de programación
-Kotlin, implementando el patrón de diseño MVVM (Modelo-Vista-ViewModel) para
+para dispositivos Android utilizando el lenguaje de programación Kotlin,
+implementando el patrón de diseño MVVM (Modelo-Vista-Modelo de Vista) para
 asegurar una arquitectura modular y mantenible. Como resultado, se obtuvo una
 interfaz funcional, amigable con el usuario y cuyo uso no requiere estar
-familizarizado previamente con herramientas parecidas. A través de esta
-herramienta, se permite a los usuarios acceder al sistema mediante
-autenticación, mantener conversaciones con el asistente, visualizar el
-historial de chats, administrar el perfil del usuario y, para usuarios con rol
-de \textbf{Administrador}, gestionar los documentos cargados en el sistema.
+familizarizado previamente con herramientas parecidas.
 
-% Quiero cargar 3 o 4 capturas de pantalla que se vean una al lado de la otra (ya que son capturas móviles son más altas que anchas)
+\subsection{Funcionalidades Comunes}
+La aplicación cuenta con 2 tipos de roles diferentes: \textbf{Usuario} y
+\textbf{Administrador}, cuya gestión debe ser realizada desde la base de datos
+al definir en el campo \textbf{\guillemetleft{}role\guillemetright{}} para cada
+usuario. Las funcionalidades básicas a las que tiene acceso tanto el usuario
+como el administrador, son:
+\begin{itemize}
+      \item \textbf{Conversaciomes:} El usuario puede crear chats, enviar mensajes y recibir respuestas del modelo. No se requieren accesos especiales para esta función, tan solo contar con una cuenta de usuario sin importar el rol.
+      \item \textbf{Perfil de Usuario:} Los usuarios pueden ver y modificar su propia informació personal. A excepción de la contraseña, tienen acceso a cambiar sus nombres, apellidos, fecha de nacimiento, correo electrónico o número de teléfono.
+      \item \textbf{Cerrar Sesión:} Todos los usuarios pueden elegir terminar su sesión actual de forma automática. Si no lo hacen, la sesión se cerrará igualmente de forma automática tras transcurrir 1 hora de inactividad en la aplicación.
+\end{itemize}
+
+\subsection{Funcionalidades del Administrador}
+Por otro lado, también hay funciones que solamente el administrador puede
+realizar, con el fin de mantener el control de aspectos delicados de la
+aplicación, que en este caso corresponden a mantener la seguridad y
+consistencia del corpus del modelo. Las funcionalidades específicas que solo
+puede realizar el administrador, son:
+\begin{itemize}
+      \item \textbf{Ver documentos:} Los usuarios con rol administrador pueden acceder al panel de gestión de documentos, en donde se muestran todos los archivos cargados en la base de datos. Desde aquí, tienen la opción de ver el documento original en su navegador.
+      \item \textbf{Añadir documentos:} De igual forma, los usuarios administradores pueden agregar documentos al corpus del modelo. Para ello, en la vista de gestión de documentos, deben seleccionar la opción \textbf{\guillemetleft{}Agregar\guillemetright{}} e ingresar los datos solicitados: Nombre, Autor, Año, Rango de edades. Finalmente, se debe cargar el documento y presionar \textbf{\guillemetleft{}Guardar\guillemetright{}}. El procesamiento del archivo se realiza en segundo plano, por lo que al usuario le llegará una notificación por correo electrónico cuando esté listo y cargado en el sistema.
+      \item \textbf{Eliminar documentos:} Finalmente, el usuario administrador también puede remover documentos del corpus si le parece apropiado o si ya no se desea que forme parte del corpus del sistema. Igualmente, esta eliminación se procesa en segundo plano, así que cuando esté listo, le llegará una notificación por correo electrónico.
+\end{itemize}
+
 La Figura \ref{fig:app-interfaces} muestra algunas de las pantallas principales
 de la aplicación móvil desarrollada.
 
@@ -217,7 +178,89 @@ de la aplicación móvil desarrollada.
       \label{fig:app-interfaces}
 \end{figure}
 
-El diseño de la interfaz emplea principios y componentes de \textit{Material
-      Design}, así como el uso de navegación por componentes (\textit{Navigation
-      Component}) y \textit{Hilt}, para la inyección de dependencias.
+El diseño de la interfaz emplea los principios y componentes de
+\textit{Material Design}, junto con \textit{Navigation Component} para la
+navegación y \textit{Hilt} para la inyección de dependencias.
+
+\section{Pruebas y Validación}
+La implementación del prototipo concluyó con una evaluación exhaustiva del
+sistema integrado. Se realizaron pruebas a los puntos de conexión mediante
+Postman, los cuales cubren la autenticación, recuperación de contraseña, envío
+de mensajes, historial de chats y administración de documentos.
+
+En el Anexo \ref{tab:consultas-resultados}, se presenta una serie de 45
+preguntas relacionadas al tema central del proyecto, abarcando conceptos de
+ciudadanía, formación ciudadana y valores morales. Adicionalmente, se
+realizaron 10 pregutnas de control (no relacionadas con el tema de civismo ni
+con los documentos que conforman el corpus), diseñadas para evaluar la
+\textbf{no alucinación} del modelo; es decir, que no responda cuando no deba
+hacerlo.
+
+Para cada pregunta, independientemente si era de control o no, se tomó el
+tiempo de respuesta, así como las referencias devueltas por el sistema (Anexo
+\ref{tab:consultas-referencias}). La columna \texttt{Exitosa} se refiere a si la pregunta fue o no
+fue respondida por el modelo, mientras que la columna \texttt{Congruente}
+establece la congruencia según el tipo de consulta realizada:
+
+\begin{itemize}
+      \item \textbf{Consulta:} Estas se refieren a preguntas que el modelo \textbf{sí debería responder} ya que estan basadas estrictamente en el contenido del corpus proporcionado.
+      \item \textbf{Control:} Se trata de preguntas deliberadamente fuera del contexto del sistema, las cuales el modelo \textbf{no debería responder}. En este caso, la congruencia es positiva cuando el modelo efectivamente se niega a responder por estar fuera de su alcance y propósito.
+\end{itemize}
+
+Como se mencionó, el Anexo \ref{tab:consultas-referencias} muestra la relación
+entre los documentos que se espera que el modelo seleccione para responder cada
+pregunta, frente a las referencias que finalmente utilizó para extraer el
+contexto necesario. Se evidencia que el comportamiento en este caso presenta 3
+variantes detectables:
+\begin{itemize}
+      \item \textbf{Coincidencia exacta:} Se refiere a los casos en los que las referencias esperadas y las extraídas por el modelo coinciden por completo, como se evidencia en las filas 13, 16, 17, 22, 23, 34, 39, 42, 46, 48 y 53. Destaca el caso mostrado en la fila 13, puesto que si bien las referencias utilizadas son las mismas que las esperadas, difiere el orden de prioridad interpretado por el modelo.
+      \item\textbf{Coincidencia parcial:} Estos son casos que incluyen algunas de las referencias esperadas pero también el uso de referencias adicionales; se evidencia este comportamiento en las filas 1, 7, 11, 14, 18, 26, 28, 33, 36, 38, 41, 43, 44, 47, 49, 51, 52 y 55.
+      \item \textbf{Coincidencia nula:} Estos casos son aquellos en los que las referencias utilizadas difieren completamente de las referencias esperadas, como se evidencia en las filas 3, 6, 8, 12, 19 y 31.
+\end{itemize}
+
+\subsection{Métricas Encontradas}
+
+A partir de los resultados, se calcularon las siguientes métricas relacionadas
+con el desempeño del sistema:
+
+En primer lugar, el Anexo \ref{tab:consultas-resultados} muestra que, de 45
+consultas reales (excluyendo las de control), 35 fueron respondidas
+exitosamente, lo que representa una tasa de éxito global del 77.78\%. Para las
+consultas de control, ninguna fue respondida, lo que resulta en una tasa de
+éxito del 100\% para este tipo.
+
+Respecto a la congruencia, de las 55 consultas totales, 45 mostraron un
+comportamiento congruente con lo establecido, lo que equivale a una congruencia
+fáctica global del 81.81\%.
+
+Para la latencia, el tiempo de respuesta mínimo fue de 3.303 segundos y el
+máximo de 19.121 segundos, con una desviación estándar aproximada de 2.96. El
+tiempo de respuesta promedio fue de 7.8184 segundos. La comparación de estos
+datos con modelos comerciales será abordada en la sección de discusión.
+
+Analizando el Anexo \ref{tab:consultas-referencias}, de las 35 consultas
+respondidas correctamente, la distribución por tipo de coincidencia fue:
+
+\begin{itemize}
+      \item Coincidencia Exacta: 11 (31.43\%)
+      \item Coincidencia Parcial: 18 (51.43\%)
+      \item Coincidencia Nula: 6 (17.14\%)
+\end{itemize}
+
+Las métricas calculadas se resumen en el Cuadro \ref{tab:metricas}.
+
+\begin{table}[H]
+      \centering
+      \caption{Métricas de desempeño del sistema}
+      \label{tab:metricas}
+      \begin{tabular}{|l|c|}
+            \hline
+            \textbf{Métrica}     & \textbf{Valor} \\
+            \hline
+            Tasa de éxito global & 77.78\%        \\
+            Congruencia fáctica  & 81.81\%        \\
+            Latencia promedio    & 7.8184         \\
+            \hline
+      \end{tabular}
+\end{table}
 

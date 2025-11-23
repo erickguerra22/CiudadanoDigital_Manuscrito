@@ -22,6 +22,44 @@
 \usepackage{algpseudocode}
 \floatname{algorithm}{Algoritmo}
 
+% ======= TRADUCCIÓN DE PROCEDURE / ENDPROCEDURE =======
+% Crear textos para Procedure y EndProcedure (NO existen por defecto)
+% \algnewcommand\algorithmicprocedure{\textbf{Procedimiento}}
+\algrenewcommand\algorithmicprocedure{\textbf{Procedimiento}}
+\algnewcommand\algorithmicendprocedure{\textbf{Fin del procedimiento}}
+
+% Crear los entornos Procedure y EndProcedure
+\algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}%
+  {\algorithmicprocedure\ }{\algorithmicendprocedure}
+
+  % ===== TRADUCCIÓN DE PALABRAS RESERVADAS GENERALES =====
+\algnewcommand\algorithmicelseif{\textbf{Sino si}}
+
+\algnewcommand\algorithmicendwhile{\textbf{FinMientras}}
+
+\algrenewcommand\algorithmicrepeat{\textbf{Repetir}}
+\algrenewcommand\algorithmicuntil{\textbf{Hasta que}}
+\algrenewcommand\algorithmicrequire{\textbf{Requiere:}}
+\algrenewcommand\algorithmicensure{\textbf{Asegura:}}
+
+\algrenewcommand\algorithmicif{\textbf{Si}}
+\algrenewcommand\algorithmicthen{\textbf{entonces}}
+\algrenewcommand\algorithmicelse{\textbf{Sino}}
+
+\algrenewcommand\algorithmicfor{\textbf{Para}}
+\algrenewcommand\algorithmicforall{\textbf{Para cada}}
+
+\algrenewcommand\algorithmicwhile{\textbf{Mientras}}
+\algrenewcommand\algorithmicreturn{\textbf{Retornar}}
+
+% Traducciones especiales
+\algrenewtext{EndIf}{\textbf{Fin Si}}
+\algrenewtext{EndFor}{\textbf{Fin Para}}
+
+\makeatletter
+\algrenewcommand\algorithmicdo{\textbf{hacer}} % por si se usa en línea
+\algrenewtext{Do}{\textbf{hacer}} % por si se usa como palabra independiente
+
 \title{Plantilla para Trabajos de Graduación IE-MT 2019v3}
 \author{MSc. Miguel Zea}
 \date{\today}
@@ -66,12 +104,13 @@
 
 \usepackage{chngcntr}
 
-\ifdefined\CAPglosario
-	%\usepackage[toc]{glossaries}
-	\usepackage[numberedsection]{glossaries}
-	\makeglossaries
-    \input{e-glosario}
-\fi
+%\usepackage[toc]{glossaries}
+\usepackage[numberedsection]{glossaries}
+\makeglossaries
+
+% \ifdefined\CAPglosario
+%     \input{e-glosario}
+% \fi
 
 % ==============================================================================
 % MÁRGENES Y FORMATO GENERALES
@@ -115,6 +154,9 @@
 % ==============================================================================
 \pagestyle{headings}
 \begin{document}
+\ifdefined\CAPglosario
+    \input{e-glosario}
+\fi
 
 % ==============================================================================
 % PORTADA
@@ -239,13 +281,14 @@
 		\nombreasesor \\[1in]
 		(f) \rule[1pt]{4 in}{1pt}\\
 		\nombreprimerex \\[1in]
-		(f) \rule[1pt]{4 in}{1pt}\\
-		\nombresegundoex
+		% (f) \rule[1pt]{4 in}{1pt}\\
+		% \nombresegundoex
 	\end{center}
 	\vspace{1in}
 
-	Fecha de aprobación: Guatemala, \rule[1pt]{0.5 in}{1pt} de \rule[1pt]{1
-		in}{1pt} de \anoaprobacion. \normalsize \fi
+	% Fecha de aprobación: Guatemala, \rule[1pt]{0.5 in}{1pt} de \rule[1pt]{1
+	% 	in}{1pt} de \anoaprobacion. \normalsize \fi
+	Fecha de aprobación: Guatemala, noviembre de \anoaprobacion. \normalsize \fi
 
 % Comentar para formato estilo libro en la numeración de páginas (NO 
 % compatible con la guía UVG 2019)
@@ -353,8 +396,21 @@
 % GLOSARIO
 % ------------------------------------------------------------------------------
 \ifdefined\CAPglosario
+	\glsaddall
 	\newpage
 	\printglossary
+\fi
+
+% ALCANCE
+% ------------------------------------------------------------------------------
+\ifdefined\CAPalcance
+	\newpage
+	\chapter{Alcances}
+	\ifdefined\parpordefecto
+		\defaultparformat{j-alcance}
+	\else
+		\input{j-alcance}
+	\fi
 \fi
 
 % INTRODUCCIÓN
@@ -405,18 +461,6 @@
 		\defaultparformat{i-objetivos}
 	\else
 		\input{i-objetivos}
-	\fi
-\fi
-
-% ALCANCE
-% ------------------------------------------------------------------------------
-\ifdefined\CAPalcance
-	\newpage
-	\chapter{Alcances}
-	\ifdefined\parpordefecto
-		\defaultparformat{j-alcance}
-	\else
-		\input{j-alcance}
 	\fi
 \fi
 

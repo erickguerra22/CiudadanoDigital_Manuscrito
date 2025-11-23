@@ -1,35 +1,57 @@
 El desarrollo del proyecto \textit{Ciudadano Digital} permitió obtener un
-prototipo funcional de asistente virtual orientado a la educación ciudadana y
-en valores morales, lo que evidencia la viabilidad técnica y conceptual de la
+prototipo funcional de un asistente virtual orientado a la educación ciudadana
+y en valores morales, lo que evidencia la viabilidad técnica y conceptual de la
 propuesta inicial, así como el desarrollo de una arquitectura tecnológica y un
 flujo de trabajo adecuados para lograr el alcance de los objetivos planteados.
-La integración de un mecanismo de recuperación aumentada de generación (RAG)
-con modelos de lenguaje grande (LLM) demostró ser una estrategia efectiva para
-ofrecer respuestas contextualizadas y fundamentadas en un \textit{corpus}
-educativo que, por su parte, también cuenta con una metodología específica para
-la selección y procesado del mismo.
+La integración de un mecanismo de recuperación aumentada de generación (RAG,
+por sus siglas en inglés) con modelos de lenguaje de gran escala (LLM, por sus
+siglas en inglés) demostró ser una estrategia efectiva para ofrecer respuestas
+contextualizadas y fundamentadas en un corpus educativo que, por su parte,
+también cuenta con una metodología específica para la selección y procesado del
+mismo.
 
-Si bien los resultados obtenidos se ven limitados a un entorno de validación
-externa, puesto que no se realizaron pruebas con usuarios finales, permiten
-analizar el desempeño del sistema a partir de 3 perspectivas reconocibles:
-técnica, semántica y visual.
+Como se mencionó al inicio de este documento, el desarrollo de
+\textit{Ciudadano Digital} contempla la base técnica que busca demostrar la
+viabilidad tecnológica de las herramientas para conformar un sistema de
+generación aumentada por recuperación (RAG) efectivo. Para este punto, como se
+mencionó en la justificación, se optó por centrar el funcionamiento de la
+aplicación para su disponibilidad en dispositivos bajo el sistema operativo
+Android. Esta decisiónresponde a criterios de accesibilidady equidad
+tecnológica, puesto que los dispositivos bajo este sistema operativo
+representan la mayoría del mercado móvil en regiones marginadas, por lo que se
+alinea con el público objetivo identificado. El diseño implementado para la
+aplicación enfatiza la legibilidad, los contrastes adecuados, los controles
+táctiles amplios y los flujos de navegación sencillos, todo ello a través de
+los principios dictados por el sistema de diseño de Google, \textit{Material
+    Design}.
 
-Desde el punto de vista técnico, el sistema construido logró integrar
-exitosamente las tecnologías planteadas desde el inicio del proyecto; se logró
-la generación de un corpus dedicado a la fundamentación de las respuestas
-obtenidas del modelo, esto a través de la base de datos vectorial
-\textit{Pinecone} que, a su vez, se comunica correctamente con la base de datos
-relacional y con el contenedor de archivos. Todo este sistema permite la
-obtención apropiada de respuestas basadas únicamente en los documentos
-seleccionados y procesados, garantizando que no exista alucinación por parte
-del modelo y que este se limite a responder únicamente las cuestiones que estén
-relacionadas con el contenido de la base de datos vectorial.
+Por otro lado, la interacción pregunta-respuesta diseñada bajo la filosofía del
+método socrático promueve no solamente la resolución de consultas, sino también
+el uso de preguntas sugeridas que enriquezcan el conocimiento del usuario y lo
+motiven a construir sus propias conclusiones a partir de la información
+proporcionada.
 
-Como se evidencia en la Figura \ref{fig:flujo-rag}, el flujo de recuperación
-aumentada de generación (RAG) se ejecuta de manera sistemática al dividir
-correctamente las tareas entre los distintos componentes del sistema.
+Desde el punto de vista técnico, la implementación exitosa de la arquitectura
+propuesta valida el propósito central del proyecto: la posibilidad de integrar
+componentes de procesamiento de lenguaje natural, bases de datos vectoriales e
+interfaces móviles para crear un asistente educativo funcional. Bajo la
+elección de la metodología RAG, se permitió superar una limitación fundamental
+de los LLMs convencionales: la propensión a la alucinación mediante la
+contextualización estricta de las respuestas en el corpus educativo. El sistema
+construido logró integrar exitosamente las tecnologías planteadas desde el
+inicio del proyecto; se logró la generación de un corpus dedicado a la
+fundamentación de las respuestas obtenidas del modelo, esto a través de la base
+de datos vectorial Pinecone que, a su vez, se comunica correctamente con la
+base de datos relacional y con el contenedor de archivos. Todo este sistema
+permite la obtención apropiada de respuestas basadas únicamente en los
+documentos seleccionados y procesados, garantizando que no exista alucinación
+por parte del modelo y que este se limite a responder únicamente las cuestiones
+que estén relacionadas con el contenido de la base de datos vectorial.
 
-Sin embargo, si bien se cumplieron las expectativas técnicas de implementación,
+Regresando a la Figura \ref{fig:flujo-rag}, el flujo de generación aumentada
+por reucperación (RAG) se ejecuta de manera sistemática al dividir
+correctamente las tareas entre los distintos componentes del sistema. Sin
+embargo, si bien se cumplieron las expectativas técnicas de implementación,
 curado y procesamiento de datos, se identifican claramente nuevas oportunidades
 de mejora a abordar en iteraciones futuras del proyecto, tales como la
 optimización del tiempo de respuesta, la mejora en la gestión de errores y la
@@ -37,39 +59,142 @@ incorporación de mecanismos de supervisión pedagógica que garanticen
 contínuamente la validación de los documentos utilizados para alimentar el
 modelo.
 
-En el plano semántico; con una tasa de éxito del 77.5\%, acompañado de un 82\%
-de congruencia en las respuestas obtenidas, el sistema demostró un desempeño
-adecuado en la generación de respuestas fundamentadas y coherentes con el
-material curado. No obstante, estos resultados también indican áreas de
-oportunidad para mejorar la precisión y profundidad de las respuestas,
-especialmente en temas complejos o ambigüos, así como en temáticas más
-específicas a la realidad sociocultural y contextual del usuario que realiza la
-petición.
+En el plano semántico, el sistema logró una tasa de éxito del 77.78\% en
+consultas válidas y un 100\% de efectividad en el rechazo de preguntas de
+control (no relacionadas al tema de civismo). Esto evidencia que el mecanismo
+de recuperación semántica funciona como barrera efectiva contra respuestas no
+fundamentadas. Este resultado es crucial en contextos educativos, donde la
+precisión fáctica y la confiabilidad de la información son requisitos
+fundamentales. A su vez, la latencia promedio de \textbf{7.8184 segundos} señala un área
+de optimización prioritaria; futuras iteraciones podrían explorar estrategias
+como la precomputación de representaciones numéricas de texto
+(\textit{embeddings}) para consultas frecuentes o la implementación de cachés
+semánticos que detecten similitudes entre preguntas, de manera que se logre
+reducir los tiempos de respuesta.
+
+En comparación con mediciones independientes realizadas a modelos de referencia
+como \textit{GPT-4-0125} y \textit{GPT-4-1106}, cuyos tiempos de respuesta promedio se sitúan
+aproximadamente en \textbf{7.16s} y \textbf{6.36s} respectivamente, la latencia del sistema
+desarrollado (7.8184 s) se mantiene dentro de un rango competitivo para
+arquitecturas basadas en RAG \cite{openai_performance_analysis_2024}. Sin embargo, estas pruebas también revelan
+diferencias relevantes en variabilidad: mientras que los modelos de GPT
+reportan desviaciones estándar cercanas a \textbf{0.59s} y \textbf{1.45s} \cite{openai_performance_analysis_2024}, el comportamiento
+del prototipo presenta fluctuaciones asociadas a su naturaleza distribuida, que
+depende de la recuperación semántica, el acceso a la base vectorial y la
+posterior generación de la respuesta. Esta comparación refuerza la importancia
+de explorar mecanismos de optimización orientados a reducir la latencia global del sistema.
+
+Adicionalmente, se obtuvo una congruencia fáctica del 81.81\%; es decir, una
+mayor parte de las pruebas realizadas presentaron el comportamiento esperado.
+Esta métrica fue obtenida a través de las preguntas de \textbf{consulta} y
+preguntas de \textbf{control} (temas no pertinentes). En el caso de las
+consultas, la congruencia resulta negativa cuando el modelo no es capaz de
+responder, ya que se rompe el comportamiento esperado de encontrar el contexto
+específico para contestar la pregunta. Por otro lado, en el caso de las
+preguntas de control, la congruencia es positiva cuando el modelo efectivamente
+se niega a responder, ya que se espera que identifique que esta petición está
+fuera de su alcance y propósito.
+
+Si bien se detectan áreas de mejora a abarcar en próximas fases del proyecto,
+las métricas cuantitativas obtenidas por el sistema, permiten demostrar que
+este alcanzó un desempeño adecuado en la generación de respuestas fundamentadas
+y coherentes con el material curado.
+
+Por otro lado, al analizar las respuestas generadas por el sistema y su
+comparación con las fuentes extraídas y seleccionadas, se revelan patrones
+significativos sobre el comportamiento del flujo RAG. La fidelidad efectiva del
+82.86\% (considerando coincidencias exactas y parciales) indica que el sistema
+logra, en la mayoría de los casos planteados, recuperar y utilizar información
+relevante del corpus. Sin embargo, la distribución de los tipos de coincidencia
+(31.43\% exacta, 51.43\% parcial y 17.14\% nula) merece una consideración
+detallada y una iteración dedicada exhaustivamente a la optimización de la
+calidad de respuestas obtenidas.
+
+Cabe aclarar que la coincidencia exacta se define como aquella en la que la
+consulta realizada al asistente recuperó información proveniente de las mismas
+referencias esperadas. Los casos en los que se obtienen las mismas referencias
+pero en distinto orden de prioridad pueden deberse a que la selección manual
+inicial (realizada sin el acompañamiento de un experto en el dominio de
+educación) no ponderó adecuadamente el peso conceptual de cada referencia. Por
+ello, al obtener el contexto mediante Pinecone, la prioridad de las referencias
+puede variar.
+
+Por otro lado, los casos de coincidencia parcial evidencian que el modelo puede
+utilizar referencias que no fueron consideradas durante la selección manual o
+que algunas referencias incluidas en dicha selección (nuevamente, limitada por
+la falta de un especialista en educación) no obtuvieron un puntaje suficiente
+para ser seleccionadas como contexto por Pinecone. Esto explica por qué el
+sistema eligió ciertos fragmentos distintos a los previstos.
+
+Las coincidencias parciales, que representan más de la mitad de los casos,
+sugieren que el sistema posee flexibilidad semántica para identificar
+información relevante más allá de lo estrictamente anticipado. Este
+comportamiento puede interpretarse positivamente como capacidad de inferencia
+contextual, aunque también subraya la importancia de revisar la estrategia de
+segmentación empleada, especialmente considerando que sin la guía de un experto
+en educación podrían haberse definido fragmentos o criterios de segmentación
+subóptimos. Esto debe tomarse en cuenta para mejorar futuras iteraciones del
+sistema.
+
+Por su parte, los casos de coincidencia nula (17.14\%), donde el sistema
+responde correctamente pero con referencias diferentes a las esperadas, podrían
+indicar redundancia temática en el corpus, o bien, limitaciones en el proceso
+de recuperación. Iteracioes posteriores podrían dedicarse a la incorporación de
+análisis de similitud semántica entre documentos, incluido en el flujo de
+procesamiento, de manera que se pueda determinar si estas discrepancias
+representan variaciones conceptuales legítimas o si dependen directamente de
+estrategias de mejora en el indexado vectorial.
 
 Desde una perspectiva pedagógica, si bien el proyecto fue ideado no como una
 herramienta de enseñanza directa, sino como un asistente secundario que
 acompañe a los estudiantes en las inquietudes que los aquejen al salir del
-salón de clases, se reconoce la importancia de evaluar el impacto real que este
-tipo de tecnologías pueden tener en el aprendizaje y desarrollo ético de los
-jóvenes. En este sentido, futuras iteraciones deberían centrarse en la
-implementación de pruebas piloto con estudiantes y educadores, para medir no
-solo la eficacia técnica del asistente, sino también su capacidad para fomentar
-la reflexión crítica y el compromiso ciudadano.
+salón de clases, el proyecto demuestra el potencial de los asistentes basados
+en IA para complementar los procesos de formación ciudadana. El enfoque
+socrático implementado, evidenciado en respuestas que invitan a la reflexión
+más que a la memorización, alinea con los principios de educación moral y con
+las prácticas de tutoría inteligente.
 
-Finalmente, desde una perspectiva visual, el diseño de la aplicación móvil fue
-construido a partir de componentes y directrices de diseño centradas en la
-experiencia de usuario usual de un propietario de dispositivos
-\textit{Android}, pensado así para asegurar un mayor alcance entre la población
-objetivo. No obstante, se identifican oportunidades de mejora en la interfaz
-gráfica y en la experiencia de usuario, las cuales podrían optimizarse a través
-de pruebas de usabilidad con usuarios reales, para garantizar que la
-herramienta sea intuitiva, accesible y atractiva para los jóvenes. Cabe
-resaltar que, al no realizarse contacto directo con el usuario objetivo en
-ningún momento del desarrollo de esta fase, si bien se tomaron en cuenta buenas
-prácticas de diseño y la información documentada, esto podría no reflejar de
-manera fiel las necesidades y preferencias reales de los estudiantes
-guatemaltecos que se pretende que utilicen la herramienta; valdría la pena
-realizar estudios centrados en cómo los colores, tipografías, distribución de
-elementos y flujos de navegación impactan en la experiencia del usuario final.
+No obstante, la tasa de éxito del 77.78\% también revela limitaciones
+significativas: en las pruebas funcionales se identificaron 7 solicitudes
+fallidas relacionadas con la conexión a internet, las cuales no se incluyeron
+en el análisis porque el enfoque estaba orientado a la fiabilidad semántica de
+las respuestas; sin embargo, el Anexo \ref{tab:consultas-resultados} muestra un
+total de 10 consultas que no pudieron ser respondidas, equivalentes al 18.18\%
+del total. Este hallazgo sugiere brechas en la cobertura temática del corpus
+disponible al momento de las pruebas y, además, refuerza la importancia de
+contar con un experto en el dominio educativo, cuya ausencia limitó la
+definición de contenidos esenciales y la capacidad del sistema para manejar
+consultas complejas o ambiguas.
 
-Resulta pertinente afirmar, entonces, que el proyecto \textit{Sapien - Ciudadano Digital} busca sentar las bases para la mejora continua del proyecto, enfocado en implementar la estructura tecnológica básica necesaria para la interacción con el modelo, la generación continua del \textit{corpus} y los criterios de diseño iniciales para continuar el desarrollo de la aplicación móvil. Se logró la implementación técnica esperada, tomando en cuenta las limitaciones relacionadas con la falta de retroalimentación directa y validación empírica con usuarios finales. Sin embargo, esta primera fase del proyecto permite demostrar cómo la integración de tecnologías de inteligencia artificial puede contribuir al fortalecimiento de la educación en valores y formación ciudadana en contextos con recursos limitados, lo que abre la puerta a futuras investigaciones y desarrollos en este campo.
+Desde una perspectiva visual, el diseño móvil basado en \textit{Material
+    Design} resultó adecuado para un contexto de recursos limitados, facilitando la
+accesibilidad y la usabilidad. No obstante, se identifican oportunidades de
+mejora en la interfaz gráfica y en la experiencia de usuario que podrían
+optimizarse mediante pruebas de usabilidad con usuarios reales, a fin de
+garantizar que la herramienta sea intuitiva, accesible y atractiva para los
+jóvenes.
+
+Es importante señalar que, debido a la ausencia de interacción directa con el
+usuario objetivo durante esta fase, el diseño se fundamentó únicamente en
+buenas prácticas y documentación disponible, lo cual podría no reflejar de
+forma precisa las necesidades y preferencias reales de los estudiantes
+guatemaltecos. Por ello, sería recomendable realizar estudios específicos sobre
+el impacto de colores, tipografías, distribución de elementos y flujos de
+navegación en la experiencia del usuario final. A su vez, resalta la
+importancia de contar con un especialista en diseño de aplicaciones que asegure
+un enfoque adecuado para priorizar tanto la usabilidad y apariencia visual
+agradable, de manera que la aplicación cumpla con su propósito a la vez que
+resulta amigable para el usuario objetivo
+
+Resulta pertinente afirmar, entonces, que el proyecto \textit{Ciudadano
+    Digital} busca sentar las bases para la mejora continua del proyecto, enfocado
+en implementar la estructura tecnológica básica necesaria para la interacción
+con el modelo, la generación continua del corpus y los criterios de diseño
+iniciales para continuar el desarrollo de la aplicación móvil. Se logró la
+implementación técnica esperada, tomando en cuenta las limitaciones
+relacionadas con la falta de retroalimentación directa y validación empírica
+con usuarios finales. Sin embargo, esta primera fase del proyecto permite
+demostrar cómo la integración de tecnologías de inteligencia artificial puede
+contribuir al fortalecimiento de la educación en valores y formación ciudadana
+en contextos con recursos limitados, lo que abre la puerta a futuras
+investigaciones y desarrollos en este campo.
