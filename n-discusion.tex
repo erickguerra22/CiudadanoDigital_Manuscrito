@@ -4,14 +4,14 @@ y en valores morales, lo que evidencia la viabilidad técnica y conceptual de la
 propuesta inicial, así como el desarrollo de una arquitectura tecnológica y un
 flujo de trabajo adecuados para lograr el alcance de los objetivos planteados.
 La integración de un mecanismo de generación mejorada por recuperación (RAG,
-por sus siglas en inglés) con modelos grandes de lenguaje (LLM, por sus
-siglas en inglés) demostró ser una estrategia efectiva para ofrecer respuestas
+por sus siglas en inglés) con modelos grandes de lenguaje (LLM, por sus siglas
+en inglés) demostró ser una estrategia efectiva para ofrecer respuestas
 contextualizadas y fundamentadas en un corpus educativo que, por su parte,
 también cuenta con una metodología específica para la selección y procesado del
 mismo.
 
 Como se mencionó al inicio de este documento, el desarrollo de
-\textit{Ciudadano Digital} contempla la base técnica que busca demostrar la
+\textit{Ciudadano Digital} contempla la base técnica que buscó demostrar la
 viabilidad tecnológica de las herramientas para conformar un sistema de
 generación mejorada por recuperación efectivo. Para este punto, como se
 mencionó en la justificación, se optó por centrar el funcionamiento de la
@@ -48,16 +48,30 @@ documentos seleccionados y procesados, garantizando que no exista alucinación
 por parte del modelo y que este se limite a responder únicamente las cuestiones
 que estén relacionadas con el contenido de la base de datos vectorial.
 
-Regresando a la Figura \ref{fig:flujo-rag}, el flujo de generación mejorada
-por reucperación se ejecuta de manera sistemática al dividir
-correctamente las tareas entre los distintos componentes del sistema. Sin
-embargo, si bien se cumplieron las expectativas técnicas de implementación,
-curado y procesamiento de datos, se identifican claramente nuevas oportunidades
-de mejora a abordar en iteraciones futuras del proyecto, tales como la
-optimización del tiempo de respuesta, la mejora en la gestión de errores y la
-incorporación de mecanismos de supervisión pedagógica que garanticen
-contínuamente la validación de los documentos utilizados para alimentar el
-modelo.
+En este proceso, también fue necesario establecer parámetros operativos para
+controlar la calidad de la recuperación semántica, entre ellos el umbral mínimo
+de similitud utilizado para determinar cuándo un vector devuelto por Pinecone
+debe considerarse relevante. En esta fase del proyecto se definió un valor de
+0.4, seleccionado tras pruebas preliminares en las que valores inferiores
+no lograban evitar la alucinación del modelo y valores demasiado altos descartaban
+información potencialmente útil debido a la variabilidad natural del lenguaje.
+Cabe resaltar que este valor no es estático, ya que puede ajustarse a medida
+que el corpus crece y se diversifica. Cuando el conjunto de datos contiene más
+ejemplos y categorías semánticas, aumenta también la densidad de vectores
+similares entre sí, lo que puede requerir elevar o reducir el umbral según el
+comportamiento observado. La elección de 0.4 como un umbral inicial funciona como un punto
+de partida razonable, sujeto a recalibración conforme el sistema incorpore más
+información y se refinen las necesidades de exactitud.
+
+Regresando a la Figura \ref{fig:flujo-rag}, el flujo de generación mejorada por
+recuperación se ejecuta de manera sistemática al dividir correctamente las
+tareas entre los distintos componentes del sistema. Sin embargo, si bien se
+cumplieron las expectativas técnicas de implementación, curado y procesamiento
+de datos, se identifican claramente nuevas oportunidades de mejora a abordar en
+iteraciones futuras del proyecto, tales como la optimización del tiempo de
+respuesta, la mejora en la gestión de errores y la incorporación de mecanismos
+de supervisión pedagógica que garanticen continuamente la validación de los
+documentos utilizados para alimentar el modelo.
 
 En el plano semántico, el sistema logró una tasa de éxito del 77.78\% en
 consultas válidas y un 100\% de efectividad en el rechazo de preguntas de
@@ -65,24 +79,26 @@ control (no relacionadas al tema de civismo). Esto evidencia que el mecanismo
 de recuperación semántica funciona como barrera efectiva contra respuestas no
 fundamentadas. Este resultado es crucial en contextos educativos, donde la
 precisión fáctica y la confiabilidad de la información son requisitos
-fundamentales. A su vez, la latencia promedio de \textbf{7.8184 segundos} señala un área
-de optimización prioritaria; futuras iteraciones podrían explorar estrategias
-como la precomputación de representaciones numéricas de texto
-(\textit{embeddings}) para consultas frecuentes o la implementación de cachés
-semánticos que detecten similitudes entre preguntas, de manera que se logre
-reducir los tiempos de respuesta.
+fundamentales. A su vez, la latencia promedio de \textbf{7.8184 segundos}
+señala un área de optimización prioritaria; futuras iteraciones podrían
+explorar estrategias como la precomputación de representaciones numéricas de
+texto (\textit{embeddings}) para consultas frecuentes o la implementación de
+cachés semánticos que detecten similitudes entre preguntas, de manera que se
+logre reducir los tiempos de respuesta.
 
 En comparación con mediciones independientes realizadas a modelos de referencia
-como \textit{GPT-4-0125} y \textit{GPT-4-1106}, cuyos tiempos de respuesta promedio se sitúan
-aproximadamente en \textbf{7.16s} y \textbf{6.36s} respectivamente, la latencia del sistema
-desarrollado (7.8184 s) se mantiene dentro de un rango competitivo para
-arquitecturas basadas en RAG \cite{openai_performance_analysis_2024}. Sin embargo, estas pruebas también revelan
-diferencias relevantes en variabilidad: mientras que los modelos de GPT
-reportan desviaciones estándar cercanas a \textbf{0.59s} y \textbf{1.45s} \cite{openai_performance_analysis_2024}, el comportamiento
-del prototipo presenta fluctuaciones asociadas a su naturaleza distribuida, que
-depende de la recuperación semántica, el acceso a la base vectorial y la
-posterior generación de la respuesta. Esta comparación refuerza la importancia
-de explorar mecanismos de optimización orientados a reducir la latencia global del sistema.
+como \textit{GPT-4-0125} y \textit{GPT-4-1106}, cuyos tiempos de respuesta
+promedio se sitúan aproximadamente en \textbf{7.16s} y \textbf{6.36s}
+respectivamente, la latencia del sistema desarrollado (7.8184 s) se mantiene
+dentro de un rango competitivo para arquitecturas basadas en RAG
+\cite{openai_performance_analysis_2024}. Sin embargo, estas pruebas también
+revelan diferencias relevantes en variabilidad: mientras que los modelos de GPT
+reportan desviaciones estándar cercanas a \textbf{0.59s} y \textbf{1.45s}
+\cite{openai_performance_analysis_2024}, el comportamiento del prototipo
+presenta fluctuaciones asociadas a su naturaleza distribuida, que depende de la
+recuperación semántica, el acceso a la base vectorial y la posterior generación
+de la respuesta. Esta comparación refuerza la importancia de explorar
+mecanismos de optimización orientados a reducir la latencia global del sistema.
 
 Adicionalmente, se obtuvo una congruencia fáctica del 81.81\%; es decir, una
 mayor parte de las pruebas realizadas presentaron el comportamiento esperado.

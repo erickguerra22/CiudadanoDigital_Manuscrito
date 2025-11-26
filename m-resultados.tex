@@ -87,9 +87,9 @@ A través de este proceso, se obtuvo:
 Durante el cuarto \textit{sprint} se desarrolló la aplicación móvil nativa para
 Android utilizando Kotlin y el patrón de arquitectura MVVM (Modelo-Vista-Modelo
 de Vista). Esta estructura permitió mantener una organización clara del código,
-lo que facilita la escalabilidad y el mantenimiento. Como resultado, se obtuvo una
-interfaz intuitiva y accesible para cualquier usuario, incluso sin experiencia
-previa en herramientas similares.
+lo que facilita la escalabilidad y el mantenimiento. Como resultado, se obtuvo
+una interfaz intuitiva y accesible para cualquier usuario, incluso sin
+experiencia previa en herramientas similares.
 
 \subsection{Flujo de interacción}
 
@@ -118,9 +118,9 @@ funciones de la aplicación.
                   \item \textbf{\textit{DocumentsFragment}:} Muestra la lista de documentos cargados y permite su gestión.
             \end{itemize}
 
-      \item La navegación entre fragmentos se implementó mediante el componente de navegación de Android (\textit{Navigation
-                  Component}), lo cual garantiza transiciones coherentes y control sobre la pila
-            de navegación.
+      \item La navegación entre fragmentos se implementó mediante el componente de
+            navegación de Android (\textit{Navigation Component}), lo cual garantiza
+            transiciones coherentes y control sobre la pila de navegación.
       \item Se integraron indicadores de carga y estado de conexión para brindar
             retroalimentación inmediata durante las consultas al LLM.
 \end{itemize}
@@ -172,8 +172,9 @@ disponibles para todos los usuarios.
 
 \subsection{Funcionalidades del Administrador}
 
-Por otro lado, existen funciones exclusivas para el rol \textbf{Administrador}, orientadas al
-control del corpus documental usado por el modelo. Estas funciones incluyen:
+Por otro lado, existen funciones exclusivas para el rol \textbf{Administrador},
+orientadas al control del corpus documental usado por el modelo. Estas
+funciones incluyen:
 
 \begin{itemize}
       \item \textbf{Ver documentos:} Acceso al listado de archivos cargados y opción de abrir el documento original.
@@ -237,7 +238,8 @@ realizada:
 Como se mencionó, el Anexo \ref{tab:consultas-referencias} muestra la relación
 entre los documentos que se espera que el modelo seleccione para responder cada
 pregunta, frente a las referencias que finalmente utilizó para extraer el
-contexto necesario. Se obtienen los siguientes resultados para las 3 clasificaciones descritas previamente:
+contexto necesario. Se obtienen los siguientes resultados para las 3
+clasificaciones descritas previamente en la sección 7.5.1 de este documento:
 \begin{itemize}
       \item \textbf{Coincidencia exacta:} Se evidencia en las filas 13, 16, 17, 22, 23, 34, 39, 42, 46, 48 y 53. Destaca el caso mostrado en la fila 13, puesto que si bien las referencias utilizadas son las mismas que las esperadas, difiere el orden de prioridad interpretado por el modelo.
       \item\textbf{Coincidencia parcial:} Se evidencia este comportamiento en las filas 1, 7, 11, 14, 18, 26, 28, 33, 36, 38, 41, 43, 44, 47, 49, 51, 52 y 55.

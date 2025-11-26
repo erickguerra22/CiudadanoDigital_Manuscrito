@@ -1,17 +1,32 @@
 El desarrollo del proyecto \textit{Ciudadano Digital} se llevó a cabo bajo el
-marco de trabajo SCRUM, un enfoque ágil ampliamente utilizado en ingeniería de
-software que permite la entrega incremental de productos funcionales mediante
-ciclos cortos de desarrollo denominados \textit{sprints}. Esta metodología fue
-seleccionada debido a su flexibilidad, capacidad de adaptación a cambios en los
-requerimientos y enfoque en la mejora continua, elementos clave en un proyecto
-de innovación educativa..
+marco de trabajo SCRUM, un enfoque ágil que permite la entrega incremental de
+productos funcionales mediante ciclos cortos de desarrollo (\textit{sprints}).
+Esta metodología fue seleccionada debido a su flexibilidad, capacidad de
+adaptación a cambios en los requerimientos y enfoque en la mejora continua,
+elementos clave en un proyecto de innovación educativa.
 
 A lo largo del proceso, se definieron seis \textit{sprints} principales, cada
-uno con objetivos concretos y entregables verificables, orientados a la
-obtención progresiva de un prototipo funcional y validado de la aplicación.
-Cada \textit{sprint} tuvo una duración de entre tres y cuatro semanas,
-ajustándose según la complejidad técnica y la carga académica del periodo
-correspondiente.
+uno orientado a la obtención progresiva de un prototipo funcional y validado de
+la aplicación (Cuadro \ref{tab:estructura-sprints}). Cada \textit{sprint} tuvo
+una duración de entre tres y cuatro semanas, ajustándose según la complejidad
+técnica y la carga académica del periodo correspondiente.
+
+\begin{table}[H]
+      \centering
+      \renewcommand{\arraystretch}{1.2}
+      \begin{tabular}{|l|p{8cm}|c|}
+            \hline
+            \textbf{\textit{Sprint}} & \textbf{Meta Principal}                                  & \textbf{Duración} \\ \hline
+            \textit{Sprint} 1        & Identificación del perfil de usuario objetivo (Persona). & 3 semanas         \\ \hline
+            \textit{Sprint} 2        & Recolección y procesamiento del contenido educativo.     & 4 semanas         \\ \hline
+            \textit{Sprint} 3        & Construcción e implementación del servidor.              & 4 semanas         \\ \hline
+            \textit{Sprint} 4        & Desarrollo de la interfaz móvil en Kotlin.               & 4 semanas         \\ \hline
+            \textit{Sprint} 5        & Pruebas y validación funcional.                          & 3 semanas         \\ \hline
+            \textit{Sprint} 6        & Documentación, presentación y cierre del proyecto.       & 3 semanas         \\ \hline
+      \end{tabular}
+      \caption[Estructura de los \textit{Sprints}]{Estructura de los \textit{sprints} del proyecto, incluyendo la meta principal y duración de cada uno.}
+      \label{tab:estructura-sprints}
+\end{table}
 
 Cada ciclo SCRUM siguió las fases de planificación, desarrollo, revisión y
 retrospectiva, bajo los siguientes principios:
@@ -31,69 +46,11 @@ retrospectiva, bajo los siguientes principios:
             siguiente \textit{sprint}.
 \end{itemize}
 
-El enfoque SCRUM permitió mantener un flujo de trabajo iterativo, controlado y
-adaptable, asegurando que cada componente técnico se ejecutara tomando como
-enfoque la experiencia esperada del usuario objetivo. En este caso, el usuario
-fue representado a través de una \textbf{Persona} descrita con base en un
-proceso de investigación y perfilamiento descrito en el primer \textit{sprint}.
-
-A partir del segundo \textit{sprint}, los entregables se enfocaron en la
-construcción progresiva del sistema técnico, desde la recopilación y
-procesamiento de contenido educativo, hasta la implementación del servidor, el
-desarrollo de la interfaz móvil y las fases finales de validación y
-documentación.
-
 El producto mínimo viable (MVP, por sus siglas en inglés) obtenido al finalizar
 el último \textit{sprint} constituye una versión funcional del asistente
 inteligente de educación ciudadana, capaz de interactuar con el usuario,
 contextualizar sus preguntas y generar respuestas basadas en la información
 previamente curada y vectorizada.
-
-\section{Enfoque metodológico aplicado al contexto del proyecto}
-La metodología utilizada en esta primera iteración de \textit{Ciudadano
-      Digital} se basó en SCRUM, adaptada a las particularidades de un proyecto
-sociotecnológico cuyo objetivo principal fue validar la viabilidad técnica de
-integrar un sistema de generación mejorada por recuperación (RAG, por sus
-siglas en inglés) dentro de un entorno educativo. Para ello, se incorporaron
-actividades orientadas tanto al desarrollo incremental del software como al
-análisis contextual del futuro usuario final, sin que esto implicara evaluar
-impactos pedagógicos en esta etapa. La estructura de seis \textit{sprints}
-permitió organizar el trabajo de manera secuencial y enfocada, atendiendo los
-componentes esenciales del sistema.
-
-En cada \textit{sprint} se integraron tareas específicas relacionadas con el
-levantamiento de requisitos tecnológicos, la definición del perfil preliminar
-del usuario objetivo y la verificación de compatibilidad entre las decisiones
-técnicas y las necesidades operativas del macroproyecto. La definición del
-usuario objetivo sirvió como referencia para orientar los objetivos de los
-primeros \textit{sprints}, mientras que los siguientes se concentraron en el
-procesamiento del corpus, la construcción del servidor, el desarrollo de la
-interfaz móvil y la validación funcional básica. Esta estructura permitió que
-las decisiones técnicas avanzaran de forma ordenada y coherente con el
-propósito de esta iteración.
-
-\subsection{Estructura de los \textit{Sprints}}
-La fase metodológica del desarrollo del proyecto estuvo compuesta por seis \textit{sprints}, cada uno con un enfoque y duración específicos (Cuadro \ref{tab:estructura-sprints}). El propósito de esta organización fue facilitar la gestión del proyecto, permitiendo una entrega progresiva de resultados y la incorporación de retroalimentación continua, la cual se llevó a cabo al finalizar cada \textit{sprint} evaluando si se alcanzó el objetivo establecido para el mismo a través de las tareas completadas.
-\begin{table}[H]
-      \centering
-      \renewcommand{\arraystretch}{1.2}
-      \begin{tabular}{|l|p{8cm}|c|}
-            \hline
-            \textbf{\textit{Sprint}} & \textbf{Meta Principal}                                  & \textbf{Duración} \\ \hline
-            \textit{Sprint} 1        & Identificación del perfil de usuario objetivo (Persona). & 3 semanas         \\ \hline
-            \textit{Sprint} 2        & Recolección y procesamiento del contenido educativo.     & 4 semanas         \\ \hline
-            \textit{Sprint} 3        & Construcción e implementación del servidor.              & 4 semanas         \\ \hline
-            \textit{Sprint} 4        & Desarrollo de la interfaz móvil en Kotlin.               & 4 semanas         \\ \hline
-            \textit{Sprint} 5        & Pruebas y validación funcional.                          & 3 semanas         \\ \hline
-            \textit{Sprint} 6        & Documentación, presentación y cierre del proyecto.       & 3 semanas         \\ \hline
-      \end{tabular}
-      \caption[Estructura de los \textit{Sprints}]{Estructura de los \textit{sprints} del proyecto, incluyendo la meta principal y duración de cada uno.}
-      \label{tab:estructura-sprints}
-\end{table}
-
-Al final, cada \textit{sprint} culminó con un entregable verificable que sirvió
-como criterio de avance para el siguiente ciclo, asegurando así la trazabilidad
-y coherencia entre la visión inicial del proyecto y el producto final obtenido.
 
 \section{\textit{Sprint} 1: Identificación del perfil de usuario objetivo}
 \textbf{Duración:} 3 semanas
@@ -169,30 +126,28 @@ exitosa de las siguientes tareas:
 \textbf{Duración:} 4 semanas
 
 Este \textit{sprint} se centró en recopilar, procesar y estructurar el
-contenido educativo inicial que alimentará al asistente virtual de inteligencia
-artificial, con la finalidad de garantizar que el sistema pueda generar
-respuestas precisas y contextualizadas sobre formación ciudadana y valores
-morales, basándose en información confiable y organizada de manera semántica.
-Se combinó la selección documental, curación de contenido, segmentación
-temática y almacenamiento vectorial de manera sistemática, asegurando la
-trazabilidad y calidad de los datos utilizados.
+contenido educativo inicial que alimenta inicialmente al asistente virtual de
+inteligencia artificial. El fin de este proceso fue garantizar que el sistema
+puediera generar respuestas precisas y contextualizadas sobre formación
+ciudadana y valores morales, basándose en información confiable y organizada de
+manera semántica.
 
 \subsection{Ejecución}
 
-Para cumplir el objetivo se desarrolló un proceso sistemático dividido en
-cuatro etapas principales: selección documental, curación, segmentación
-temática, y vectorización (a través de OpenAI) con almacenamiento en Pinecone.
-Este flujo se diseñó de forma reproducible para permitir futuras ampliaciones o
-actualizaciones del corpus de información.
+Se desarrolló un proceso sistemático dividido en cuatro etapas principales:
+selección documental, curación, segmentación temática, y vectorización (a
+través de OpenAI) con almacenamiento en Pinecone. Este flujo se diseñó de forma
+reproducible para permitir futuras ampliaciones o actualizaciones del corpus de
+información.
 
 \begin{enumerate}
 
       \item \textbf{Selección documental}
             \begin{itemize}
-                  \item \textbf{Identificación de fuentes oficiales y confiables:} se recopilaron documentos emitidos por el Ministerio de Educación de Guatemala, tales como contenidos contemplados en el \textbf{Currículo Nacional Base (CNB)} para los grados educativos abarcados por el rango de edad establecido, así como guías orientacionales dirigidas a los educadores, con el fin de que el asistente también tenga conocimiento de cómo interactuar con los usuarios objetivo de forma correcta.
+                  \item \textbf{Identificación de fuentes oficiales y confiables:} se recopilaron documentos emitidos por el Ministerio de Educación de Guatemala, tales como contenidos contemplados en el \textbf{Currículo Nacional Base (CNB)} para los grados educativos abarcados por el rango de edad establecido. También se recolectaron guías orientacionales dirigidas a los educadores, con el fin de que el asistente también tenga conocimiento de cómo interactuar con los usuarios objetivo de forma correcta.
                   \item \textbf{Revisión de fuentes internacionales:} se incorporaron publicaciones y estudios de entidades internacionales como la OEA (Organización de Estados Americanos), la UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura) o universidades extranjeras. Mediante este contenido, se buscó alimentar aún más el conocimiento teórico del asistente, así como diversificar las fuentes de información a contextos internacionales.
-                  \item \textbf{Estudios complementarios:} Además de las fuentes mencionadas, también se incluye la recopilación de libros educativos de entidades independientes (tales como IGER, Instituto Guatemalteco de Educación Radifónica) así como de autores externos. \cite{iger2024cienciasciudadana}
-                  \item \textbf{Registro de metadatos:} cada documento fue almacenado en un contenedor tipo \textbf{Amazon S3} (\textit{Simple Storage Service}), mientras que sus metadatos asociados (título, autor, año de publicación) así como la ruta de almacenamiento relativa dentro del contenedor, fueron almacenados en la base de datos vectorial, siguiendo el siguiente esquema:
+                  \item \textbf{Estudios complementarios:} Además de las fuentes mencionadas, también se incluyó la recopilación de libros educativos de entidades independientes (tales como IGER, Instituto Guatemalteco de Educación Radifónica) así como de autores externos. \cite{iger2024cienciasciudadana}
+                  \item \textbf{Registro de metadatos:} cada documento fue almacenado en un contenedor tipo \textbf{Amazon S3} (\textit{Simple Storage Service}). Los metadatos asociados a cada documento (título, autor, año de publicación), así como la ruta de almacenamiento relativa dentro del contenedor, fueron almacenados en la base de datos vectorial, según el siguiente esquema:
                         \begin{itemize}
                               \item Identificador único (\texttt{DocumentID})
                               \item Identificador del usuario que sube el documento (\texttt{UserID})
@@ -207,7 +162,7 @@ actualizaciones del corpus de información.
 
       \item \textbf{Curación y digitalización}
             \begin{itemize}
-                  \item \textbf{Conversión de documentos:} los archivos se transformaron a texto plano (\texttt{.txt}) con codificación UTF-8 mediante herramientas como \texttt{NFKD} o \texttt{Tesseract OCR} (esta última extrae de forma automática el texto reconocible de imágenes o documentos PDF escaneados).
+                  \item \textbf{Conversión de documentos:} los archivos se transformaron a texto plano (\texttt{.txt}) con codificación UTF-8 mediante herramientas como \texttt{NFKD} (siglas en inglés para Descomposición de Compatibilidad de Formas de Normalización) o \texttt{Tesseract OCR}. Esta última extrae de forma automática el texto reconocible de imágenes o documentos PDF escaneados (Reconocimiento Óptico de Caracteres).
                   \item \textbf{Limpieza y normalización:} se eliminaron saltos de línea innecesarios, espacios vacíos múltiples y caracteres especiales, a través del Algoritmo \ref{alg:limpiar-texto}.
 
                         \begin{algorithm}[H]
@@ -242,7 +197,7 @@ actualizaciones del corpus de información.
                               \end{algorithmic}
                         \end{algorithm}
 
-                  \item \textbf{Validación de integridad:} se verificó que los textos conservaran coherencia y completitud, eliminando duplicados o secciones ilegibles, siguiendo el flujo del Algoritmo \ref{alg:validar-integridad}.
+                  \item \textbf{Validación de integridad:} se verificó que los textos conservaran coherencia y completitud al eliminar duplicados o secciones ilegibles. Se siguió el flujo descrito en el Algoritmo \ref{alg:validar-integridad}.
 
                         \begin{algorithm}[H]
                               \caption{Validación de integridad de texto}
@@ -271,15 +226,15 @@ actualizaciones del corpus de información.
       \item \textbf{Segmentación temática}
             \begin{itemize}
                   \item \textbf{Diseño del esquema de categorías:} se definieron seis temas guía iniciales: \textit{ética y moral}, \textit{participación ciudadana}, \textit{derechos humanos}, \textit{convivencia y respeto}, \textit{responsabilidad social} y \textit{cultura digital}. Esta lista puede incrementarse con el tiempo, a medida que el modelo procese una mayor cantidad de archivos y no sea capaz de incluirlos en una de las categorías predefinidas.
-                  \item \textbf{División en fragmentos:} los textos fueron segmentados automáticamente en bloques de 20 a 150 palabras, conservando coherencia semántica.
+                  \item \textbf{División en fragmentos:} los textos fueron segmentados automáticamente en bloques de 20 a 150 palabras. Se respetaron signos de puntuación, saltos de línea, listas y numeración de títulos con el fin de preservar la coherencia semántica.
                   \item \textbf{Etiquetado y registro:} cada fragmento se asoció a una categoría temática y se describió con los siguientes metadatos:
                         \texttt{document\_id} (identificador único del documento en la base de datos relacional), \texttt{text} (contenido original del documento), \texttt{source} (título original del documento), \texttt{author} (autor o institución que realizó el documento), \texttt{year} (año de publicación del documento original), \texttt{category} (categoría temática asociada al fragmento), \texttt{sha1} (\textit{hash} único del fragmento, para evitar duplicados), \texttt{uploaded\_at} (fecha y hora de publicación del fragmento, en formato ISO).
             \end{itemize}
 
       \item \textbf{Vectorización y almacenamiento en Pinecone}
             \begin{itemize}
-                  \item \textbf{Generación de representaciones numéricas:} cada fragmento fue procesado con el modelo \textit{text-embedding-3-small} de OpenAI, generando vectores de 1536 dimensiones.
-                  \item \textbf{Normalización final:} la asignación del metadato \textit{sha1} en cada vector, permitió validar la ausencia de duplicados, lo que asegura la unicidad de cada vector en la base de datos vectorial.
+                  \item \textbf{Generación de representaciones numéricas:} cada fragmento fue procesado con el modelo \textit{text-embedding-3-small} de OpenAI, lo que permitió generar vectores de 1536 dimensiones.
+                  \item \textbf{Normalización final:} la asignación del metadato \textit{sha1} en cada vector permitió validar la ausencia de duplicados, lo que asegura la unicidad de cada vector en la base de datos vectorial.
                   \item \textbf{Creación del índice vectorial:} se configuró un índice en Pinecone con los parámetros:
                         \begin{itemize}
                               \item \texttt{name = \guillemetleft{}ciudadano-digital\guillemetright{}}
@@ -326,7 +281,7 @@ actualizaciones del corpus de información.
                         \end{algorithm}
 
                   \item \textbf{Implementación de flujo para procesamiento de archivos}
-                        El sistema obtenido a través del proceso anterior, permite procesar
+                        El sistema obtenido a través del proceso anterior, permitió procesar
                         diversos formatos de archivo:
                         \begin{itemize}
                               \item Documentos PDF (.pdf)
@@ -346,11 +301,11 @@ actualizaciones del corpus de información.
                               \label{fig:procesamiento-docs}
                         \end{figure}
 
-                        El proceso se divide en dos etapas principales:
+                        El proceso se dividió en dos etapas principales:
 
                         \begin{enumerate}
-                              \item \textbf{Extracción y normalización del contenido:} En esta etapa se realiza la lectura y extracción de texto desde los formatos soportados. El flujo incluye la limpieza del texto, la estandarización del formato (identificación de títulos, encabezados y listas para preservar la semántica), la validación de la integridad (omisión de duplicados, normalización de caracteres) y la fragmentación semántica. El producto final resultante está compuesto por fragmentos de texto plano autocontenidos.
-                              \item \textbf{Generación de representaciones numéricas e indexación vectorial:} Cada fragmento de texto se transforma en un vector mediante el modelo de OpenAI \texttt{text-embedding-3-small}. A cada representación numérica de texto, se le asocian metadatos relevantes (identificador del documento original, título, categoría temática, texto original, autor y año de publicación). Posteriormente, se realiza una operación de \textbf{\textit{upsert}} (es decir, insertar o actualizar el registro según corresponda) en el índice vectorial de Pinecone. Simultáneamente, se registra en la base de datos relacional la trazabilidad entre el vector y el documento original almacenado en un contenedor Amazon S3.
+                              \item \textbf{Extracción y normalización del contenido:} En esta etapa se realizó la lectura y extracción de texto desde los formatos soportados. El flujo incluyó la limpieza del texto, la estandarización del formato (identificación de títulos, encabezados y listas para preservar la semántica), la validación de la integridad (omisión de duplicados, normalización de caracteres) y la fragmentación semántica. El producto final resultante está compuesto por fragmentos de texto plano autocontenidos.
+                              \item \textbf{Generación de representaciones numéricas e indexación vectorial:} Cada fragmento de texto se transformó en un vector mediante el modelo de OpenAI \texttt{text-embedding-3-small}. A cada representación numérica de texto, se le asociaron metadatos relevantes (identificador del documento original, título, categoría temática, texto original, autor y año de publicación). Posteriormente, se realiza una operación de \textbf{\textit{upsert}} (es decir, insertar o actualizar el registro según corresponda) en el índice vectorial de Pinecone. Simultáneamente, a través del identificador del documento original, se registró en la base de datos relacional la trazabilidad entre el vector y el archivo almacenado en un contenedor de Amazon S3.
                         \end{enumerate}
             \end{itemize}
 \end{enumerate}
@@ -359,11 +314,11 @@ actualizaciones del corpus de información.
 \textbf{Duración:} 4 semanas
 
 Este \textit{sprint} se enfocó en el diseño, construcción e implementación de
-la arquitectura del servidor del asistente virtual, garantizando la integración
-de bases de datos relacionales y vectoriales, y estableciendo la comunicación
-segura y eficiente con el modelo grande de lenguaje (LLM, por sus siglas en
-inglés) mediante un flujo de generación mejorada por recuperación. Se
-definieron módulos claros bajo el patrón de diseño MVC
+la arquitectura del servidor del asistente virtual. Se buscó garantizar la
+integración de bases de datos relacionales y vectoriales, así como establecer
+la comunicación segura y eficiente con el modelo grande de lenguaje (LLM, por
+sus siglas en inglés) mediante un flujo de generación mejorada por
+recuperación. Se definieron módulos claros bajo el patrón de diseño MVC
 (Modelo-Vista-Controlador), así como servicios complementarios internos en
 Python tanto para la curación y procesamiento de documentos, como para procesar
 consultas y generar respuestas contextualizadas con base en los mismos.
@@ -372,9 +327,9 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 \begin{enumerate}
       \item \textbf{Diseño de arquitectura}
             \begin{itemize}
-                  \item Se adoptó el patrón de diseño \textbf{Modelo–Vista–Controlador (MVC)},
-                        siguiendo la estructura de la Figura \ref{fig:mvc}. Esta arquitectura permite
-                        separar las responsabilidades del sistema, facilitando el mantenimiento y
+                  \item Se adoptó el patrón de diseño \textbf{Modelo–Vista–Controlador (MVC)}, mediante
+                        la estructura de la Figura \ref{fig:mvc}. Esta arquitectura permitió separar
+                        las responsabilidades del sistema, lo que buscó facilitar el mantenimiento y
                         escalabilidad.
 
                         \begin{figure}[H]
@@ -388,15 +343,15 @@ consultas y generar respuestas contextualizadas con base en los mismos.
                         \begin{itemize}
                               \item Representan entidades del sistema: usuarios, chats, mensajes, sesiones,
                                     documentos, categorías.
-                              \item Cada modelo incluye operaciones de creación, lectura, actualización y
+                              \item Cada modelo incluyó operaciones de creación, lectura, actualización y
                                     eliminación de registros (CRUD, por sus siglas en inglés) que se ejecutan
                                     directamente sobre la base de datos según sea requerido.
                               \item A través de la comunicación con los controladores, los modelos gestionan la
                                     persistencia y recuperación de datos de manera eficiente, siguiendo la lógica
                                     de negocio definida.
                         \end{itemize}
-                  \item \textbf{Vistas:} En la implementación del modelo MVC (Modelo-Vista-Controlador), las vistas corresponden a los puntos de conexión expuestos por el API, también llamados rutas o \textbf{\textit{endpoints}}. A través de la consulta a estos puntos de conexión, se tiene acceso a las funciones definidas por el servidor, como registro de usuraios, inicio de sesión, listado de chats, envío de preguntas, entre otros.
-                  \item \textbf{Controladores:} Gestionan la lógica de negocio: validación de datos, comunicación con modelos,
+                  \item \textbf{Vistas:} En la implementación realizada del modelo MVC (Modelo-Vista-Controlador), las vistas corresponden a los puntos de conexión expuestos por el API, también llamados rutas o \textbf{\textit{endpoints}}. A través de la consulta a estos puntos de conexión, se consiguió acceso a las funciones definidas por el servidor; como registro de usuraios, inicio de sesión, listado de chats, envío de preguntas, entre otros.
+                  \item \textbf{Controladores:} Su diseño buscó gestionar la lógica de negocio: validación de datos, comunicación con modelos,
                         manejo de errores y generación de respuestas. El Algoritmo \ref{alg:controlador-solicitudes} ilustra el flujo básico de un controlador típico.
                         \begin{algorithm}[H]
                               \caption{Controlador de solicitudes}
@@ -411,7 +366,7 @@ consultas y generar respuestas contextualizadas con base en los mismos.
                         \end{algorithm}
                   \item \textbf{Módulos auxiliares:}
                         \begin{itemize}
-                              \item \textbf{\textit{Middlewares} (Software intermedio):} corresponden a funciones que son ejecutadas antes de realizar la acción principal de cada punto de conexión. Se encargan de validar la autenticación y seguridad antes de pasar al controlador. El Algoritmo \ref{alg:validar-token} muestra un ejemplo de middleware para validar tokens JWT (JSON \textit{Web Token}, el término \textbf{JSON} corresponde a las siglas en inglés de \textbf{notación de objetos de JavaScript}, constituye un formato de texto sencillo para el intercambio de datos).
+                              \item \textbf{\textit{Middlewares} (Software intermedio):} fueron diseñadas como funciones ejecutadas antes de realizar la acción principal de cada punto de conexión. Se encargan de validar la autenticación y seguridad antes de pasar al controlador. El Algoritmo \ref{alg:validar-token} muestra un ejemplo de middleware para validar tokens JWT (JSON \textit{Web Token}.
                                     \begin{algorithm}[H]
                                           \caption{Validación de token}
                                           \label{alg:validar-token}
@@ -436,9 +391,9 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 
       \item \textbf{Diseño y construcción de bases de datos}
             \subsubsection{Base de datos relacional}
-            Levantada en PostgreSQL, será la encargada de almacenar la información
-            estructurada del sistema, como usuarios, chats, mensajes y sesiones, de manera
-            que se mantenga la persistencia de datos y se facilite la gestión de las
+            Levantada en PostgreSQL, fue la encargada de almacenar la información
+            estructurada del sistema; como usuarios, chats, mensajes y sesiones, de manera
+            que se mantuvo la persistencia de datos y se facilitó la gestión de las
             interacciones del usuario con el asistente virtual. La Figura
             \ref{fig:diagrama-bd-relacional} muestra el diagrama entidad-relación (ER) de
             la base de datos relacional diseñada.
@@ -472,26 +427,24 @@ consultas y generar respuestas contextualizadas con base en los mismos.
             documentos relevantes en función de las preguntas del usuario (sistema de
             generación mejorada por recuperación), se implementó una base de datos
             vectorial utilizando Pinecone. Esta base almacena las representaciones
-            numéricas generadas previamente a partir de los fragmentos de texto,
-            permitiendo consultas rápidas y precisas basadas en similitud semántica. La
-            métrica de similitud de coseno fue seleccionada para evaluar la cercanía entre
-            vectores, optimizando la relevancia de los resultados obtenidos.
+            numéricas generadas previamente a partir de los fragmentos de texto, lo que
+            permitió generar consultas rápidas y precisas basadas en similitud semántica.
 
             \begin{itemize}
-                  \item Motor: Pinecone, con métrica de similitud coseno.
+                  \item Motor: Pinecone.
                   \item Contenido: representaciones numéricas de fragmentos de documentos con metadatos
                         (fuente, categoría, documento, bloque, relevancia).
                   \item Obtención de los fragmentos más relevantes en relación al vector generado a
                         partir de la pregunta realizada. Esto lo realiza Pinecone de forma automática,
-                        dependiendo del método de similitud configurado al momento de crear el índice.
-                        En este caso, se indicó que se utilice la métrica de similitud coseno, puesto
+                        según el método de similitud configurado al momento de crear el índice. En este
+                        caso, se indicó que se utilice la métrica de \textbf{similitud coseno}, puesto
                         que dicha métrica mide el ángulo de inclinación entre vectores, lo que
                         determina qué tan similar es la dirección a la que se dirigen (orientación
                         semántica). La fórmula que guía este cálculo es la siguiente:
                         \[\text{Similitud Coseno} (A, B) = \frac{A \cdot B}{\|A\| \|B\|} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \sqrt{\sum_{i=1}^{n} B_i^2}} \]
             \end{itemize}
 
-            En esta etapa del desarrollo se definió un límite de \textbf{0.4}, lo que
+            En esta etapa del desarrollo se definió un umbral de \textbf{0.4}, lo que
             indica que, para que una representación numérica devuelta por Pinecone sea
             tomada como válida, esta debe tener una coincidencia de, por lo menos, el 40\%
             con la representación numérica de la pregunta. Esta barrera puede variar a
@@ -500,17 +453,17 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 
       \item \textbf{Implementación del modelo LLM y flujo RAG}
 
-            Se implementó un flujo de generación mejorada por recuperación que permite al
+            Se implementó un flujo de generación mejorada por recuperación que permitió al
             asistente virtual generar respuestas fundamentadas en los contenidos educativos
-            previamente indexados. Este flujo integra los siguientes componentes:
+            previamente indexados. Este flujo integró los siguientes componentes:
 
             \begin{enumerate}
-                  \item \textbf{API en NodeJS:} Actúa como servidor principal, orquestando la
+                  \item \textbf{API en NodeJS:} Actúa como servidor principal al orquestar la
                         comunicación entre la aplicación móvil y los servicios de procesamiento
                         de lenguaje natural.
                   \item \textbf{Microservicio en Python:} Gestiona la interacción con el modelo
                         LLM de OpenAI para generar respuestas y procesar documentos.
-                  \item \textbf{API de OpenAI:} Utilizada para la generación de representaciones
+                  \item \textbf{API de OpenAI:} Se utilizó para la generación de representaciones
                         numéricas (\textit{embeddings}) y respuestas contextualizadas.
                   \item \textbf{Base de datos vectorial (Pinecone):} Almacena y permite la
                         recuperación eficiente de las representaciones numéricas generadas a
@@ -533,34 +486,33 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 
             \subsubsection{Arquitectura de almacenamiento distribuido}
 
-            El almacenamiento de información a lo largo del sistema se distribuye en tres
+            El almacenamiento de información a lo largo del sistema se distribuyó en tres
             elementos principales que trabajan de forma coordinada:
 
             \begin{itemize}
-                  \item \textbf{Base de datos relacional (PostgreSQL):} gestor principal de los
+                  \item \textbf{Base de datos relacional (PostgreSQL):} se definió como el gestor principal de los
                         datos estructurados del sistema; almacena información de usuarios, chats,
                         mensajes, sesiones, códigos de recuperación de contraseñas y metadatos
                         básicos de los documentos procesados.
-                  \item \textbf{Base de datos vectorial (Pinecone):} encargada de almacenar las
+                  \item \textbf{Base de datos vectorial (Pinecone):} se designó como encargada de almacenar las
                         representaciones numéricas generadas a partir de los documentos
-                        seleccionados. Constituye la base del funcionamiento RAG, permitiendo
-                        recuperar el contexto necesario según la pregunta realizada para que el
-                        modelo LLM genere respuestas fundamentadas.
-                  \item \textbf{Almacenamiento de documentos originales (AWS S3):} contiene todos
-                        los documentos fuente cargados al sistema, permitiendo su posterior
-                        consulta o descarga por usuarios con rol de \textbf{Administrador}.
+                        seleccionados. Constituye la base del funcionamiento RAG al permitir
+                        recuperar el contexto necesario según la pregunta realizada, de manera que el
+                        modelo LLM pueda generar respuestas fundamentadas.
+                  \item \textbf{Almacenamiento de documentos originales (AWS S3):} implementado para almacenar todos
+                        los documentos originales cargados al sistema. Esto permite realizar la consulta de estos documentos por parte usuarios con rol de \textbf{Administrador}.
             \end{itemize}
 
-            Esta arquitectura distribuida garantiza trazabilidad completa desde cada vector
-            indexado hasta su documento fuente, mientras mantiene la eficiencia en las
-            búsquedas semánticas y la integridad de los datos originales.
+            Esta arquitectura distribuida buscó garantizar la trazabilidad completa desde
+            cada vector indexado hasta su documento fuente, mientras mantuvo la eficiencia
+            en las búsquedas semánticas y la integridad de los datos originales.
 
             \subsubsection{Flujo detallado de procesamiento de consultas}
 
-            El microservicio de Python gestiona el flujo RAG completo, coordinando la
-            interacción entre la base vectorial y el modelo grande de lenguaje para generar
-            respuestas contextualizadas y fundamentadas. El proceso se divide en tres
-            etapas principales:
+            El microservicio de Python gestionó el flujo RAG completo al coordinar la
+            interacción entre la base vectorial y el modelo grande de lenguaje, esto con el
+            fin de generar respuestas contextualizadas y fundamentadas. El proceso se
+            dividió en tres etapas principales:
 
             \begin{enumerate}
                   \item \textbf{Recepción de la pregunta en NodeJS:}
@@ -644,13 +596,13 @@ presentación.
       \item \textbf{Diseño de arquitectura}
             \begin{itemize}
                   \item Se adoptó el patrón de diseño \textbf{Modelo-Vista-Modelo de Vista (MVVM, por
-                              sus siglas en inglés)}, siguiendo la estructura de la Figura \ref{fig:mvvm}.
-                        Esta arquitectura permite separar las responsabilidades del sistema,
-                        facilitando el mantenimiento y escalabilidad. Mediante este patrón de diseño se
-                        logra una comunicación reactiva entre la interfaz de usuario y las fuentes de
-                        datos, a través del uso de componentes de arquitectura de Android como Datos
-                        Observables (\textit{LiveData}), Vista de modelo (\textit{ViewModel}) y
-                        Repositorio (\textit{Repository}).
+                              sus siglas en inglés)} al seguir la estructura de la Figura \ref{fig:mvvm}.
+                        Esta arquitectura permitió separar las responsabilidades del sistema, con el
+                        fin de facilitar el mantenimiento y escalabilidad. Mediante este patrón de
+                        diseño se buscó lograr una comunicación reactiva entre la interfaz de usuario y
+                        las fuentes de datos, a través del uso de componentes de arquitectura de
+                        Android como Datos Observables (\textit{LiveData}), Vista de modelo
+                        (\textit{ViewModel}) y Repositorios (\textit{Repositories}).
 
                         \begin{figure}[H]
                               \centering
@@ -661,28 +613,28 @@ presentación.
 
                   \item \textbf{Vista:}
                         \begin{itemize}
-                              \item Implementada a través de Actividades y Fragmentos organizados modularmente.
-                              \item Cada fragmento representa una sección funcional del sistema (por ejemplo:
+                              \item Se implementó a través de Actividades y Fragmentos organizados modularmente.
+                              \item Cada fragmento representó una sección funcional del sistema (por ejemplo:
                                     inicio de sesión, chat, documentos, perfil).
                               \item Se aplicó el patrón de navegación basado en las librerías de Android
-                                    \textit{NavHostFragment} y \textit{SafeArgs}, garantizando transiciones seguras
-                                    y controladas entre vistas.
-                              \item Se usaron componentes de diseño basados en \textit{Material Design 3}, el
-                                    estandar de diseño de Google para mantener consistencia visual, accesibilidad y
+                                    \textit{NavHostFragment} y \textit{SafeArgs}, lo que busca garantizar
+                                    transiciones seguras y controladas entre vistas.
+                              \item Se usó componentes de diseño basados en \textit{Material Design 3}, el estandar
+                                    de diseño de Google, para mantener consistencia visual, accesibilidad y
                                     adaptabilidad en distintos tamaños de pantalla
                                     \cite{material_design_m3_website}.
-                              \item Cada Fragmento o Actividad cuenta con su propia plantilla, definida en formato
+                              \item Cada Fragmento o Actividad contó con su propia plantilla, definida en formato
                                     XML (Lenguaje de Marcado Extensible, por sus siglas en inglés), que especifica
                                     la disposición de los elementos visuales.
                         \end{itemize}
                   \item \textbf{Modelo de Vista:}
                         \begin{itemize}
-                              \item Actúa como intermediario entre la vista y las fuentes de datos, manejando la
-                                    lógica de presentación.
-                              \item Emplea Datos Observables (\textit{LiveData}) y Flujo de Estado
+                              \item Fue definido como intermediario entre la vista y las fuentes de datos,
+                                    encargado de manejar la lógica de presentación.
+                              \item Se diseñó para emplear Datos Observables (\textit{LiveData}) y Flujos de Estado
                                     (\textit{StateFlow}) para notificar automáticamente a la vista sobre cambios en
                                     los datos.
-                              \item Encapsula la interacción con los repositorios, garantizando que la vista
+                              \item Encapsuló la interacción con los repositorios para garantizar que la vista
                                     permanezca libre de lógica de negocio.
                               \item El Algoritmo \ref{alg:viewmodel-flujo} ilustra el flujo básico de un Modelo de
                                     Vista típico.
@@ -702,31 +654,31 @@ presentación.
                         \end{itemize}
                   \item \textbf{Modelo (Repositorio y Fuentes de Datos):}
                         \begin{itemize}
-                              \item Los repositorios centralizan el acceso a las fuentes de datos, tanto locales
+                              \item Los repositorios centralizaron el acceso a las fuentes de datos, tanto locales
                                     como remotas.
                               \item Se definieron dos capas de origen de datos:
                                     \begin{enumerate}
-                                          \item \textbf{Datos Locales:} implementada con \textit{Room Database}, que gestiona entidades como usuarios, mensajes, chats y documentos. Esta capa permite el acceso a información sin conexión a internet (historiales de chat, información del usuario, listado de documentos disponibles), así como el almacenamiento persistente de la información obtenida mediante otras fuentes de datos que sí requieran comunicación con internet.
-                                          \item \textbf{Datos Remotos:} implementada mediante \textit{Retrofit} y \textit{OkHttp}, se utiliza para consumir los puntos de conexión (\textit{endpoints}) del servidor desarrollado en el \textit{sprint} anterior.
+                                          \item \textbf{Datos Locales:} implementados con la base de datos de Room, definido para gestionar entidades como usuarios, mensajes, chats y documentos. Esta capa permitió el acceso a información sin conexión a internet (historiales de chat, información del usuario, listado de documentos disponibles), así como el almacenamiento persistente de la información obtenida mediante otras fuentes de datos que sí requieren comunicación con internet.
+                                          \item \textbf{Datos Remotos:} implementados mediante \textit{Retrofit} y \textit{OkHttp}, se utilizó para consumir los puntos de conexión (\textit{endpoints}) del servidor desarrollado en el \textit{sprint} anterior.
                                     \end{enumerate}
-                              \item Los repositorios determinan la fuente más apropiada según la disponibilidad de
-                                    conexión y estado de sincronización.
+                              \item Los repositorios se encargan de determinar la fuente más apropiada según la
+                                    disponibilidad de conexión y estado de sincronización.
                         \end{itemize}
 
                   \item \textbf{Gestión de dependencias:}
                         \begin{itemize}
-                              \item Se empleó \textit{Hilt (Dagger)} para la inyección de dependencias,
-                                    simplificando la creación de instancias de Modelos de Vistas, repositorios y
-                                    servicios. Este enfoque garantiza bajo acoplamiento entre componentes y
-                                    favorece la escalabilidad del sistema.
+                              \item Se empleó \textit{Hilt (Dagger)} para la inyección de dependencias, lo que
+                                    simplificó la creación de instancias de Modelos de Vistas, repositorios y
+                                    servicios. Este enfoque buscó garantizar el bajo acoplamiento entre componentes
+                                    y favorecer la escalabilidad del sistema.
                               \item La configuración de los módulos de \textit{Hilt} se realizó en la carpeta
                                     \texttt{di/}, donde se definieron las dependencias necesarias para la
-                                    aplicación, como clientes \textit{Retrofit}, bases de datos \textit{Room} y
+                                    aplicación; como clientes \textit{Retrofit}, bases de datos Room y
                                     repositorios.
                               \item Se utilizaron otras dependencias básicas como \textit{AppCompat} y
                                     \textit{ConstraintLayout} para asegurar compatibilidad y flexibilidad en el
-                                    diseño de la interfaz, así como \textit{NavigationFragment} para gestionar la
-                                    navegación entre pantallas.
+                                    diseño de la interfaz, así como el Fragmento de Navegación
+                                    (\textit{NavigationFragment}) para gestionar la navegación entre pantallas.
                               \item Por su parte, el uso de \textit{ThreeTen} permitió mantener la compatibilidad
                                     de manejo de fechas para versiones antiguas de Android (con soporte desde
                                     Android 7 en adelante), mientras que \textit{Glide} facilitó la carga y gestión
@@ -738,11 +690,11 @@ presentación.
                                     corrutina (\textit{CoroutineScope}) para ejecutar tareas asíncronas sin
                                     bloquear la interfaz.
                               \item Se implementó almacenamiento persistente mediante Preferencias Compartidas
-                                    (\textit{SharedPreferences}) y Room, de manera que incluso sin internet la
+                                    (\textit{SharedPreferences}) y Room, buscando que incluso sin internet la
                                     aplicación aún fuera utilizable, a pesar de no poder realizar peticiones al
-                                    asistente ya que esta función sí requiere comunicación con internet para
+                                    asistente, ya que esta función sí requiere comunicación con internet para
                                     realizar solicitudes a \textit{OpenAI}.
-                              \item La base de datos local permite al usuario acceder a su historial de chats,
+                              \item La base de datos local permitió al usuario acceder a su historial de chats,
                                     datos personales e historial de documentos (en el caso de usuarios con rol
                                     \textbf{Administrador}) aún sin conexión a internet.
                         \end{itemize}
@@ -750,11 +702,10 @@ presentación.
 
       \item \textbf{Integración con el servidor y servicios de Python}
             \begin{itemize}
-                  \item Consumo de puntos de conexión del servidor para autenticación, gestión de
+                  \item Se verificó de forma directa el acceso del cliente al consumo de puntos de conexión del servidor para autenticación, gestión de
                         sesiones, envío de preguntas y recuperación de respuestas.
-                  \item Procesamiento de respuestas JSON, parseo y renderizado en la interfaz de
-                        usuario de manera clara y comprensible.
-                  \item Manejo de errores y reconexión ante fallos de red, asegurando robustez en la
+                  \item Se validó en la aplicación el procesamiento de respuestas JSON, conversión y renderizado de manera clara y comprensible.
+                  \item Se definió el manejo de errores y reconexión ante fallos de red, lo que buscó asegurar robustez en la
                         experiencia de usuario.
             \end{itemize}
 \end{enumerate}
@@ -767,7 +718,7 @@ sistema para asegurar la correcta interacción entre la aplicación móvil, el
 servidor, la base de datos relacional y vectorial y el modelo de lenguaje (LLM,
 por sus siglas en inglés). Además, se buscó evaluar la calidad, precisión y
 confiabilidad de las respuestas generadas por el asistente virtual mediante la
-metodología y métricas propuestas en las secciones 4.3.9 y 4.3.10 de este
+metodología y métricas propuestas en las secciones 6.3.9 y 6.3.10 de este
 documento.
 
 \subsection{Ejecución}
@@ -775,7 +726,7 @@ documento.
 \begin{enumerate}
       \item \textbf{Pruebas funcionales del sistema}
 
-            Las pruebas funcionales se llevaron a cabo siguiendo un proceso estructurado
+            Las pruebas funcionales se llevaron a cabo al seguir un proceso estructurado
             compuesto por cinco fases: configuración del entorno, verificación de
             comunicación entre módulos, pruebas de puntos de conexión, verificación de
             operaciones CRUD y validación de integridad entre fuentes de datos.
@@ -900,7 +851,7 @@ disponible para revisión, prueba y entrega formal al cliente.
 
 \subsection{Ejecución}
 \begin{enumerate}
-      \item \textbf{Elaboración del informe final por medio de}
+      \item \textbf{Se elaboró el informe final por medio de}
             \begin{itemize}
                   \item La integración de la información de todos los \textit{sprints} previos en un
                         documento único, estructurado y coherente.
@@ -912,25 +863,25 @@ disponible para revisión, prueba y entrega formal al cliente.
                         cumplimiento de estándares académicos y de presentación profesional.
             \end{itemize}
 
-      \item \textbf{Preparación de la presentación final, que incluye}
+      \item \textbf{Se preparó la presentación final, que incluyó}
             \begin{itemize}
-                  \item El desarrollo del material visual que resuma el proyecto, incluyendo diagramas
+                  \item El desarrollo del material visual que resumió el proyecto, así como diagramas
                         de arquitectura, capturas de pantalla del prototipo móvil, flujo de interacción
                         y ejemplos de uso del asistente.
                   \item La elaboración de una presentación estructurada para explicar el proceso de
                         desarrollo, resultados obtenidos y funcionalidades del sistema.
                   \item El ensayo de la presentación y ajuste de contenido para garantizar claridad,
-                        concisión y relevancia para el público objetivo.
+                        concisión y relevancia para el público evaluador.
             \end{itemize}
 
-      \item \textbf{Traslado y entrega de documentación al cliente, a través de}
+      \item \textbf{Se trasladó y entregó toda la documentación al cliente, a través de}
             \begin{itemize}
                   \item La consolidación de repositorios de código, documentos de investigación, fichas
                         de usuario, diagramas de arquitectura y demás materiales generados.
-                  \item La entrega formal de toda la documentación y repositorios a la Fundación de
-                        Scouts de Guatemala, asegurando que puedan acceder a todos los recursos para
+                  \item La entrega formal de toda la información consolidada a la Fundación de
+                        Scouts de Guatemala, con el objetivo de asegurar el acceso a todos los recursos para
                         pruebas, mantenimiento y futuras actualizaciones.
-                  \item El registro de la entrega, incluyendo inventario de archivos, versión final de
-                        documentación y evidencia de disponibilidad del producto para pruebas finales.
+                  \item El registro de la entrega, que incluye el inventario de archivos, la versión final de toda la
+                        documentación generada y la evidencia de disponibilidad del producto para pruebas finales.
             \end{itemize}
 \end{enumerate}
