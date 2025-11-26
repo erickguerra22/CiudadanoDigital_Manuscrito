@@ -21,9 +21,9 @@ por otro, exige garantizar la responsabilidad, transparencia y confiabilidad de
 los modelos utilizados \cite{betterinternet2024,carter2024ethics}.
 
 Desde esta convergencia entre tecnología y formación ética, la literatura
-reciente destaca el potencial de los modelos de lenguaje de gran escala (LLMs,
-por sus siglas en inglés) para generar entornos conversacionales que promuevan
-la reflexión moral y la toma de decisiones fundamentadas
+reciente destaca el potencial de los modelos grandes de lenguaje (LLMs, por sus
+siglas en inglés) para generar entornos conversacionales que promuevan la
+reflexión moral y la toma de decisiones fundamentadas
 \cite{seibt2024llm,frontiers2025psychology}. Estos sistemas, diseñados bajo
 principios éticos y pedagógicos, pueden convertirse en agentes de
 acompañamiento educativo informal, capaces de sostener diálogos significativos
@@ -253,30 +253,44 @@ demostrado mejorar la motivación, la eficiencia del aprendizaje y la calidad de
 la enseñanza, siempre que se acompañen de supervisión pedagógica y criterios
 éticos claros \cite{elstad2024ai, frontiers2025education, carter2024ethics}.
 
-\subsection{Modelos de Lenguaje de Gran Escala}
-Los modelos de lenguaje de gran escala (\textit{Large Language Models} o LLMs)
-son sistemas de inteligencia artificial entrenados con enormes volúmenes de
-texto para comprender y generar lenguaje natural. Estos modelos permiten
-ofrecer respuestas contextualizadas, realizar tutorías personalizadas y asistir
-en la construcción de conocimiento mediante diálogo interactivo. Su potencial
+\subsection{Alucinación en Inteligencia Artificial}
+Este concepto se refiere a la generación de información incorrecta, falsa o
+inconsistente por parte de modelos de lenguaje, incluso cuando estos parecen
+confiables y coherentes. Este fenómeno ocurre principalmente debido a la forma
+en que los modelos aprenden a partir de grandes volúmenes de datos: no
+comprenden la realidad de manera literal, sino que predicen la siguiente
+palabra más probable según patrones estadísticos aprendidos. Como resultado,
+pueden combinar información de manera inapropiada, inferir hechos inexistentes
+o extrapolar contenido de forma errónea. La alucinación es especialmente
+crítica en aplicaciones donde la precisión es esencial, como la educación, la
+medicina o la generación de informes, ya que puede inducir a errores o
+desinformación si no se detecta y corrige adecuadamente \cite{Ji_2023}.
+
+\subsection{Modelos Grandes de Lenguaje}
+Los modelos grandes de lenguaje (\textit{Large Language Models} o LLMs) son
+sistemas de inteligencia artificial entrenados con enormes volúmenes de texto
+para comprender y generar lenguaje natural. Estos modelos permiten ofrecer
+respuestas contextualizadas, realizar tutorías personalizadas y asistir en la
+construcción de conocimiento mediante diálogo interactivo. Su potencial
 educativo radica en la capacidad de proporcionar retroalimentación inmediata,
 adaptada al nivel del estudiante, fomentando la reflexión crítica y la
 autoformación \cite{brown2020language, raffel2020exploring}.
 
 \subsection{Arquitectura y funcionamiento de sistemas RAG}
-La Recuperación Aumentada por Búsqueda (RAG, por sus siglas en inglés) combina
-modelos de lenguaje de gran escala (LLMs) con motores de recuperación de
+La Generación Mejorada por Recupperación (RAG, por sus siglas en inglés)
+combina modelos grandes de lenguaje (LLMs) con motores de recuperación de
 información, con el fin de proporcionar respuestas fundamentadas en el
 contenido específico deseado. Esta técnica, introducida por primera vez en 2020
 en el artículo \textit{\guillemetleft{}Retrieval-Augmented Generation for
     Knowledge-Intensive NLP Tasks\guillemetright{}} por Lewis et al, permite la
 obtención de respuestas fundamentadas en fuentes confiables, que bajo el
 contexto del sistema promueve la reflexión ética y la resolución de dilemas
-morales basados en evidencia. RAG amplía las capacidades de tutoría digital al
-integrar conocimiento externo con generación de lenguaje natural
-\cite{lewis2020retrieval, khandelwal2020generalization}.
+morales basados en evidencia. La generación mejorada por recuperación amplía
+las capacidades de tutoría digital al integrar conocimiento externo con
+generación de lenguaje natural \cite{lewis2020retrieval,
+    khandelwal2020generalization}.
 
-\subsubsection{Arquitectura de RAG}
+\subsubsection{Arquitectura de Generación Mejorada por Recuperación}
 
 Un sistema RAG opera en dos fases principales:
 
@@ -290,10 +304,11 @@ Un sistema RAG opera en dos fases principales:
           \end{itemize}
 
           Esta fase corresponde con la obtención de conocimiento externo a la
-          implementación del sistema. En el artículo de lewis et al, la Figura
-          \ref{fig:flujo-rag-teoria} muestra cómo este proceso se implementa mediante la
-          combinación de \textbf{\guillemetleft{}memoria paramétrica\guillemetright{}}
-          (el LLM utilizado para recibir preguntas y generar respuestas) y la
+          implementación del sistema. En el artículo de Lewis et al, se presenta una
+          figura (reproducida en la Figura \ref{fig:flujo-rag-teoria}) que muestra cómo
+          este proceso se implementa mediante la combinación de
+          \textbf{\guillemetleft{}memoria paramétrica\guillemetright{}} (el LLM utilizado
+          para recibir preguntas y generar respuestas) y la
           \textbf{\guillemetleft{}memoria no paramétrica\guillemetright{}} (índice
           vectorial del cual se obtiene el contexto para fundamentar la respuesta), con
           lo cual la generación final obtiene la información requerida para brindar al
@@ -306,7 +321,7 @@ Un sistema RAG opera en dos fases principales:
               \label{fig:flujo-rag-teoria}
           \end{figure}
 
-          La figura \ref{fig:flujo-rag-teoria} iustra la arquitectura general de un
+          La figura \ref{fig:flujo-rag-teoria} ilustra la arquitectura general de un
           sistema de recuperación y generación entrenado de extremo a extremo. El proceso
           inicia con una \textbf{consulta de entrada} \(x\), por ejemplo, solicitar la
           respuesta a una pregunta. Esta consulta es procesada por un \textbf{codificador
@@ -346,11 +361,11 @@ Un sistema RAG opera en dos fases principales:
                     verificadas previamente seleccionadas para alimentar el sistema.
 
                     Según la implementación, se pueden utilizar distintas estrategias para la
-                    combinación de los fragmentos con la generación final. En el artículo de lewis
-                    et al, se menciona la diferencia de utilizar \textbf{RAG \textit{sequence}} (el
-                    modelo selecciona un único documento sobre el cual basará su respuesta) frente
-                    a \textbf{RAG \textit{token}} (el modelo genera la respuesta por pasos,
-                    seleccionando la fuente a utilizar para cada token independiente, lo que
+                    combinación de los fragmentos con la generación final. En el artículo de Lewis
+                    et al, se menciona la diferencia de utilizar una \textbf{RAG por secuencia }
+                    (el modelo selecciona un único documento sobre el cual basará su respuesta)
+                    frente al enfoque de \textbf{RAG por token} (el modelo genera la respuesta por
+                    pasos, seleccionando la fuente a utilizar para cada token independiente, lo que
                     permite combinar más de una fuente).
           \end{itemize}
 \end{enumerate}
@@ -372,8 +387,9 @@ LLM obtendrá el contexto del cual se basará para brindar la respuesta a la
 consulta dada.
 
 \subsubsection{Ventajas de RAG en educación}
-La implementación de sistemas RAG en enfoques educativos, brinda varias
-ventajas orientadas al uso de modelos de inteligencia artificial
+La implementación de sistemas de generación mejorada por recuperación en
+enfoques educativos, brinda varias ventajas orientadas al uso de modelos de
+inteligencia artificial
 \cite{gupta2024comprehensivesurveyretrievalaugmentedgeneration}:
 \begin{itemize}
     \item \textbf{Reduce alucinaciones} al obligar al sistema a utilizar respuestas fundamentadas en el corpus definido para el proyecto.
@@ -385,12 +401,12 @@ ventajas orientadas al uso de modelos de inteligencia artificial
 \end{itemize}
 
 \subsubsection{Desafíos conocidos}
-A pesar de sus beneficios, la implementación de RAG también presenta ciertos
-retos a cubrir en proyectos educativos de alto impacto
-\cite{zheng2025knowshiftqarobustragsystems}:
+A pesar de sus beneficios, la implementación de generación mejorada por
+recuperación también presenta ciertos retos a cubrir en proyectos educativos de
+alto impacto \cite{zheng2025knowshiftqarobustragsystems}:
 \begin{itemize}
     \item \textbf{Dependencia crítica} de la calidad del corpus. La calidad de las respuestas depende estrictamente de la calidad del contenido educativo utilizado para alimentar el modelo, por lo que si los documentos están mal organizados, contienen errores o están desactualizados; la recuperación de contexto será débil.
-    \item \textbf{Riesgo de fragmentación} que rompa la coherencia contextual. Utilizar una estrategia o combinación de estrategias de segmentación inapropiada, puede llevar a que el contexto obtenido por el modelo pierda de sentido, o bien, que una consulta que sí está relacionada con el contenido del corpus no pueda ser respondida.
+    \item \textbf{Riesgo de fragmentación} que rompa la coherencia contextual. Utilizar una estrategia o combinación de estrategias de segmentación inapropiada, puede llevar a que el contexto obtenido por el modelo deje de tener sentido, o bien, que una consulta que sí está relacionada con el contenido del corpus no pueda ser respondida.
     \item \textbf{Limitaciones de la ventana de contexto del LLM} a pesar de que el sistema de recuperación diseñado obtenga una base contextual amplia, según el modelo LLM utilizado, generalmente se tiene un límite de tokens permitido para cada consulta, por lo que el la petición construida también cuenta con limitaciones de longitud y, por lo tanto, del nivel de especificación y claridad exigido al modelo.
     \item \textbf{Dificultad para sintetizar información de múltiples
               fragmentos dispersos} Al combinar varios fragmentos en una sola petición,
@@ -423,19 +439,22 @@ específicos. \cite{white2023promptpatterncatalogenhance} El enfoque principal
 es brindar al modelo directivas claras con el fin de obtener el resultado final
 esperado, enfocados en ser tan específicos y directos como el modelo permita.
 
-\subsubsection{Componentes de una petición efectiva} Al construir una petición que será recibida por un modelo de lenguaje de gran
-escala (\textit{Large Language Model} o LLM), se deben tomar en cuenta varios
-componentes que, en conjunto, serán los que definan la interacción entre el
-modelo y el usuario. El proceso de ingeniería de peticiones consiste en
-optimizar el lenguaje utilizado en la instrucción, enfocado en guiar el
-comportamiento de los modelos de lenguaje y obtener el mejor desempeño posible.
-Esto implica entender que los modelos procesan las instrucciones como programas
-en lenguaje natural, por lo que la precisión y coherencia de las respuestas se
-ven afectadas directamente por la estructura y redacción de cada parte de la
-petición. \cite{schulhoff2025promptreportsystematicsurvey}
+\subsubsection{Componentes de una petición efectiva} Al construir una petición que será recibida por un modelo grande de lenguaje
+(LLM), se deben tomar en cuenta varios componentes que, en conjunto, serán los
+que definan la interacción entre el modelo y el usuario. El proceso de
+ingeniería de peticiones consiste en optimizar el lenguaje utilizado en la
+instrucción, enfocado en guiar el comportamiento de los modelos de lenguaje y
+obtener el mejor desempeño posible. Esto implica entender que los modelos
+procesan las instrucciones como programas en lenguaje natural, por lo que la
+precisión y coherencia de las respuestas se ven afectadas directamente por la
+estructura y redacción de cada parte de la petición.
+\cite{schulhoff2025promptreportsystematicsurvey}
+
+Los componentes más comunes son:
+
 \begin{itemize}
     \item \textbf{Rol (Persona):} Si bien es un componente ampliamente discutido, corresponde a la sección de la petición que permite asignar un rol específico a la inteligencia artificial (IA). A través de la definición de un rol específico, se determina el tono de las respuestas generadas y los límites que debe cumplir en su interacción con el usuario.
-    \item \textbf{Información Adicional:} Comunmente identificado también como el \textbf{contexto} de la petición. Se refiere a todo el contenido adicional que la IA debe tomar en cuenta para generar la respuesta, ya sea interacciones previas, o bien, el contenido que delimite la respuesta final (por ejemplo, a través de un sistema de generación aumentada por recuperación, o RAG).
+    \item \textbf{Información Adicional:} Comunmente identificado también como el \textbf{contexto} de la petición. Se refiere a todo el contenido adicional que la IA debe tomar en cuenta para generar la respuesta, ya sea interacciones previas, o bien, el contenido que delimite la respuesta final (por ejemplo, a través de un sistema de generación mejorada por recuperación).
     \item \textbf{Directiva:} Define la intención central de la petición. Aquí puede ir la pregunta, solicitud de información o generación de contenido multimedia (si aplica).
     \item \textbf{Formato de salida:} Comunmente, es deseable que la IA generativa sea capaz de devolver la información solicitada en un formato o patrón específico. Este aspecto también incluye las \textbf{instrucciones de estilo}, las cuales son un tipo de formato de salida utilizado para modificar la salida estilísticamente en lugar de estructuralmente (por ejemplo, solicitar una respuesta apropiada para una persona de edad específica).
     \item \textbf{Ejemplos (opcional):} Los ejemplos, también conocidos como \textbf{tomas}, actúan como demostraciones explícitas que guían a la IA para lograr un resultado específico para la tarea indicada. Este aspecto es especialmente útil en técnicas como el aprendizeje en contexto.
@@ -447,8 +466,11 @@ enfatizan prácticas específicas que permiten obtener el flujo de pensamiento
 del asistente, establecer un tipo de interacción específica con el estudiante
 (por ejemplo, el uso del método socrático) o solicitar las fuentes utilizadas
 \cite{NEURIPS2022_9d560961}.
+
+Algunas de las estrategias más comunes son:
+
 \begin{itemize}
-    \item \textbf{\textit{Chain-of-thought prompting} (Petición de Cadena de Pensamiento):} Solicita al modelo el razonamiento que utilizó para responder la pregunta, se exige el paso a paso de cómo llegó hasta la respuesta brindada.
+    \item \textbf{\textit{Chain-of-thought prompting} (Petición de Cadena de Pensamiento):} Solicita al modelo que describa el razonamiento que utilizó para responder la pregunta, se exige el paso a paso de cómo llegó hasta la respuesta brindada.
     \item \textbf{\textit{Socratic prompting} (Petición Socrática):} Indica al modelo que se debe guiar por el método socrático, el cual consiste en incentivar al usuario a obtener una respuesta final por sí mismo, en lugar de brindar una respuesta directa a la consulta dada.
     \item \textbf{\textit{Constitutional AI} (IA Constitucional):} Incorpora principios éticos en las instrucciones, por ejemplo, la omisión de palabras o temas sensibles.
     \item \textbf{\textit{Retrieval-aware prompting} (Petición Consciente de Recuperación):} Exige al modelo citar fuentes en todas sus respuestas. Puede ser útil, aunque también vale la pena analizar si conviene más esta estrategia o simplemente almacenar en los metadatos de los fragmentos los documentos originales.
@@ -487,7 +509,9 @@ intención del usuario, mantener la coherencia del diálogo y producir respuesta
 naturales y adecuadas. La efectividad de un chatbot depende de componentes como
 el análisis de mensajes, la gestión del diálogo y la generación del lenguaje
 natural, los cuales influyen directamente en la calidad percibida por el
-usuario.. \cite{ADAMOPOULOU2020100006}
+usuario. \cite{ADAMOPOULOU2020100006}
+
+Varias de las métricas más utilizadas son:
 
 \begin{itemize}
     \item \textbf{Relevancia del contexto:} Evalúa qué tan pertinentes son los documentos recuperados para la consulta inicial. \cite{saad-falcon-etal-2024-ares}.
@@ -499,6 +523,8 @@ usuario.. \cite{ADAMOPOULOU2020100006}
 Para evaluar sistemas de RAG desde una perspectiva técnica, se consideran
 métricas que capturan el rendimiento operacional del sistema en escenarios
 prácticos.\cite{Yu_2025}
+
+Las más comunes son:
 
 \begin{itemize}
     \item \textbf{Tasa de éxito:} Porcentaje de consultas en las que el sistema genera respuestas correctas y apropiadas. Esta métrica evalúa la efectividad global del sistema en tareas específicas, siendo fundamental para aplicaciones donde la precisión es crítica \cite{chen2023benchmarkinglargelanguagemodels, xiong2024benchmarkingretrievalaugmentedgenerationmedicine}.
@@ -514,10 +540,10 @@ la calidad de la información generada como por su fidelidad al contexto
 recuperado \cite{lewis2020retrieval}.
 
 \subsubsection{Fidelidad al contenido base (Faithfulness)}
-En el contexto de sistemas RAG educativos, la \textit{faithfulness} o fidelidad
-evalúa si la respuesta se limita estrictamente a la información contenida en
-los documentos recuperados, evitando alucinaciones o afirmaciones no
-sustentadas por el corpus proporcionado. \cite{es-etal-2024-ragas}
+En el contexto de sistemas RAG educativos, la fidelidad evalúa si la respuesta
+se limita estrictamente a la información contenida en los documentos
+recuperados, evitando alucinaciones o afirmaciones no sustentadas por el corpus
+proporcionado. \cite{es-etal-2024-ragas}
 
 Esta métrica es particularmente crítica en contextos educativos, donde la
 precisión fáctica y la trazabilidad de la información son requisitos
@@ -593,9 +619,9 @@ La prevención de sesgos algorítmicos se centra en garantizar que los sistemas
 de IA no reproduzcan ni amplifiquen desigualdades existentes en la educación.
 Esto implica analizar los datos de entrenamiento, identificar posibles sesgos y
 aplicar técnicas de mitigación, como ajuste de ponderaciones, diversificación
-de datasets y pruebas de equidad en los resultados. La prevención de sesgos
-asegura que todos los estudiantes reciban oportunidades de aprendizaje justas y
-equitativas \cite{mehrabi2019survey, binns2018fairness}.
+de conjuntos de datos y pruebas de equidad en los resultados. La prevención de
+sesgos asegura que todos los estudiantes reciban oportunidades de aprendizaje
+justas y equitativas \cite{mehrabi2019survey, binns2018fairness}.
 
 \subsection{Transparencia y explicabilidad en sistemas inteligentes}
 La transparencia y explicabilidad son fundamentales para que docentes,
@@ -615,7 +641,7 @@ especialmente sensibles en contextos educativos, ya que influyen directamente
 en el aprendizaje, la motivación y las decisiones académicas de los estudiantes
 \cite{jobin2019global, floridi2018ai}.
 
-Esta responsabilidad recae tanto en los desarrolladores, quienes deben
+La responsabilidad recae tanto en los desarrolladores, quienes deben
 implementar modelos seguros, mecanismos de verificación y pruebas continuas,
 como en los docentes y las instituciones que integran la tecnología. Esto
 incluye ofrecer rutas de corrección, permitir retroalimentación humana y
@@ -716,18 +742,70 @@ información generada por la IA. La integridad académica asegura que la
 tecnología complemente el aprendizaje sin reemplazar la reflexión y el esfuerzo
 personal \cite{bretag2019academic, eaton2023postplagiarism}.
 
-\subsubsection{Pinecone}
+\subsection{Interfaz de Programación de Aplicaciones (\textit{Application Programming Interface} - API)}
+Las \textbf{APIs} permiten que dos sistemas de software
+se comuniquen entre sí mediante un conjunto definido de reglas, conocidos como
+\textit{endpoints} o \textbf{puntos de conexión}. Según la definición clásica
+de Fielding y Taylor, una API proporciona un mecanismo estandarizado para que
+aplicaciones distintas intercambien datos o funcionalidades sin necesidad de
+conocer la implementación interna de cada sistema \cite{10.1145/514183.514185}.
+En el ámbito de la inteligencia artificial, las APIs ofrecen acceso directo a
+modelos avanzados sin requerir que el desarrollador entrene o despliegue
+modelos por su cuenta.
+
+\subsection{Pinecone}
 Pinecone es una base de datos vectorial administrada, en la nube y diseñada
 para búsquedas semánticas a gran escala. Permite almacenar, indexar y consultar
 representaciones numéricas (\textit{embeddings}) de alta dimensionalidad con
 latencias muy bajas. Su arquitectura está optimizada para tareas como
-recuperación aumentada por generación (RAG), sistemas de recomendación,
+generación mejorada por recuperación (RAG), sistemas de recomendación,
 clasificación semántica y búsqueda inteligente. Proporciona escalabilidad
 automática, indexación eficiente y una API sencilla para integración en
 aplicaciones de aprendizaje de máquinas (\textit{machine learning})
 \cite{pinecone_docs}.
 
-\subsubsection{Servicio de Almacenamiento Simple (\textit{Simple Storage Service} o S3)} S3 es un servicio de almacenamiento de objetos altamente escalable,
+\subsection{PostgreSQL}
+PostgreSQL es un sistema de gestión de bases de datos relacional de código
+abierto; reconocido por su robustez, flexibilidad y estricto cumplimiento de
+estándares SQL. Está diseñado para manejar cargas de trabajo complejas,
+consultas avanzadas y grandes volúmenes de datos, a la vez que ofrece
+características como transacciones ACID (siglas en inglés para Atomicidad,
+Consistencia, Aislamiento y Durabilidad), extensibilidad mediante funciones
+personalizadas, índices especializados y soporte para tipos de datos avanzados.
+Su arquitectura orientada a la confiabilidad y la integridad de los datos lo
+convierte en una opción preferida en aplicaciones empresariales, científicas y
+de software moderno que requieren estabilidad y alto rendimiento
+\cite{postgresqlDoc}.
+
+\subsection{NotebookLM}
+NotebookLM es una herramienta de inteligencia artificial que permite a los
+usuarios \guillemetleft{}conversar\guillemetright{} con sus propios documentos
+mediante técnicas de modelos grandes de lenguaje. A diferencia de un motor de
+búsqueda, NotebookLM analiza los textos cargados por el usuario y construye una
+base de conocimiento personalizada. A partir de esto, puede generar resúmenes,
+responder preguntas complejas sobre el contenido, extraer ideas clave,
+organizar la información en guías de estudio, e incluso convertir textos
+extensos en resúmenes de audio o notas estructuradas. \cite{notebooklm2025}
+
+Esta herramienta resulta especialmente útil para estudiantes, investigadores o
+profesionales que manejan gran cantidad de información, ya que facilita la
+comprensión y navegación de textos largos o complejos, reduciendo el tiempo
+necesario para extraer lo esencial. Además, al apoyarse únicamente en los
+documentos proporcionados por el usuario, NotebookLM ayuda a mantener la
+precisión y trazabilidad de la información, lo que puede mitigar el riesgo de
+errores comunes en modelos de lenguaje no especializados.
+:contentReference[oaicite:2]{index=2}
+
+\subsection{Postman}
+Postman es una herramienta de desarrollo utilizada para diseñar, probar y
+documentar APIs. Ofrece una interfaz gráfica intuitiva para enviar solicitudes
+HTTP (siglas en inglés para Protocolo de Transferencia de HiperTexto), revisar
+respuestas, automatizar pruebas, organizar colecciones de puntos de conexión y
+colaborar en equipos de desarrollo. Permite trabajar con distintos métodos
+HTTP, autenticación, variables de entorno y generación automática de
+documentación. \cite{postman_tool}
+
+\subsection{Servicio de Almacenamiento Simple (\textit{Simple Storage Service} o S3)} S3 es un servicio de almacenamiento de objetos altamente escalable,
 ofrecido por los servicios web de Amazon (\textit{Amazon Web Services} o AWS).
 Permite guardar y recuperar cualquier cantidad de datos desde cualquier lugar a
 través de Internet, proporcionando durabilidad de casi el 100\%, alta
@@ -778,6 +856,31 @@ adoptada para construir APIs (Interfaces de Programación de Aplicaciones),
 aplicaciones en tiempo real y arquitecturas modernas de microservicios.
 \cite{nodejs_documentation_2023}
 
+\subsection{Códigos de estado HTTP}
+Son respuestas numéricas estandarizadas que un servidor envía al cliente para
+indicar el resultado de una solicitud, realizada mediante el protocolo HTTP.
+Estos códigos permiten identificar si la petición fue exitosa, si requiere
+acciones adicionales, si hubo errores del cliente o del servidor, o si existen
+problemas de redirección. Se organizan en cinco categorías principales:
+respuestas informativas (de 100 a 199), exitosas (de 200 a 299), redirecciones
+(de 300 a 399), errores del cliente (de 400 a 499) y errores del servidor (de
+500 a 599). Su uso adecuado facilita la comunicación clara entre aplicaciones y
+servicios web, lo que permite un manejo correcto de errores y una interacción
+más confiable en arquitecturas distribuidas \cite{rfc9110}.
+
+\subsection{Ping}
+Esta es una herramienta de diagnóstico de red que permite verificar la
+conectividad entre dos dispositivos mediante el envío de mensajes ICMP (siglas
+en inglés para Protocolo de Mensajes de Control de Internet, protocolo
+utilizado para diagnosticar problemas de comunicación). Su propósito principal
+es determinar si un dispositivo es accesible, así como medir parámetros como el
+tiempo de ida y vuelta (RTT o \textit{Round-Trip Time}) y la pérdida de
+paquetes. Ping es ampliamente utilizado para identificar problemas de red
+básicos, ya que ayuda a detectar fallos de comunicación, latencias inusuales o
+interrupciones en la ruta entre origen y destino. Su funcionamiento se basa en
+el protocolo ICMP, definido en los estándares fundamentales de Internet
+\cite{rfc792}.
+
 \subsection{Marcos de desarrollo móvil: Kotlin y ecosistema Android}
 Kotlin es un lenguaje de programación moderno y seguro que se utiliza para el
 desarrollo de aplicaciones Android. Presenta características como tipado
@@ -797,7 +900,7 @@ En este patrón, el \textbf{Modelo} encapsula los datos y reglas de negocio; la
 \textbf{Vista} representa la interfaz de usuario; y el \textbf{Modelo de Vista}
 actúa como un intermediario que gestiona el estado de la vista, expone datos al
 usuario y maneja la lógica de presentación. La comunicación suele realizarse
-mediante mecanismos de enlace de datos (\textit{dat"a binding}), lo que permite
+mediante mecanismos de enlace de datos (\textit{data binding}), lo que permite
 que la interfaz se actualice automáticamente ante cambios en los datos.
 \cite{fowler2015mvvm}
 
@@ -832,18 +935,19 @@ forma uniforme en una amplia gama de dispositivos Android.
 \cite{android_appcompat}
 
 \subsubsection{Componente de Navegación (\textit{Navigation Component})}
-Este es una parte de Android Jetpack diseñada para gestionar la navegación dentro de una aplicación Android de forma estructurada, segura y declarativa. Permite definir en un único gráfico (llamado gráfico de navegación o \textit{Navigation Graph}) todos los destinos y acciones de navegación, facilitando el manejo de transiciones entre Fragmentos, Actividades y pantallas desplegables. Ofrece funcionalidades como animaciones de transición, paso de argumentos tipados (\textit{SafeArgs}), y control de la pila trasera (\textit{back stack}) sin necesidad de manipular transiciones manuales entre fragmentos. Esto reduce errores comunes, simplifica el código y promueve arquitecturas más limpias y mantenibles. \cite{android_navigation_component}
+Este es una parte de Android Jetpack diseñada para gestionar la navegación dentro de una aplicación Android de forma estructurada, segura y declarativa. Permite definir en un único gráfico (llamado gráfico de navegación o \textit{Navigation Graph}) todos los destinos y acciones de navegación, facilitando el manejo de transiciones entre Fragmentos, Actividades y pantallas desplegables. Ofrece funcionalidades como animaciones de transición, paso de argumentos tipados (\textit{SafeArgs}), y control de la pila de navegación (\textit{back stack}) sin necesidad de manipular transiciones manuales entre fragmentos. Esto reduce errores comunes, simplifica el código y promueve arquitecturas más limpias y mantenibles. \cite{android_navigation_component}
 
 \subsubsection{NavHostFragment}
 Es un contenedor especializado del Componente de Navegación de Android Jetpack
 que actúa como el anfitrión donde se muestran los destinos definidos en el
 gráfico de navegación. Es el componente responsable de gestionar los cambios de
 pantalla al navegar entre Fragmentos, controlar automáticamente el ciclo de
-vida de cada destino, la pila trasera, las transiciones y la integración con el
-controlador de navegación (\textit{NavController}). En esencia, sirve como el
-punto central que conecta la interfaz de usuario con la lógica de navegación
-declarada, permitiendo manejar flujos complejos sin necesidad de administrar
-manualmente transacciones de fragmentos. \cite{navhostfragment_androidx}
+vida de cada destino, la pila de navegación, las transiciones y la integración
+con el controlador de navegación (\textit{NavController}). En esencia, sirve
+como el punto central que conecta la interfaz de usuario con la lógica de
+navegación declarada, permitiendo manejar flujos complejos sin necesidad de
+administrar manualmente transacciones de fragmentos.
+\cite{navhostfragment_androidx}
 
 \subsubsection{NavigationFragment}
 Al utilizar Android Jetpack, este suele ser el término para definir un
@@ -861,10 +965,10 @@ Este es el componente central del Componente de Navegación de Android Jetpack,
 encargado de orquestar las acciones de navegación dentro de una aplicación.
 Actúa como intermediario entre el \textit{NavHostFragment} y el gráfico de
 navegación, ya que interpreta las acciones declaradas en el gráfico y ejecuta
-las transiciones correspondientes entre destinos. Además, administra la pila
-trasera, permite navegar hacia destinos específicos, manejar argumentos tipados
-(\textit{SafeArgs}) y coordinar animaciones o comportamientos especiales
-definidos en la navegación. \cite{android_navcontroller}
+las transiciones correspondientes entre destinos. Además, administra la pila de
+navegación, permite navegar hacia destinos específicos, manejar argumentos
+tipados (\textit{SafeArgs}) y coordinar animaciones o comportamientos
+especiales definidos en la navegación. \cite{android_navcontroller}
 
 \subsubsection{SafeArgs}
 Este es un complemento del Componente de Navegación de Android Jetpack, el cual
@@ -877,10 +981,7 @@ generados, lo que garantiza que los tipos coincidan, que los argumentos
 requeridos estén presentes y que se reduzca significativamente el riesgo de
 fallos en la navegación. \cite{safe_args_android_navigation}
 
-\subsubsection{Paquete (\textit{Bundle})}
-En Android, un \textit{Bundle} es una estructura de datos de tipo llave-valor, utilizada para almacenar y transferir información entre componentes del sistema. Está optimizado para manejar tipos de datos primitivos y objetos que implementan \textit{Parcelable} o \textit{Serializable}. Los \textit{Bundles} se emplean comúnmente para pasar argumentos en la navegación, preservar el estado durante cambios de configuración y enviar datos en eventos del ciclo de vida. Constituyen un mecanismo ligero y eficiente que permite empaquetar información de forma temporal dentro de la arquitectura de componentes de Android. \cite{android_bundle}
-
-\subsubsection{Serializable}
+\subsubsection{Serializador (\textit{Serializable})}
 Es una interfaz de Java que permite convertir un objeto en una secuencia de
 \textit{bytes} con el fin de almacenarlo o transmitirlo. En Android, aunque es
 compatible, no es el método más eficiente para pasar datos entre componentes,
@@ -888,14 +989,17 @@ ya que su rendimiento es inferior al de \textit{Parcelable}. Su principal
 ventaja es la simplicidad: basta con implementar la interfaz para habilitar la
 serialización automática del objeto. \cite{java_serializable}
 
-\subsubsection{Parcelable}
+\subsubsection{Parcelador (\textit{Parcelable})}
 Es una interfaz específica de Android diseñada para serializar objetos de
-manera más rápida y eficiente que \textit{Serializable}. Permite descomponer un
+manera más rápida y eficiente que el Serializador (\textit{Serializable}). Permite descomponer un
 objeto en un paquete llamado \textit{Parcel} para transferirlo entre
 Actividades, Fragmentos o servicios. Requiere implementar métodos explícitos
 para escribir y reconstruir el objeto, lo que reduce la sobrecarga y mejora el
 rendimiento, especialmente en dispositivos móviles donde la optimización es
 clave. \cite{android_parcelable}
+
+\subsubsection{Paquete (\textit{Bundle})}
+En Android, un \textit{Bundle} es una estructura de datos de tipo llave-valor, utilizada para almacenar y transferir información entre componentes del sistema. Está optimizado para manejar tipos de datos primitivos y objetos que implementan \textit{Parcelable} o \textit{Serializable}. Los \textit{Bundles} se emplean comúnmente para pasar argumentos en la navegación, preservar el estado durante cambios de configuración y enviar datos en eventos del ciclo de vida. Constituyen un mecanismo ligero y eficiente que permite empaquetar información de forma temporal dentro de la arquitectura de componentes de Android. \cite{android_bundle}
 
 \subsubsection{Material Design}
 Corresponde a un sistema de diseño creado por \textbf{Google}, el cual
@@ -908,7 +1012,7 @@ de la librería \textit{Material Components for Android}, la cual ofrece
 personalizables para construir experiencias coherentes en todo el ecosistema
 Android. \cite{material_design_m3_website}
 
-\subsubsection{Lenguaje de Marcado Extensible (\textit{Extensible Markup Language})}
+\subsubsection{Lenguaje de Marcado Extensible (\textit{Extensible Markup Language} - XML)}
 Este es un lenguaje diseñado para almacenar y transportar datos de forma estructurada y legible tanto para humanos como para máquinas. A diferencia de HTML (\textit{HyperText Markup Language} o Lenguaje de Marcado de Hipertexto), su propósito no es describir la presentación, sino definir la estructura y el significado de la información mediante etiquetas personalizables. XML es extensible, jerárquico y basado en texto, lo que lo convierte en un estándar ampliamente utilizado para intercambio de datos, configuraciones y definición de documentos. En Android, XML se utiliza para describir interfaces de usuario, recursos de diseño, valores, animaciones y configuraciones del sistema. \cite{w3c_xml}
 
 \subsubsection{Plantillas con XML}
@@ -960,9 +1064,9 @@ de tiempo nativa en dispositivos con versiones antiguas de Android.
 \cite{threeten_abp}
 
 \subsubsection{Retrofit}
-Retrofit es una librería de cliente HTTP (siglas en inglés para Protocolo de
-Transferencia de HiperTexto) para Android y Java que permite consumir
-\textit{APIs REST} (siglas en inglés para Transferencia de Estado Representacional) de forma sencilla. Soporta conversión transparente de JSON
+Retrofit es una librería de cliente HTTP para Android y Java que permite
+consumir \textit{APIs REST} (siglas en inglés para Transferencia de Estado
+Representacional) de forma sencilla. Soporta conversión transparente de JSON
 (siglas en inglés para Notación de Objetos de JavaScript) a objetos
 Kotlin/Java, manejo asíncrono con corrutinas, interceptores, autenticación y
 manejo de errores. Es una herramienta fundamental para aplicaciones móviles que
@@ -986,14 +1090,6 @@ consumibles por clientes diversos. Es uno de los enfoques más utilizados para
 APIs modernas debido a su flexibilidad y compatibilidad multiplataforma.
 \cite{10.5555/932295}
 
-\subsubsection{Postman}
-Postman es una herramienta de desarrollo utilizada para diseñar, probar y
-documentar APIs. Ofrece una interfaz gráfica intuitiva para enviar solicitudes
-HTTP, revisar respuestas, automatizar pruebas, organizar colecciones de puntos
-de conexión y colaborar en equipos de desarrollo. Permite trabajar con
-distintos métodos HTTP, autenticación, variables de entorno y generación
-automática de documentación. \cite{postman_tool}
-
 \subsubsection{Datos Observables (\textit{LiveData})}
 Corresponde a una clase observable de Android Jetpack diseñada para contener y
 notificar datos de manera reactiva y consciente del ciclo de vida. Solo
@@ -1013,7 +1109,7 @@ corrutinas lanzadas en este alcance se cancelan automáticamente cuando el
 Modelo de Vista es destruido, lo que evita fugas de memoria y simplifica la gestión
 del ciclo de vida. Es ideal para operaciones como llamadas a API, acceso a
 bases de datos o procesamiento de datos que deben sobrevivir a cambios de
-configuración. \cite{android\_viewmodelscope}
+configuración. \cite{androidviewmodelscope}
 
 \subsubsection{Alcance de Corrutina (\textit{CoroutineScope})}
 Este es un componente fundamental de las corrutinas de Kotlin que define el
@@ -1023,7 +1119,7 @@ organizada, para que se garantice que todas las corrutinas lanzadas dentro del
 mismo alcance puedan cancelarse de forma conjunta. Su uso es esencial para
 evitar fugas de memoria y para mantener controlado el comportamiento
 asincrónico de una aplicación, especialmente en arquitecturas basadas en
-Modelos de Vista, Actividades o servicios. \cite{kotlin\_coroutinescope}
+Modelos de Vista, Actividades o servicios. \cite{kotlincoroutinescope}
 
 \subsubsection{Inyección de Dependencias (\textit{Dependency Injection} o DI)} Consiste en un patrón de diseño que consiste en proporcionar a un objeto
 las dependencias que necesita en lugar de que él mismo las construya. Este
@@ -1089,17 +1185,6 @@ datos \cite{johnson2019billion, chaudhuri1995self}. El cuadro
 \end{table}
 
 \subsection{APIs de IA: integración de modelos conversacionales}
-El término API se refiere a las siglas en inglés para \textbf{Interfaces de
-    Programación de Aplicaciones}, las cuales permiten que dos sistemas de software
-se comuniquen entre sí mediante un conjunto definido de reglas, conocidos como
-\textit{endpoints} o \textbf{puntos de conexión}. Según la definición clásica
-de Fielding y Taylor, una API proporciona un mecanismo estandarizado para que
-aplicaciones distintas intercambien datos o funcionalidades sin necesidad de
-conocer la implementación interna de cada sistema \cite{10.1145/514183.514185}.
-En el ámbito de la inteligencia artificial, las APIs ofrecen acceso directo a
-modelos avanzados sin requerir que el desarrollador entrene o despliegue
-modelos por su cuenta.
-
 Las APIs de IA, como OpenAI y Gemini, permiten integrar modelos de lenguaje
 conversacionales en aplicaciones educativas. Estos servicios ofrecen
 capacidades de generación de texto, comprensión de lenguaje natural y tutoría

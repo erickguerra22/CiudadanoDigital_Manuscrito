@@ -17,16 +17,16 @@ Cada ciclo SCRUM siguió las fases de planificación, desarrollo, revisión y
 retrospectiva, bajo los siguientes principios:
 
 \begin{itemize}
-      \item Planificación (Planeación del Sprint): se definieron los objetivos y alcance
+      \item \textbf{Planificación (Planeación del Sprint):} se definieron los objetivos y alcance
             del \textit{sprint}, así como las tareas específicas necesarias para cumplir la
             meta establecida.
-      \item Desarrollo (Ejecución del Sprint): se ejecutaron las tareas asignadas con
+      \item \textbf{Desarrollo (Ejecución del Sprint):} se ejecutaron las tareas asignadas con
             enfoque en la funcionalidad incremental, priorizando siempre la obtención de
             resultados medibles.
-      \item Revisión (Revisión del Sprint): al cierre de cada \textit{sprint}, se evaluó el
+      \item \textbf{Revisión (Revisión del Sprint):} al cierre de cada \textit{sprint}, se evaluó el
             cumplimiento de los objetivos, la calidad del producto obtenido y la
             satisfacción de los criterios de aceptación definidos.
-      \item Retrospectiva (\textit{Sprint Retrospective}): se analizaron los aprendizajes
+      \item \textbf{Retrospectiva (\textit{Sprint Retrospective}):} se analizaron los aprendizajes
             obtenidos, los obstáculos encontrados y las oportunidades de mejora para el
             siguiente \textit{sprint}.
 \end{itemize}
@@ -53,7 +53,7 @@ previamente curada y vectorizada.
 La metodología utilizada en esta primera iteración de \textit{Ciudadano
       Digital} se basó en SCRUM, adaptada a las particularidades de un proyecto
 sociotecnológico cuyo objetivo principal fue validar la viabilidad técnica de
-integrar un sistema de generación aumentada por recuperación (RAG, por sus
+integrar un sistema de generación mejorada por recuperación (RAG, por sus
 siglas en inglés) dentro de un entorno educativo. Para ello, se incorporaron
 actividades orientadas tanto al desarrollo incremental del software como al
 análisis contextual del futuro usuario final, sin que esto implicara evaluar
@@ -79,15 +79,15 @@ La fase metodológica del desarrollo del proyecto estuvo compuesta por seis \tex
       \renewcommand{\arraystretch}{1.2}
       \begin{tabular}{|l|p{8cm}|c|}
             \hline
-            \textbf{\textit{Sprint}} & \textbf{Meta Principal}                                  & \textbf{Duración Estimada} \\ \hline
-            \textit{Sprint} 1        & Identificación del perfil de usuario objetivo (Persona). & 3 semanas                  \\ \hline
-            \textit{Sprint} 2        & Recolección y procesamiento del contenido educativo.     & 4 semanas                  \\ \hline
-            \textit{Sprint} 3        & Construcción e implementación del servidor.              & 4 semanas                  \\ \hline
-            \textit{Sprint} 4        & Desarrollo de la interfaz móvil en Kotlin.               & 4 semanas                  \\ \hline
-            \textit{Sprint} 5        & Pruebas y validación funcional.                          & 3 semanas                  \\ \hline
-            \textit{Sprint} 6        & Documentación, presentación y cierre del proyecto.       & 3 semanas                  \\ \hline
+            \textbf{\textit{Sprint}} & \textbf{Meta Principal}                                  & \textbf{Duración} \\ \hline
+            \textit{Sprint} 1        & Identificación del perfil de usuario objetivo (Persona). & 3 semanas         \\ \hline
+            \textit{Sprint} 2        & Recolección y procesamiento del contenido educativo.     & 4 semanas         \\ \hline
+            \textit{Sprint} 3        & Construcción e implementación del servidor.              & 4 semanas         \\ \hline
+            \textit{Sprint} 4        & Desarrollo de la interfaz móvil en Kotlin.               & 4 semanas         \\ \hline
+            \textit{Sprint} 5        & Pruebas y validación funcional.                          & 3 semanas         \\ \hline
+            \textit{Sprint} 6        & Documentación, presentación y cierre del proyecto.       & 3 semanas         \\ \hline
       \end{tabular}
-      \caption[Estructura de los \textit{Sprints}]{Estructura de los \textit{sprints} del proyecto, incluyendo la meta principal y duración estimada de cada uno.}
+      \caption[Estructura de los \textit{Sprints}]{Estructura de los \textit{sprints} del proyecto, incluyendo la meta principal y duración de cada uno.}
       \label{tab:estructura-sprints}
 \end{table}
 
@@ -96,7 +96,7 @@ como criterio de avance para el siguiente ciclo, asegurando así la trazabilidad
 y coherencia entre la visión inicial del proyecto y el producto final obtenido.
 
 \section{\textit{Sprint} 1: Identificación del perfil de usuario objetivo}
-\textbf{Duración estimada:} 3 semanas
+\textbf{Duración:} 3 semanas
 
 Este \textit{sprint} tuvo como objetivo desarrollar un perfil de usuario
 (Persona) que sirviera como insumo accionable para orientar las decisiones de
@@ -165,32 +165,8 @@ exitosa de las siguientes tareas:
 
 \end{enumerate}
 
-\subsection{Resultado final}
-Como resultado de este primer \textit{sprint}, se construyó un perfil de
-\textbf{Persona} detallado, basado en fuentes documentales, que permitió
-comprender las necesidades, barreras y expectativas del usuario objetivo frente
-a una herramienta de apoyo educativo.
-
-\begin{itemize}
-      \item Edad promedio: 13-17 años.
-      \item Contexto educativo: estudiantes de nivel medio y universitario inicial.
-      \item Motivaciones: aprender de forma práctica y reflexiva, mejorar su comprensión de
-            ciudadanía y valores.
-      \item Frustraciones: enseñanza teórica, falta de espacios de diálogo y escasez de
-            herramientas interactivas.
-      \item Competencias digitales: nivel bajo a medio en uso de aplicaciones y
-            herramientas digitales.
-      \item Contexto de uso de la aplicación: dispositivos móviles, principalmente Android,
-            con sesiones cortas de interacción y preferencia por contenidos dinámicos y
-            cercanos a su realidad.
-\end{itemize}
-
-Este perfil se utilizó como base para orientar el diseño conversacional, las
-estrategias de análisis documental y los lineamientos pedagógicos que guiarán
-las siguientes etapas del desarrollo del proyecto.
-
 \section{\textit{Sprint} 2: Recolección y procesamiento del contenido educativo inicial}
-\textbf{Duración estimada:} 4 semanas
+\textbf{Duración:} 4 semanas
 
 Este \textit{sprint} se centró en recopilar, procesar y estructurar el
 contenido educativo inicial que alimentará al asistente virtual de inteligencia
@@ -379,35 +355,15 @@ actualizaciones del corpus de información.
             \end{itemize}
 \end{enumerate}
 
-\subsection{Resultado final}
-Al finalizar el \textit{Sprint} 2, se obtuvo:
-
-\begin{itemize}
-      \item Una base documental curada y segmentada en categorías temáticas.
-      \item Representaciones numéricas (\textit{embeddings}) generadas para cada fragmento
-            de texto, con metadatos completos para garantizar trazabilidad.
-      \item Un índice en Pinecone listo para consultas semánticas, capaz de proporcionar
-            contexto preciso al asistente virtual para cualquier pregunta del usuario.
-      \item Establecimiento de un flujo reproducible de selección, curación, segmentación y
-            vectorización de contenido para una continua actualización del corpus del
-            proyecto.
-\end{itemize}
-
-Este \textit{sprint} permitió sentar las bases para un sistema de respuesta
-contextualizada, alineado con los objetivos de formación ciudadana y valores
-morales definidos en el proyecto, asegurando que el asistente virtual cuente
-con información confiable, organizada y accesible para generar respuestas
-pertinentes y fundamentadas.
-
 \section{\textit{Sprint} 3: Construcción e implementación del servidor}
-\textbf{Duración estimada:} 4 semanas
+\textbf{Duración:} 4 semanas
 
 Este \textit{sprint} se enfocó en el diseño, construcción e implementación de
 la arquitectura del servidor del asistente virtual, garantizando la integración
 de bases de datos relacionales y vectoriales, y estableciendo la comunicación
-segura y eficiente con el modelo de lenguaje de gran escala (LLM, por sus
-siglas en inglés) mediante un flujo RAG (\textit{Retrieval-Augmented
-      Generation}). Se definieron módulos claros bajo el patrón de diseño MVC
+segura y eficiente con el modelo grande de lenguaje (LLM, por sus siglas en
+inglés) mediante un flujo de generación mejorada por recuperación. Se
+definieron módulos claros bajo el patrón de diseño MVC
 (Modelo-Vista-Controlador), así como servicios complementarios internos en
 Python tanto para la curación y procesamiento de documentos, como para procesar
 consultas y generar respuestas contextualizadas con base en los mismos.
@@ -480,11 +436,12 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 
       \item \textbf{Diseño y construcción de bases de datos}
             \subsubsection{Base de datos relacional}
-            Esta será la encargada de almacenar la información estructurada del sistema,
-            como usuarios, chats, mensajes y sesiones, de manera que se mantenga la
-            persistencia de datos y se facilite la gestión de las interacciones del usuario
-            con el asistente virtual. La Figura \ref{fig:diagrama-bd-relacional} muestra el
-            diagrama entidad-relación (ER) de la base de datos relacional diseñada.
+            Levantada en PostgreSQL, será la encargada de almacenar la información
+            estructurada del sistema, como usuarios, chats, mensajes y sesiones, de manera
+            que se mantenga la persistencia de datos y se facilite la gestión de las
+            interacciones del usuario con el asistente virtual. La Figura
+            \ref{fig:diagrama-bd-relacional} muestra el diagrama entidad-relación (ER) de
+            la base de datos relacional diseñada.
 
             \begin{figure}[H]
                   \centering
@@ -512,8 +469,8 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 
             \subsubsection{Base de datos vectorial}
             Para llevar a cabo búsquedas semánticas eficientes y recuperar fragmentos de
-            documentos relevantes en función de las preguntas del usuario (sistema
-            \textit{Retrieval-Augmented Generation}), se implementó una base de datos
+            documentos relevantes en función de las preguntas del usuario (sistema de
+            generación mejorada por recuperación), se implementó una base de datos
             vectorial utilizando Pinecone. Esta base almacena las representaciones
             numéricas generadas previamente a partir de los fragmentos de texto,
             permitiendo consultas rápidas y precisas basadas en similitud semántica. La
@@ -543,10 +500,9 @@ consultas y generar respuestas contextualizadas con base en los mismos.
 
       \item \textbf{Implementación del modelo LLM y flujo RAG}
 
-            Se implementó un flujo RAG (\textit{Retrieval-Augmented Generation}) que
-            permite al asistente virtual generar respuestas fundamentadas en los contenidos
-            educativos previamente indexados. Este flujo integra los siguientes
-            componentes:
+            Se implementó un flujo de generación mejorada por recuperación que permite al
+            asistente virtual generar respuestas fundamentadas en los contenidos educativos
+            previamente indexados. Este flujo integra los siguientes componentes:
 
             \begin{enumerate}
                   \item \textbf{API en NodeJS:} Actúa como servidor principal, orquestando la
@@ -602,9 +558,9 @@ consultas y generar respuestas contextualizadas con base en los mismos.
             \subsubsection{Flujo detallado de procesamiento de consultas}
 
             El microservicio de Python gestiona el flujo RAG completo, coordinando la
-            interacción entre la base vectorial y el modelo de lenguaje de gran escala para
-            generar respuestas contextualizadas y fundamentadas. El proceso se divide en
-            tres etapas principales:
+            interacción entre la base vectorial y el modelo grande de lenguaje para generar
+            respuestas contextualizadas y fundamentadas. El proceso se divide en tres
+            etapas principales:
 
             \begin{enumerate}
                   \item \textbf{Recepción de la pregunta en NodeJS:}
@@ -630,7 +586,7 @@ consultas y generar respuestas contextualizadas con base en los mismos.
                               \item Si la búsqueda semántica obtuvo resultados, se extrae el texto plano almacenado
                                     en los metadatos de los vectores y se combina con la pregunta original,
                                     construyendo una petición que resume la información relevante y plantea la
-                                    consulta al modelo de lenguaje de gran escala.
+                                    consulta al modelo grande de lenguaje.
                               \item Envía la petición al modelo LLM de OpenAI para generar la respuesta
                                     contextualizada.
                               \item Genera un objeto JSON que incluye la pregunta original, la respuesta obtenida y
@@ -669,32 +625,13 @@ consultas y generar respuestas contextualizadas con base en los mismos.
             \end{algorithm}
 \end{enumerate}
 
-\subsection{Resultado final}
-Al finalizar este \textit{sprint}, se obtuvo:
-
-\begin{itemize}
-      \item Servidor modular bajo MVC (Modelo-Vista-Controlador), con rutas, controladores
-            y modelos independientes.
-      \item Base de datos relacional (PostgreSQL) con integridad referencial y seguridad.
-      \item Base vectorial en Pinecone, indexada y lista para búsquedas semánticas
-            eficientes.
-      \item Servicio Python que integra recuperación contextual y generación ética de
-            respuestas mediante LLM.
-      \item Flujo completo validado: desde envío de pregunta hasta devolución de respuesta
-            fundamentada.
-\end{itemize}
-
-Este \textit{sprint} consolidó la infraestructura técnica del sistema,
-asegurando operación confiable, trazabilidad de datos y escalabilidad futura
-para el asistente educativo.
-
 \section{\textit{Sprint} 4: Desarrollo de la interfaz móvil en Kotlin}
-\textbf{Duración estimada:} 4 semanas
+\textbf{Duración:} 4 semanas
 
 Este \textit{sprint} tuvo como objetivo diseñar e implementar la interfaz móvil
 de la aplicación del asistente educativo, utilizando Kotlin para garantizar
 integración nativa con Android y un flujo de interacción intuitivo para el
-usuario. Esto permite una interacción eficiente con el asistente al integrar
+usuario. Esto permitió una interacción eficiente con el asistente al integrar
 las funcionalidades proporcionadas por el servidor a través de servicios puntos
 de conexión (\textit{endpoints}). El diseño de la arquitectura se basó en el
 patrón de diseño MVVM (Modelo-Vista-Modelo de Vista), lo que permitió separar
@@ -748,7 +685,7 @@ presentación.
                               \item Encapsula la interacción con los repositorios, garantizando que la vista
                                     permanezca libre de lógica de negocio.
                               \item El Algoritmo \ref{alg:viewmodel-flujo} ilustra el flujo básico de un Modelo de
-                                    VIsta típico.
+                                    Vista típico.
 
                                     \begin{algorithm}[H]
                                           \caption{Flujo básico de un Modelo de Vista}
@@ -811,31 +748,6 @@ presentación.
                         \end{itemize}
             \end{itemize}
 
-      \item \textbf{Diseño de flujo de interacción}
-            \begin{itemize}
-                  \item \textbf{Actividades}
-                        \begin{itemize}
-                              \item \textit{SplashActivity}: esta es la vista principal de la aplicación. Si bien visualmente tan solo muestra el logo del proyecto, su función principal es verificar si el usuario ya ha iniciado sesión previamente (mediante un token JWT almacenado en las Preferencias Compartidas o \textit{SharedPreferences}) o bien si debe ser redirigido a la pantalla de login. A partir de esta lógica se permite que el usuario no deba iniciar sesión cada vez que abre la aplicación, mejorando la experiencia de uso.
-                              \item \textit{UnloggedActivity}: esta actividad contiene los fragmentos relacionados con la autenticación del usuario, incluyendo \textit{LoginFragment}, \textit{RegisterFragment} y \textit{RecoverPasswordFragment}. Cada fragmento maneja su propia lógica de validación y comunicación con el servidor para gestionar el acceso seguro a la aplicación.
-                              \item \textit{MainActivity}: esta actividad permite el acceso a las funciones principales de la aplicación una vez el usuario ya haya sido autenticado. Como componente principal, alberga el \textit{NavHostFragment}, el cual gestiona la navegación entre los distintos fragmentos funcionales, que incluyen el chat con el asistente, perfil de usuario y visualización de documentos. Por otro lado, esta actividad también incluye un menú lateral que facilita el acceso rápido al historial de chats del usuario.
-                        \end{itemize}
-                  \item \textbf{Fragmentos}
-                        \begin{itemize}
-                              \item \textit{LoginFragment}: permite al usuario ingresar sus credenciales (correo electrónico y contraseña) para autenticarse en el sistema. Incluye validaciones de formato y manejo de errores en caso de credenciales incorrectas.
-                              \item \textit{RegisterFragment}: permite a nuevos usuarios crear una cuenta proporcionando información básica como correo electrónico, nombre, apellido, número de teléfono (con código de teléfono, en caso sea un número extranjero), contraseña y confirmación de contraseña. Incluye validaciones para asegurar la integridad y unicidad de los datos ingresados. La solicitud de un número telefónico cumple únicamente una función de verificación de identidad, ya que el sistema de mensajería SMS no fue implementado en esta fase del proyecto. Por el contrario, el correo electrónico sí es indispensable, ya que se utiliza para la recuperación de contraseña y notificaciones importantes como la creación o eliminación de documentos.
-                              \item \textit{SendRecoveryFragment}: permite a los usuarios solicitar un código de recuperación de contraseña, el cual es enviado al correo electrónico registrado. El código será enviado \textbf{únicamente} si se encuentra una cuenta asociada al correo proporcionado.
-                              \item \textit{VerifyCodeFragment}: permite a los usuarios ingresar el código de recuperación recibido por correo electrónico, así como validar la validez del mismo.
-                              \item \textit{ResetPasswordFragment}: permite a los usuarios establecer una nueva contraseña tras haber validado el código de recuperación.
-                              \item \textit{ChatFragment}: permite la interacción directa con el asistente virtual. Incluye un campo de texto para ingresar preguntas, un botón para enviar las consultas y una vista de lista que muestra el historial de mensajes intercambiados con el asistente.
-                              \item \textit{ProfileFragment}: permite al usuario visualizar y actualizar su información personal, como nombre, apellido, correo electrónico y número de teléfono. La contraseña solo puede ser modificada mediante el flujo de recuperación de contraseña.
-                              \item\textit{ DocumentsFragment}: permite a los usuarios con rol \textbf{Administrador} visualizar el listado de documentos educativos cargados en el sistema, así como acceder al documento original de ser requerido, o bien, agregar o eliminar documentos según sea necesario.
-                        \end{itemize}
-                  \item Implementación de navegación mediante \textit{Navigation Component},
-                        garantizando consistencia y control del back stack.
-                  \item Integración de indicadores de carga y estado de conexión, ofreciendo
-                        retroalimentación inmediata al usuario sobre la consulta al LLM.
-            \end{itemize}
-
       \item \textbf{Integración con el servidor y servicios de Python}
             \begin{itemize}
                   \item Consumo de puntos de conexión del servidor para autenticación, gestión de
@@ -847,28 +759,11 @@ presentación.
             \end{itemize}
 \end{enumerate}
 
-\subsection{Resultado final}
-Al finalizar este \textit{sprint}, se obtuvo:
-\begin{itemize}
-      \item Aplicación móvil funcional en Android, con integración nativa mediante Kotlin y
-            comunicación estable con el servidor.
-      \item Estructura modular clara (\textbf{Datos}, \textbf{Inyección de Dependencias},
-            \textbf{Ayudantes}, \textbf{UI}, \textbf{Recursos}) que facilita mantenimiento
-            y escalabilidad.
-      \item Flujo de interacción optimizado para el usuario, incluyendo envío de preguntas,
-            recepción de respuestas contextuales y visualización de documentos y
-            administración de documentos para usuarios autorizados.
-\end{itemize}
-
-Este \textit{sprint} permitió contar con una interfaz móvil operativa, lista
-para el despliegue y pruebas de usabilidad, estableciendo las bases para las
-fases finales de evaluación y documentación del proyecto.
-
 \section{\textit{Sprint} 5: Pruebas y validación}
-\textbf{Duración estimada:} 3 semanas
+\textbf{Duración:} 3 semanas
 
 Este \textit{sprint} se centró en validar el funcionamiento integral del
-sistema, asegurando la correcta interacción entre la aplicación móvil, el
+sistema para asegurar la correcta interacción entre la aplicación móvil, el
 servidor, la base de datos relacional y vectorial y el modelo de lenguaje (LLM,
 por sus siglas en inglés). Además, se buscó evaluar la calidad, precisión y
 confiabilidad de las respuestas generadas por el asistente virtual mediante la
@@ -876,86 +771,125 @@ metodología y métricas propuestas en las secciones 4.3.9 y 4.3.10 de este
 documento.
 
 \subsection{Ejecución}
+
 \begin{enumerate}
       \item \textbf{Pruebas funcionales del sistema}
+
+            Las pruebas funcionales se llevaron a cabo siguiendo un proceso estructurado
+            compuesto por cinco fases: configuración del entorno, verificación de
+            comunicación entre módulos, pruebas de puntos de conexión, verificación de
+            operaciones CRUD y validación de integridad entre fuentes de datos.
+
             \begin{itemize}
-                  \item Verificación de la comunicación entre la aplicación móvil (Kotlin), el servidor
-                        (NodeJS), la base de datos relacional (PostgreSQL) y la base de datos vectorial
-                        (Pinecone). Se considera exitoso si cada módulo responde correctamente a las
-                        solicitudes y envía los datos esperados al módulo contiguo.
-                  \item Pruebas de puntos de conexión mediante Postman para asegurar correcta
-                        autenticación de usuarios, envío de preguntas, recuperación de respuestas y
-                        gestión de historial de chats. Se considera exitoso si cada uno de los puntos
-                        de conexión funciona como se espera, incluyendo la validación de parámetros,
-                        restricciones de acceso, formato de respuestas y manejo de errores.
-                  \item Comprobación de la integridad de los datos entre los distintos módulos,
-                        incluyendo creación, lectura, actualización y eliminación de información
-                        (CRUD). Se considera exitoso si todos los datos manipulados a través del
-                        cliente se reflejan correctamente en la base de datos relacional y vectorial,
-                        manteniendo consistencia y precisión. Se evalúa también la integridad
-                        referencial a los documentos originales almacenados en el contenedor S3; es
-                        decir, si un elemento se crea o se elimina en cualquiera de las tres fuentes de
-                        datos, este cambio debe reflejarse en las otras dos.
+                  \item \textbf{1. Configuración del entorno de prueba.}
+                        Se desplegó el servidor en un entorno local sobre NodeJS mediante el uso de las mismas variables de entorno del entorno de producción. La base de datos relacional (PostgreSQL) se inicializó con la estructura definitiva del proyecto y una carga mínima de datos para pruebas. En el caso de la base de datos vectorial, Pinecone se configuró con el índice previamente alimentado; mientras que al contenedor S3 ya habían sido cargados los documentos del corpus inicial.
+
+                        Para que la aplicación móvil tuviera acceso al servidor local, el equipo en el
+                        que se levantó el servidor fue habilitado como punto de conexión inalámbrico.
+                        De esta manera, el dispositivo Android de pruebas pudo conectarse a la misma
+                        red y utilizar la dirección IP de la computadora como la IP del servidor.
+
+                  \item \textbf{2. Verificación de comunicación entre módulos.}
+                        Para asegurar que cada componente podía comunicarse con el siguiente, se realizaron solicitudes controladas del tipo \textbf{\guillemetleft{}ping\guillemetright{}}.
+                        \begin{itemize}
+                              \item \textbf{Desde la aplicación móvil al servidor:} envío de solicitudes HTTP simulando
+                                    inicio de sesión y envío de mensajes.
+                              \item \textbf{Del servidor a la base de datos relacional:} ejecución de consultas directas de lectura y
+                                    escritura.
+                              \item \textbf{Del servidor a la base de datos vectorial:} inserción y recuperación de vectores de prueba.
+                              \item \textbf{Del servidor al contenedor S3:} subida, lectura y eliminación de documentos.
+                        \end{itemize}
+                        Se consideró exitosa la comunicación cuando cada módulo pudo responder con el código de estado esperado y en el formato establecido.
+
+                  \item \textbf{3. Pruebas de puntos de conexión mediante Postman.}
+                        Se creó una colección de Postman con los puntos de conexión del sistema, agrupados por funcionalidad:
+                        \texttt{/autenticación}, \texttt{/mensajes}, \texttt{/historial}, \texttt{/documentos}.
+                        Para cada punto de conexión se diseñaron casos de prueba que contemplaron:
+                        \begin{itemize}
+                              \item Parámetros válidos e inválidos.
+                              \item Códigos de estado esperados.
+                              \item Verificación de restricciones de acceso (por rol o por token).
+                              \item Validación de formatos de respuesta (JSON).
+                              \item Manejo de errores (HTTP 400 y HTTP 500).
+                        \end{itemize}
+                        La prueba se consideró exitosa si la respuesta coincidía con el comportamiento esperado para cada punto de conexión definido en el servidor.
+
+                  \item \textbf{4. Pruebas CRUD en las bases de datos.}
+                        Se verificaron las operaciones de creación, lectura, actualización y eliminación tanto en PostgreSQL como en Pinecone.
+                        Por cada operación CRUD realizada desde el cliente, se confirmó:
+                        \begin{itemize}
+                              \item Que la operación se reflejara correctamente en la base de datos relacional.
+                              \item Que el vector correspondiente se actualizara o eliminara en Pinecone.
+                              \item Que en caso de involucrar documentos, los cambios se reflejaran también en el
+                                    contenedor S3.
+                        \end{itemize}
+                        Se revisó manualmente cada operación mediante consultas SQL directas y mediante la consola de Pinecone.
+
+                  \item \textbf{5. Validación de integridad entre fuentes de datos.}
+                        Para comprobar la consistencia entre las tres fuentes de datos (PostgreSQL, Pinecone y contenedor S3), se ejecutaron casos en los que:
+                        \begin{itemize}
+                              \item \textbf{Se creaba un documento desde la aplicación:} En el resultado esperado, este documento debía aparecer en la base
+                                    relacional, almacenarse en S3 y generarse su vector en Pinecone.
+                              \item \textbf{Se eliminaba un documento} En el resultado esperado, el documento debía eliminarse de los tres sistemas.
+                        \end{itemize}
+                        Se consideró exitosa la prueba cuando los cambios se replicaban de forma consistente en todas las fuentes, sin incongruencias.
             \end{itemize}
 
       \item \textbf{Pruebas de calidad y confiabilidad de las respuestas}
+
             \begin{itemize}
-                  \item Se definió un conjunto de 45 preguntas de prueba, basadas en el corpus y
-                        distribuidas en categorías como ética, ciudadanía, formación ciudadana o
-                        democracia. También se incluyeron consultas que evalúan la capacidad del
-                        asistente para manejar situaciones hipotéticas o dilemas morales en los cuales
-                        podría incurrir el usuario. Por otro lado, se incluyeron 10 preguntas de
-                        control que no están relacionadas con el contenido base, para evaluar la
-                        capacidad del modelo de rechazar consultas fuera de contexto y verificar la no
-                        alucinación del mismo.
-                  \item Se validaron las respuestas generadas por el asistente al compararlas con el
-                        contenido base utilizado para conformar el corpus, ya que no basta solamente
-                        con que el modelo sea capaz de responder coherentemente, sino que toda
-                        información proporcionada debe estar alineada con el contenido educativo
-                        recopilado.
-                  \item Se identificaron los casos en que el modelo no proporciona información
-                        suficiente o presenta inconsistencias, al haber tomado en cuenta aquellas
-                        preguntas que el modelo sí se espera que sea capaz de responder, pero que no lo
-                        hace correctamente. Estos casos se documentan para su posterior análisis y
-                        ajuste en futuras iteraciones.
-                  \item Se evaluó el tiempo de respuesta transcurrido desde que el usuario envía la
-                        consulta hasta que recibe la respuesta generada por el asistente.
+                  \item \textbf{1. Construcción del conjunto de pruebas.}
+                        Se elaboró una lista de 55 preguntas:
+                        \begin{itemize}
+                              \item 45 relacionadas con el corpus, extraídas con herramientas comerciales de Inteligencia Artificial, como \textbf{NotebookLLM}.
+                              \item 10 preguntas de control, no asociadas al corpus, para evaluar la \textbf{no alucinación}.
+                        \end{itemize}
+                        Cada pregunta fue almacenada en una hoja de cálculo, junto con las referencias que se esperaba que el modelo consultara para responder cada pregunta.
+
+                  \item \textbf{2. Ejecución manual de cada consulta.}
+                        Se envió cada pregunta al sistema desde la aplicación móvil, asegurando que:
+                        \begin{itemize}
+                              \item el historial de chat estuviera limpio antes de cada prueba,
+                              \item la pregunta se procesara en un nuevo mensaje,
+                              \item se registraran:
+                                    \begin{itemize}
+                                          \item el tiempo de respuesta,
+                                          \item la respuesta generada,
+                                          \item las referencias devueltas por el sistema.
+                                    \end{itemize}
+                        \end{itemize}
+                        Para calcular el tiempo de respuesta, el sistema inicia un contador justo antes de realizar la llamada al servicio de Python, y lo detiene hasta que se devuelve la respuesta final al cliente.
+
+                  \item \textbf{3. Validación de alineación con el corpus.}
+                        Cada respuesta obtenida por el sistema, fue clasificada como:
+                        \begin{itemize}
+                              \item \textbf{Exitosa:} si el sistema fue capaz de responderla.
+                              \item \textbf{Congruente:} si el comportamiento esperado se cumplió. Si la pregunta era de control, el comportamiento esperado fue que el sistema no pudiera responder.
+                        \end{itemize}
+                        Si el modelo respondía cuando no debía hacerlo, o viceversa, se consideraba comoo \textbf{incongruente}
+
+                  \item \textbf{4. Verificación de referencias.}
+                        Para cada respuesta obtenida del sistema, se compararon las referencias consultadas contra las referencias esperadas, catalogando cada coincidencia como:
+                        \begin{itemize}
+                              \item \textbf{Exacta:} si las referencias esperadas y las consultadas por el modelo coinciden por completo.
+                              \item\textbf{Parcial:} si las referencias consultadas incluyen algunas de las referencias esperadas, pero también el modelo hizo uso de referencias adicionales.
+                              \item \textbf{Nula:} si las referencias utilizadas difieren completamente de las referencias esperadas.
+                        \end{itemize}
+
+                  \item \textbf{5. Medición de latencia.}
+                        Para cada una de las 55 consultas se registró el tiempo exacto entre solicitud y respuesta. Posteriormente, se calculó:
+                        \begin{itemize}
+                              \item tiempo mínimo,
+                              \item tiempo máximo,
+                              \item tiempo promedio,
+                              \item desviación estándar entre tiempos.
+                        \end{itemize}
+                        Este proceso permite que cualquier evaluador pueda reproducir la medición bajo las mismas condiciones controladas.
             \end{itemize}
 \end{enumerate}
 
-\subsection{Resultado final}
-Al concluir este \textit{sprint}, se logró:
-
-\begin{itemize}
-      \item Una validación completa de la integración entre cliente (\textit{frontend}),
-            servidor (\textit{backend}) y bases de datos, garantizando estabilidad y
-            funcionalidad del sistema, así como el correcto funcionamiento de todos los
-            componentes involucrados antes de incurrir en un análisis específico para
-            identificar puntos de mejora. Se verifica que todos los componentes técnicos
-            funcionen según lo previsto, encaminados al cumplimiento de los objetivos del
-            proyecto.
-      \item Obtener resultados cuantitativos a partir de las pruebas de calidad y
-            confiabilidad que permiten determinar el estado actual del modelo RAG
-            (\textit{Retrieval-Augmented Generation}) en términos de
-            \begin{itemize}
-                  \item \textbf{Eficiencia:} Tiempo de respuesta del modelo.
-                  \item \textbf{Exito} (\%): Porcentaje de los casos de prueba se comportó como se esperaba.
-                  \item \textbf{Nivel de congruencia} (\%): Porcentaje de preguntas que el modelo supo responder correctamente, basado de forma estricta en el contenido proporcionado.
-            \end{itemize}
-      \item La implementación de mejoras en la interfaz y en la lógica de generación de
-            peticiones para optimizar la experiencia de usuario y la pertinencia
-            pedagógica.
-      \item La documentación de resultados de prueba y recomendaciones para mantenimiento
-            futuro y escalabilidad del proyecto.
-\end{itemize}
-
-Este \textit{sprint} permitió asegurar que la aplicación estuviera lista para
-su uso efectivo público, a través de proporcionar respuestas precisas y
-contextualizadas, así como el establecimiento de las bases para fases futuras
-de despliegue y monitoreo continuo del asistente virtual.
-
 \section{\textit{Sprint} 6: Documentación y presentación}
-\textbf{Duración estimada:} 3 semanas
+\textbf{Duración:} 3 semanas
 
 Este \textit{sprint} se centró en consolidar toda la documentación generada
 durante el desarrollo del proyecto y preparar la presentación final del
@@ -1000,23 +934,3 @@ disponible para revisión, prueba y entrega formal al cliente.
                         documentación y evidencia de disponibilidad del producto para pruebas finales.
             \end{itemize}
 \end{enumerate}
-
-\subsection{Resultado final}
-Como resultado de este \textit{sprint}, se logró generar:
-
-\begin{itemize}
-      \item Un informe final consolidado, claro y completo que documenta todo el proceso de
-            desarrollo, análisis y resultados del proyecto.
-      \item El material de presentación profesional listo para exponer ante el cliente y
-            otros interesados.
-      \item La entrega formal de toda la documentación y repositorios al cliente,
-            asegurando disponibilidad total de recursos para pruebas, evaluación y futuras
-            mejoras.
-      \item El registro de la entrega y validación de que el producto final está operativo
-            y listo para su uso y pruebas definitivas.
-\end{itemize}
-
-Este \textit{sprint} concluyó con la transferencia completa del conocimiento y
-del producto, cerrando oficialmente el ciclo de desarrollo inicial del
-asistente virtual y dejando una base sólida para el mantenimiento y
-escalabilidad futura del proyecto.

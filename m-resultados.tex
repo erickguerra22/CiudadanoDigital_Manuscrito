@@ -21,9 +21,25 @@ Durante el primer \textit{sprint} se elaboró una ficha técnica detallada del
       \label{fig:persona}
 \end{figure}
 
-A partir de este perfil, mediante el cual se identificaron las motivaciones,
-objetivos, frustraciones, necesidades y comportamientos digitales de la
-población objetivo, se definieron los siguientes aspectos centrales de la
+Al identificar las características más comunes entre la población guatemalteca
+en edad escolar, se definieron los parámetros necesarios para conformar un
+ejemplo del usuario objetivo del proyecto. Estas características incluyen:
+
+\begin{itemize}
+      \item Edad promedio: 13-17 años.
+      \item Contexto educativo: estudiantes de nivel medio y universitario inicial.
+      \item Motivaciones: aprender de forma práctica y reflexiva, mejorar su comprensión de
+            ciudadanía y valores.
+      \item Frustraciones: enseñanza teórica, falta de espacios de diálogo y escasez de
+            herramientas interactivas.
+      \item Competencias digitales: nivel bajo a medio en uso de aplicaciones y
+            herramientas digitales.
+      \item Contexto de uso de la aplicación: dispositivos móviles, principalmente Android,
+            con sesiones cortas de interacción y preferencia por contenidos dinámicos y
+            cercanos a su realidad.
+\end{itemize}
+
+A partir de este perfil se definieron los siguientes aspectos centrales de la
 aplicación:
 
 \begin{itemize}
@@ -31,67 +47,6 @@ aplicación:
       \item \textbf{Enfoque:} La interacción pregunta-respuesta se diseñó bajo la filosofía del método socrático, lo que permitió que en cada interacción con el asistente se se obtenga también una lista de preguntas sugeridas.
       \item \textbf{Diseño:} La interfaz sigue los principios de \textit{Material Design}, esto al priorizar un diseño minimalista y enfocado en la funcionalidad del sistema
 \end{itemize}
-
-% \section{Implementación de flujo para procesamiento de archivos}
-% El sistema obtenido a través del segundo \textit{sprint}, permite procesar
-% diversos formatos de archivo:
-
-% \begin{itemize}
-%       \item Documentos PDF (.pdf)
-%       \item Documentos de Word (.doc, .docx)
-%       \item Presentaciones (.ppt, .pptx)
-%       \item Texto plano (.txt)
-%       \item Markdown (.md)
-%       \item Imágenes y documentos escaneados (mediante Tesseract OCR)
-% \end{itemize}
-
-% La Figura \ref{fig:procesamiento-docs} ilustra el flujo completo de
-% procesamiento:
-
-% \begin{figure}[H]
-%       \centering
-%       \includegraphics[width=0.9\textwidth]{assets/procesamiento-docs.png}
-%       \caption{Flujo de procesamiento de documentos para generación del corpus.}
-%       \label{fig:procesamiento-docs}
-% \end{figure}
-
-% El proceso se divide en dos etapas principales:
-
-% \begin{enumerate}
-%       \item \textbf{Extracción y normalización del contenido:} En esta etapa se realiza la lectura y extracción de texto desde los formatos soportados. El flujo incluye la limpieza del texto, la estandarización del formato (identificación de títulos, encabezados y listas para preservar la semántica), la validación de la integridad (omisión de duplicados, normalización de caracteres) y la fragmentación semántica. El producto final resultante está compuesto por fragmentos de texto plano autocontenidos.
-%       \item \textbf{Generación de representaciones numéricas e indexación vectorial:} Cada fragmento de texto se transforma en un vector mediante el modelo de OpenAI \texttt{text-embedding-3-small}. A cada representación numérica de texto, se le asocian metadatos relevantes (identificador del documento original, título, categoría temática, texto original, autor y año de publicación). Posteriormente, se realiza una operación de upsert en el índice vectorial de Pinecone. Simultáneamente, se registra en la base de datos relacional la trazabilidad entre el vector y el documento original almacenado en un contenedor Amazon S3.
-% \end{enumerate}
-
-% \section{Implementación del modelo LLM y flujo RAG}
-% En el tercer \textit{sprint}, se implementó un flujo RAG
-% (\textit{Retrieval-Augmented Generation}) que permite al asistente virtual
-% generar respuestas fundamentadas en los contenidos educativos previamente
-% indexados. Este flujo integra los siguientes componentes:
-% \begin{enumerate}
-%       \item \textbf{API en NodeJS:} Actúa como servidor principal, orquestando la comunicación entre la aplicación móvil y los servicios de procesamiento de lenguaje natural.
-%       \item \textbf{Microservicio en Python:} Gestiona la interacción con el modelo LLM (\textit{Large Language Model}) de OpenAI para generar respuestas y procesar documentos.
-%       \item \textbf{API de OpenAI:} Utilizada para la generación de representaciones numéricas (\textit{embeddings}) y respuestas.
-%       \item \textbf{Base de datos vectorial (Pinecone):} Almacena y permite la recuperación de las representaciones numéricas generadas a partir de los contenidos educativos.
-%       \item \textbf{Base de datos relacional (PostgreSQL):} Gestiona usuarios, mensajes, sesiones e información de los documentos procesados, asegurando la trazabilidad desde los vectores hasta el documento original.
-
-% \end{enumerate}
-% El flujo completo del proceso RAG, desde la recepción de una pregunta en la aplicación móvil hasta la devolución de la respuesta, se ilustra en la Figura \ref{fig:flujo-rag}.
-
-% \begin{figure}[H]
-%       \centering
-%       \includegraphics[width=0.8\textwidth]{assets/RAG.png}
-%       \caption{Flujo de procesamiento de preguntas mediante RAG.}
-%       \label{fig:flujo-rag}
-% \end{figure}
-
-% \subsection{Integración de la Base de Datos Vectorial y Relacional}
-% El almacenamiento de información a lo largo del sistema se describe en 3
-% elementos principales:
-% \begin{itemize}
-%       \item \textbf{Base de datos relacional (PostgreSQL):} gestor principal de los datos del sistema; aquí se almacenan los datos de los usuarios, chats, mensajes, sesiones, códigos de recuperación de contraseñas y metadatos básicos de los documentos procesados.
-%       \item \textbf{Base de datos vectorial (Pinecone):} encargada de almacenar las representaciones numéricas de texto generadas a partir de los documentos seleccionados. Esta es la base del funcionamiento RAG, ya que permite recuperar el contexto necesario, según la pregunta realizada, para que el modelo LLM pueda generar respuestas fundamentadas.
-%       \item \textbf{Documentos originales (Contenedor AWS S3):} aquí se almacenan todos los documentos originales cargados al sistema, lo que permite su posterior consulta o descarga por parte de los usuarios con rol de \textbf{Administrador}.
-% \end{itemize}
 
 \section{Corpus vectorizado}
 El sistema definido en los \textit{sprints} 2 y 3 permitió el procesamiento y
@@ -114,53 +69,128 @@ vectorial en Pinecone después de cargar las representaciones numéricas
       \label{fig:preview-pinecone}
 \end{figure}
 
+A través de este proceso, se obtuvo:
+
+\begin{itemize}
+      \item Una base documental curada y segmentada en categorías temáticas.
+      \item Representaciones numéricas (\textit{embeddings}) generadas para cada fragmento
+            de texto, con metadatos completos para garantizar trazabilidad.
+      \item Un índice en Pinecone listo para consultas semánticas, capaz de proporcionar
+            contexto preciso al asistente virtual para cualquier pregunta del usuario.
+      \item Establecimiento de un flujo reproducible de selección, curación, segmentación y
+            vectorización de contenido para una continua actualización del corpus del
+            proyecto.
+\end{itemize}
+
 \section{Interfaz móvil en Kotlin (Cliente)}
-Durante el cuarto \textit{sprint}, se desarrolló la aplicación móvil nativa
-para dispositivos Android utilizando el lenguaje de programación Kotlin,
-implementando el patrón de diseño MVVM (Modelo-Vista-Modelo de Vista) para
-asegurar una arquitectura modular y mantenible. Como resultado, se obtuvo una
-interfaz funcional, amigable con el usuario y cuyo uso no requiere estar
-familizarizado previamente con herramientas parecidas.
+
+Durante el cuarto \textit{sprint} se desarrolló la aplicación móvil nativa para
+Android utilizando Kotlin y el patrón de arquitectura MVVM (Modelo-Vista-Modelo
+de Vista). Esta estructura permitió mantener una organización clara del código,
+lo que facilita la escalabilidad y el mantenimiento. Como resultado, se obtuvo una
+interfaz intuitiva y accesible para cualquier usuario, incluso sin experiencia
+previa en herramientas similares.
+
+\subsection{Flujo de interacción}
+
+El flujo de interacción del usuario se compone de tres actividades principales
+y un conjunto de fragmentos especializados que gestionan las distintas
+funciones de la aplicación.
+
+\begin{itemize}
+      \item \textbf{Actividades}
+            \begin{itemize}
+                  \item \textbf{\textit{SplashActivity}:} Es la primera vista al abrir la aplicación. Aunque únicamente muestra el logotipo del proyecto, se encarga de verificar si existe una sesión activa mediante el token JWT allmacenado en las Preferencias Compartidas (\textit{SharedPreferences}). Si el token es válido, redirige directamente a la vista principal, evitando que el usuario deba iniciar sesión cada vez que abre la aplicación.
+                  \item \textbf{\textit{UnloggedActivity}:} Agrupa los fragmentos relacionados con la autenticación (\textit{LoginFragment}, \textit{RegisterFragment} y \textit{RecoverPasswordFragment}). Cada fragmento aplica sus propias validaciones y coordina la comunicación con el servidor para garantizar un ingreso seguro al sistema.
+
+                  \item \textbf{\textit{MainActivity}:} Es el núcleo de la aplicación una vez el usuario ha sido autenticado. Aloja el \textit{NavHostFragment}, componente encargado de gestionar la navegación entre los fragmentos funcionales; como chat, perfil de usuario y visualización de documentos. Además, incorpora un menú lateral que permite acceder rápidamente al historial de conversaciones.
+            \end{itemize}
+
+      \item \textbf{Fragmentos}
+            \begin{itemize}
+                  \item \textbf{\textit{LoginFragment}:} Permite al usuario ingresar sus credenciales y valida su formato y autenticidad.
+                  \item \textbf{\textit{RegisterFragment}:} Permite crear una cuenta nueva con validaciones de integridad y unicidad. El correo electrónico es indispensable para recuperación de contraseña y notificaciones de ingreso o eliminación de documentos.
+                  \item \textbf{\textit{SendRecoveryFragment}:} Solicita el envío del código de recuperación al correo registrado, el cual solo se envía si se encuentra una cuenta asociada al mismo.
+                  \item \textbf{\textit{VerifyCodeFragment}:} Valida el código de recuperación ingresado.
+                  \item \textbf{\textit{ResetPasswordFragment}:} Permite establecer una nueva contraseña tras validar el código enviado.
+                  \item \textbf{\textit{ChatFragment}:} Facilita la interacción con el asistente virtual, ya que muestra el historial de mensajes y permite enviar nuevas consultas.
+                  \item \textbf{\textit{ProfileFragment}:} Permite visualizar y editar la información personal del usuario, exceptuando la contraseña, que solo puede modificarse mediante el proceso de recuperación.
+                  \item \textbf{\textit{DocumentsFragment}:} Muestra la lista de documentos cargados y permite su gestión.
+            \end{itemize}
+
+      \item La navegación entre fragmentos se implementó mediante el componente de navegación de Android (\textit{Navigation
+                  Component}), lo cual garantiza transiciones coherentes y control sobre la pila
+            de navegación.
+      \item Se integraron indicadores de carga y estado de conexión para brindar
+            retroalimentación inmediata durante las consultas al LLM.
+\end{itemize}
 
 \subsection{Funcionalidades Comunes}
-La aplicación cuenta con 2 tipos de roles diferentes: \textbf{Usuario} y
-\textbf{Administrador}, cuya gestión debe ser realizada desde la base de datos
-al definir en el campo \textbf{\guillemetleft{}role\guillemetright{}} para cada
-usuario. Las funcionalidades básicas a las que tiene acceso tanto el usuario
-como el administrador, son:
+
+La aplicación distingue entre dos roles de usuario: \textbf{Usuario} y
+\textbf{Administrador}, definidos en el campo
+\textbf{\guillemetleft{}role\guillemetright{}} de la base de datos. Sin
+embargo, ambos comparten un conjunto de funcionalidades esenciales:
+
 \begin{itemize}
-      \item \textbf{Conversaciomes:} El usuario puede crear chats, enviar mensajes y recibir respuestas del modelo. No se requieren accesos especiales para esta función, tan solo contar con una cuenta de usuario sin importar el rol.
-      \item \textbf{Perfil de Usuario:} Los usuarios pueden ver y modificar su propia informació personal. A excepción de la contraseña, tienen acceso a cambiar sus nombres, apellidos, fecha de nacimiento, correo electrónico o número de teléfono.
-      \item \textbf{Cerrar Sesión:} Todos los usuarios pueden elegir terminar su sesión actual de forma automática. Si no lo hacen, la sesión se cerrará igualmente de forma automática tras transcurrir 1 hora de inactividad en la aplicación.
+      \item \textbf{Conversaciones:} Permite crear chats, enviar mensajes y recibir respuestas del modelo.
+      \item \textbf{Perfil de Usuario:} Los usuarios pueden visualizar y actualizar su información personal (nombre, apellidos, fecha de nacimiento, correo y teléfono).
+      \item \textbf{Cerrar Sesión:} Se puede cerrar la sesión manualmente o esperar a que expire automáticamente tras una hora de inactividad.
 \end{itemize}
 
-\subsection{Funcionalidades del Administrador}
-Por otro lado, también hay funciones que solamente el administrador puede
-realizar, con el fin de mantener el control de aspectos delicados de la
-aplicación, que en este caso corresponden a mantener la seguridad y
-consistencia del corpus del modelo. Las funcionalidades específicas que solo
-puede realizar el administrador, son:
-\begin{itemize}
-      \item \textbf{Ver documentos:} Los usuarios con rol administrador pueden acceder al panel de gestión de documentos, en donde se muestran todos los archivos cargados en la base de datos. Desde aquí, tienen la opción de ver el documento original en su navegador.
-      \item \textbf{Añadir documentos:} De igual forma, los usuarios administradores pueden agregar documentos al corpus del modelo. Para ello, en la vista de gestión de documentos, deben seleccionar la opción \textbf{\guillemetleft{}Agregar\guillemetright{}} e ingresar los datos solicitados: Nombre, Autor, Año, Rango de edades. Finalmente, se debe cargar el documento y presionar \textbf{\guillemetleft{}Guardar\guillemetright{}}. El procesamiento del archivo se realiza en segundo plano, por lo que al usuario le llegará una notificación por correo electrónico cuando esté listo y cargado en el sistema.
-      \item \textbf{Eliminar documentos:} Finalmente, el usuario administrador también puede remover documentos del corpus si le parece apropiado o si ya no se desea que forme parte del corpus del sistema. Igualmente, esta eliminación se procesa en segundo plano, así que cuando esté listo, le llegará una notificación por correo electrónico.
-\end{itemize}
-
-La Figura \ref{fig:app-interfaces} muestra algunas de las pantallas principales
-de la aplicación móvil desarrollada.
+La Figura \ref{fig:app-interfaces} muestra las pantallas principales
+disponibles para todos los usuarios.
 
 \begin{figure}[H]
       \centering
       \begin{minipage}{0.22\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{assets/app-login.jpeg}
-            \subcaption{Pantalla de inicio de sesión.}
+            \includegraphics[width=\textwidth]{assets/app-chat.jpeg}
+            \subcaption{Pantalla de chat con asistente virtual.}
       \end{minipage}
       \hfill
       \begin{minipage}{0.22\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{assets/app-chat.jpeg}
-            \subcaption{Pantalla de chat con asistente virtual.}
+            \includegraphics[width=\textwidth]{assets/app-messages.jpeg}
+            \subcaption{Pantalla de chat con mensajes.}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.22\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{assets/profile.jpeg}
+            \subcaption{Vista de perfil del usuario.}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.22\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{assets/side-panel.jpeg}
+            \subcaption{Panel lateral general.}
+      \end{minipage}
+      \caption{Interfaz de la aplicación móvil, opciones generales.}
+      \label{fig:app-interfaces}
+\end{figure}
+
+\subsection{Funcionalidades del Administrador}
+
+Por otro lado, existen funciones exclusivas para el rol \textbf{Administrador}, orientadas al
+control del corpus documental usado por el modelo. Estas funciones incluyen:
+
+\begin{itemize}
+      \item \textbf{Ver documentos:} Acceso al listado de archivos cargados y opción de abrir el documento original.
+      \item \textbf{Añadir documentos:} Permite registrar nuevos archivos completando un formulario con información básica (Nombre, Autor, Año, Rango de edades). La carga y procesamiento del documento se realiza en segundo plano y se notifica por correo al finalizar.
+
+      \item \textbf{Eliminar documentos:} Permite remover documentos del corpus. La eliminación también se procesa en segundo plano y el administrador recibe una notificación al completarse.
+\end{itemize}
+
+La Figura \ref{fig:app-interfaces-admin} muestra las interfaces destinadas
+exclusivamente a administradores.
+
+\begin{figure}[H]
+      \centering
+      \begin{minipage}{0.22\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{assets/side-panel-admin.jpeg}
+            \subcaption{Panel lateral con acceso a documentos.}
       \end{minipage}
       \hfill
       \begin{minipage}{0.22\textwidth}
@@ -171,16 +201,12 @@ de la aplicación móvil desarrollada.
       \hfill
       \begin{minipage}{0.22\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{assets/app-messages.jpeg}
-            \subcaption{Pantalla de chat con mensajes.}
+            \includegraphics[width=\textwidth]{assets/new-document.jpeg}
+            \subcaption{Formulario para ingreso de documentos.}
       \end{minipage}
-      \caption{Interfaz de la aplicación móvil desarrollada.}
-      \label{fig:app-interfaces}
+      \caption{Interfaz de la aplicación móvil, opciones de administrador.}
+      \label{fig:app-interfaces-admin}
 \end{figure}
-
-El diseño de la interfaz emplea los principios y componentes de
-\textit{Material Design}, junto con \textit{Navigation Component} para la
-navegación y \textit{Hilt} para la inyección de dependencias.
 
 \section{Pruebas y Validación}
 La implementación del prototipo concluyó con una evaluación exhaustiva del
@@ -196,11 +222,12 @@ con los documentos que conforman el corpus), diseñadas para evaluar la
 \textbf{no alucinación} del modelo; es decir, que no responda cuando no deba
 hacerlo.
 
-Para cada pregunta, independientemente si era de control o no, se tomó el
+Para cada pregunta, independientemente de si era de control o no, se tomó el
 tiempo de respuesta, así como las referencias devueltas por el sistema (Anexo
-\ref{tab:consultas-referencias}). La columna \texttt{Exitosa} se refiere a si la pregunta fue o no
-fue respondida por el modelo, mientras que la columna \texttt{Congruente}
-establece la congruencia según el tipo de consulta realizada:
+\ref{tab:consultas-referencias}). La columna \texttt{Exitosa} se refiere a si
+la pregunta fue o no fue respondida por el modelo, mientras que la columna
+\texttt{Congruente} establece la congruencia según el tipo de consulta
+realizada:
 
 \begin{itemize}
       \item \textbf{Consulta:} Estas se refieren a preguntas que el modelo \textbf{sí debería responder} ya que estan basadas estrictamente en el contenido del corpus proporcionado.
@@ -210,12 +237,11 @@ establece la congruencia según el tipo de consulta realizada:
 Como se mencionó, el Anexo \ref{tab:consultas-referencias} muestra la relación
 entre los documentos que se espera que el modelo seleccione para responder cada
 pregunta, frente a las referencias que finalmente utilizó para extraer el
-contexto necesario. Se evidencia que el comportamiento en este caso presenta 3
-variantes detectables:
+contexto necesario. Se obtienen los siguientes resultados para las 3 clasificaciones descritas previamente:
 \begin{itemize}
-      \item \textbf{Coincidencia exacta:} Se refiere a los casos en los que las referencias esperadas y las extraídas por el modelo coinciden por completo, como se evidencia en las filas 13, 16, 17, 22, 23, 34, 39, 42, 46, 48 y 53. Destaca el caso mostrado en la fila 13, puesto que si bien las referencias utilizadas son las mismas que las esperadas, difiere el orden de prioridad interpretado por el modelo.
-      \item\textbf{Coincidencia parcial:} Estos son casos que incluyen algunas de las referencias esperadas pero también el uso de referencias adicionales; se evidencia este comportamiento en las filas 1, 7, 11, 14, 18, 26, 28, 33, 36, 38, 41, 43, 44, 47, 49, 51, 52 y 55.
-      \item \textbf{Coincidencia nula:} Estos casos son aquellos en los que las referencias utilizadas difieren completamente de las referencias esperadas, como se evidencia en las filas 3, 6, 8, 12, 19 y 31.
+      \item \textbf{Coincidencia exacta:} Se evidencia en las filas 13, 16, 17, 22, 23, 34, 39, 42, 46, 48 y 53. Destaca el caso mostrado en la fila 13, puesto que si bien las referencias utilizadas son las mismas que las esperadas, difiere el orden de prioridad interpretado por el modelo.
+      \item\textbf{Coincidencia parcial:} Se evidencia este comportamiento en las filas 1, 7, 11, 14, 18, 26, 28, 33, 36, 38, 41, 43, 44, 47, 49, 51, 52 y 55.
+      \item \textbf{Coincidencia nula:} Se evidencia en las filas 3, 6, 8, 12, 19 y 31.
 \end{itemize}
 
 \subsection{Métricas Encontradas}
